@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS tickets;
-DROP TABLE IF EXISTS comments;
-DROP TABLE IF EXISTS departments;
-DROP TABLE IF EXISTS actions;
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Tickets;
+DROP TABLE IF EXISTS Comments;
+DROP TABLE IF EXISTS Departments;
+DROP TABLE IF EXISTS Actions;
 
-CREATE TABLE users (
+CREATE TABLE Users (
     id INT PRIMARY KEY,
     username VARCHAR NOT NULL,
     password VARCHAR NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE users (
     department_id INT REFERENCES departments(id)
 );
 
-CREATE TABLE tickets (
+CREATE TABLE Tickets (
     id INT PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(id),
     agent_id INT NOT NULL REFERENCES users(id),
@@ -26,7 +26,7 @@ CREATE TABLE tickets (
     faq BOOLEAN NOT NULL
 );
 
-CREATE TABLE comments (
+CREATE TABLE Comments (
     id INT PRIMARY KEY,
     ticket_id INT NOT NULL REFERENCES tickets(id),
     user_id INT NOT NULL REFERENCES users(id),
@@ -34,12 +34,12 @@ CREATE TABLE comments (
     date TIMESTAMP NOT NULL
 );
 
-CREATE TABLE departments (
+CREATE TABLE Departments (
     id INT PRIMARY KEY,
     name VARCHAR NOT NULL
 );
 
-CREATE TABLE actions (
+CREATE TABLE Actions (
     id INT PRIMARY KEY,
     ticket_id INT NOT NULL REFERENCES tickets(id),
     user_id INT NOT NULL REFERENCES users(id),
@@ -48,5 +48,7 @@ CREATE TABLE actions (
 );
 
 
-
+/*******************************************************************************
+   Populate Tables
+********************************************************************************/
 
