@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+body{
+
+    margin: 0 0;
+    background-color:#9092a3;
+    display: grid;
+    grid-template-columns:20% 80%;
+    grid-template-rows: 20% 75% 5%;
+    background-image: "../images/background-image.jpg";
+
+}
+
+
+main > p {
+    font-family: "Montserrat",sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0.5;
+    text-align: justify;
+    align-items: center;
+    width: 60em;
+    margin: 0 auto;
+}
+
+#menu{
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    background-color:#24252A;
+    font-size: 1em;
+    height:100vh;   
+}   
+#menu ul li:first-child {
+
+    
+    margin-top: 5em;
+} 
+#menu li,a{
+    font-family: "Montserrat",sans-serif;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    list-style: none;
+    margin-top: 2em;
+} 
+
+#menu ul{
+    padding: 0;
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+
+} 
+
+#menu > h2{
+    font-family: "Montserrat",sans-serif;
+    color:white;
+    letter-spacing: 0.1em;
+    font-size: 3em;
+    text-align: center;
+}
+
+main {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.ticket_body {
+    border: 2px solid gray;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    width: 60em;
+    margin: auto auto;
+}
+
+
+
+/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
+                        /* CSS for index.php */
+
+#home_main{
+
+    grid-row: 1/4;
+    background-image: url("../images/background-image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8; /* Change the value to make the background less or more opaque */
+    display: flex;
+    align-items: center;
+}
+
+#home_main h1 {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    padding: auto auto;
+    margin: auto auto;
+    font-size: 3.3em;
+    letter-spacing: 0.1em;
+}
+
+/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
+                        /* CSS for search bar */
+
+body header{
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #24252A;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 30em;
+    margin: 2em auto;
+  }
+  
+  .search-form input[type="text"] {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    color:white;
+
+}
+  
+  .search-form button[type="submit"] {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    margin-left: -30px;
+  }
+  
+  .search-form button[type="submit"] img {
+    width: 20px;
+    height: 20px;
+  }
+  .search-form input[type="text"]:focus {
+    outline: none;
+  }
+
+
+
+/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
+                        /* CSS for Ticket */
+  .ticket {
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 60em;
+    display:flex;
+    align-items: center;
+    background-color: #a0a4b6;
+  }
+  
+  .ticket p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+  }
+  
+  .ticket form {
+    display: flex;
+    align-items: center;
+  }
+  
+
+  .ticket select {
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  
+  .ticket input[type="submit"] {
+    background-color: hwb(210 31% 65%);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 3px;
+  }
