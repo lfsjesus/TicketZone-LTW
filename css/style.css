@@ -29,7 +29,10 @@ main > p {
     grid-row: 1 / 4;
     background-color:#24252A;
     font-size: 1em;
-    height:100vh;   
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }   
 #menu ul li:first-child {
 
@@ -60,6 +63,7 @@ main > p {
     letter-spacing: 0.1em;
     font-size: 3em;
     text-align: center;
+    margin-top: 3em;
 }
 
 main {

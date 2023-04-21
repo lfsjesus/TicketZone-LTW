@@ -21,7 +21,7 @@
         }
 
         function name() {
-            return $this->firstName . ' ' . $this->lastNaem;
+            return $this->firstName . ' ' . $this->lastName;
         }
 
         function save($db) {

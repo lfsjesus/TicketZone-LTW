@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Name</title>
+    <title>TicketZone</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
@@ -13,23 +13,20 @@
 
 
 <!-- Maybe we do not need this function in the future! -->
-<?php function drawNavbar(){ ?>
+<?php function drawNavbar(Session $session){ ?>
   <nav id="menu">
-      <h2 id = "logo"><a href= "/../pages/index.php">Name</a></h2>
+      <h2 id = "logo"><a href= "/../pages/index.php">TicketZone</a></h2>
       <ul>
         <li><a href="">Create a ticket</a></li>
         <li><a href="/../pages/userTicket.php">My tickets</a></li>
         <li><a href="">FAQ</a></li>
         <li><a href="/../pages/about.php">About us</a></li>
-
-        <?php 
-          require_once(__DIR__ . '/../utils/session.php');
-          $session = new Session();
-          if ($session->isLoggedIn()) { ?>
-            <li><a href="/../actions/action_logout.php">Log out</a></li>
-          <?php } ?>
       </ul>  
-      
+      <?php 
+          if ($session->isLoggedIn()) { ?>
+          <form action="/../actions/action_logout.php" method="post">
+            <button id="logout" type="submit" name="logout">Logout</button>
+      <?php } ?>
   </nav>
 <?php } ?>
 
