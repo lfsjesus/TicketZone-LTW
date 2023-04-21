@@ -1,5 +1,6 @@
 <?php
     declare(strict_types = 1);
+    require_once(__DIR__ . '/../database/ticket.class.php');
 
     class User {
         public int $id;
@@ -65,6 +66,74 @@
                 $user['department_id']
             );
         }
-    }
 
+        public function getMyTickets(PDO $db) : array {
+            $stmt = $db->prepare('SELECT id, user_id, agent_id, title, description, status, priority, date, faq FROM Tickets WHERE user_id = ?');
+            $stmt->execute(array($this->id));
+        
+            $tickets = array();
+        
+            foreach ($stmt->fetchAll() as $ticket) {
+                $ticketCreator = User::getUser($db, $ticket['user_id']);
+                $ticketAssignee = User::getUser($db, $ticket['agent_id']);
+        
+                $hashtags = array();
+                $stmt = $db->prepare('SELECT hashtag FROM TicketHashtags WHERE ticket_id = ?');
+                $stmt->execute(array($ticket['id']));
+                foreach ($stmt->fetchAll() as $hashtag) {
+                    array_push($hashtags, $hashtag['hashtag']);
+                }
+        
+                array_push($tickets, new Ticket(
+                    $ticket['id'],
+                    $ticket['title'],
+                    $ticket['description'],
+                    $ticketCreator,
+                    $ticketAssignee,
+                    $ticket['status'],
+                    $ticket['priority'],
+                    new DateTime($ticket['date']),
+                    $hashtags,
+                    $ticket['faq'] == 1
+                ));
+            }
+            return $tickets;
+        }
+
+        public function getMyAssignedTickets(PDO $db) : array {
+            // this functionality is only for agents
+            if ($this->type != 'agent') return NULL;
+
+            $stmt = $db->prepare('SELECT id, user_id, agent_id, title, description, status, priority, date, faq FROM Tickets WHERE agent_id = ?');
+            $stmt->execute(array($this->id));
+        
+            $tickets = array();
+        
+            foreach ($stmt->fetchAll() as $ticket) {
+                $ticketCreator = User::getUser($db, $ticket['user_id']);
+                $ticketAssignee = User::getUser($db, $ticket['agent_id']);
+        
+                $hashtags = array();
+                $stmt = $db->prepare('SELECT hashtag FROM Hashtags WHERE ticket_id = ?');
+                $stmt->execute(array($ticket['id']));
+                foreach ($stmt->fetchAll() as $hashtag) {
+                    array_push($hashtags, $hashtag['hashtag']);
+                }
+        
+                array_push($tickets, new Ticket(
+                    $ticket['id'],
+                    $ticket['title'],
+                    $ticket['description'],
+                    $ticketCreator,
+                    $ticketAssignee,
+                    $ticket['status'],
+                    $ticket['priority'],
+                    new DateTime($ticket['date']),
+                    $hashtags,
+                    $ticket['faq'] == 1
+                ));
+            }
+            return $tickets;
+        }
+    }
 ?>

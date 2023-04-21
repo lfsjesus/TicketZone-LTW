@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS Tickets;
 DROP TABLE IF EXISTS Comments;
 DROP TABLE IF EXISTS Departments;
 DROP TABLE IF EXISTS Actions;
+DROP TABLE IF EXISTS TicketHashtags;
 
 CREATE TABLE Users (
     id INT PRIMARY KEY,
@@ -23,8 +24,14 @@ CREATE TABLE Tickets (
     description VARCHAR NOT NULL,
     status VARCHAR NOT NULL,
     priority VARCHAR NOT NULL,
-    hashtag VARCHAR NOT NULL,
+    date TIMESTAMP NOT NULL,
     faq BOOLEAN NOT NULL
+);
+
+CREATE TABLE TicketHashtags (
+    id INT PRIMARY KEY,
+    ticket_id INT NOT NULL REFERENCES tickets(id),
+    hashtag VARCHAR NOT NULL
 );
 
 CREATE TABLE Comments (

@@ -1,19 +1,22 @@
 <?php 
-function drawTicket(){ 
-    $priorities = array("Low", "High", "Urgent");
+require_once(__DIR__ . '/../database/ticket.class.php');
+
+function drawTicket(Ticket $ticket){ 
 ?>
-    <article class="ticket">
-        <p>This is just a test. This is just a test. This is just a test.
-             This is just a test. This is just a test. This is just a test. This is just a test.</p>    
-        <form method="post" action="process_ticket.php">
-            <select name="priority" id="priority">
-                <?php foreach($priorities as $priority): ?>
-                    <option value="<?php echo $priority; ?>"><?php echo $priority; ?></option>
-                <?php endforeach; ?>
-            </select>
-            <input type="submit" value="Save">
-        </form>
-    </article>
+    <tr>
+        <td><input type="checkbox" name="ticket[]"></td>
+        <td><?php echo $ticket->ticketCreator->name(); ?></td>
+        <td><?php echo $ticket->title; ?></td>
+        <td><?php echo $ticket->ticketAssignee->name(); ?></td>
+        <td><?php echo $ticket->status; ?></td>
+        <td><?php echo $ticket->priority; ?></td>
+        <td><?php echo $ticket->dateCreated->format('d/m/Y H:i'); ?></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><?php echo $ticket->ticketCreator->email; ?></td>
+        <td><?php echo substr($ticket->description, 0, 50) . '...'; ?></td>
+    </tr>
 <?php 
 } 
 ?>

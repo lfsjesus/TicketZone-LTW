@@ -15,7 +15,7 @@
 <!-- Maybe we do not need this function in the future! -->
 <?php function drawNavbar(Session $session){ ?>
   <nav id="menu">
-      <h2 id = "logo"><a href= "/../pages/index.php">TicketZone</a></h2>
+      <h2 id = "logo"><a href= "/../pages/dashboard.php">TicketZone</a></h2>
       <ul>
         <li><a href="">Create a ticket</a></li>
         <li><a href="/../pages/userTicket.php">My tickets</a></li>
