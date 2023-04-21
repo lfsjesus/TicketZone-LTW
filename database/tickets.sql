@@ -6,10 +6,11 @@ DROP TABLE IF EXISTS Actions;
 
 CREATE TABLE Users (
     id INT PRIMARY KEY,
-    username VARCHAR NOT NULL,
+    username VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
-    name VARCHAR NOT NULL,
+    firstName VARCHAR NOT NULL,
+    lastName VARCHAR NOT NULL,
     type VARCHAR NOT NULL,
     department_id INT REFERENCES departments(id)
 );
@@ -46,9 +47,4 @@ CREATE TABLE Actions (
     action VARCHAR NOT NULL,
     date TIMESTAMP NOT NULL
 );
-
-
-/*******************************************************************************
-   Populate Tables
-********************************************************************************/
 

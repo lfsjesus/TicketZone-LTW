@@ -21,7 +21,15 @@
         <li><a href="/../pages/userTicket.php">My tickets</a></li>
         <li><a href="">FAQ</a></li>
         <li><a href="/../pages/about.php">About us</a></li>
+
+        <?php 
+          require_once(__DIR__ . '/../utils/session.php');
+          $session = new Session();
+          if ($session->isLoggedIn()) { ?>
+            <li><a href="/../actions/action_logout.php">Log out</a></li>
+          <?php } ?>
       </ul>  
+      
   </nav>
 <?php } ?>
 
