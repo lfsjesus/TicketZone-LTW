@@ -17,15 +17,19 @@
   <nav id="menu">
       <h2 id = "logo"><a href= "/../pages/dashboard.php">TicketZone</a></h2>
       <ul>
-        <li><a href="">Create a ticket</a></li>
-        <li><a href="/../pages/userTicket.php">My tickets</a></li>
-        <li><a href="">FAQ</a></li>
-        <li><a href="/../pages/about.php">About us</a></li>
+        <li><a href=""><span class="material-symbols-outlined">add_circle</span>Create a ticket</a></li>
+        <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
+        <li><a href=""><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
+        <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>
       </ul>  
       <?php 
           if ($session->isLoggedIn()) { ?>
-          <form action="/../actions/action_logout.php" method="post">
-            <button id="logout" type="submit" name="logout">Logout</button>
+          <footer>
+            <form action="/../actions/action_logout.php" method="post">
+              <!-- LOGOUT BUTTON WITH TEXT AND ICON -->
+              <button type="submit" name="logout" class="logout-button">Logout<span class="material-symbols-outlined">logout</span></button>
+            </form>
+          </footer>
       <?php } ?>
   </nav>
 <?php } ?>
