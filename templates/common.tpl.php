@@ -3,6 +3,7 @@
 <html lang="en-US">
   <head>
     <title><?=$pageName . " - TicketZone"?></title>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
@@ -15,9 +16,9 @@
 <!-- Maybe we do not need this function in the future! -->
 <?php function drawNavbar(Session $session){ ?>
   <nav id="menu">
-      <h2 id = "logo"><a href= "/../pages/dashboard.php">TicketZone</a></h2>
+      <img src="../images/ticketzone_logo.png" alt="logo" class="logo">
       <ul>
-        <li><a href=""><span class="material-symbols-outlined">add_circle</span>Create a ticket</a></li>
+        <li><a href="/../pages/dashboard.php"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
         <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
         <li><a href=""><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
         <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>

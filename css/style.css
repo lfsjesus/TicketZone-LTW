@@ -42,6 +42,11 @@ main > p {
     padding: 0 1em;
 }   
 
+#menu .logo {
+    max-width: 65%;
+    margin: 7em auto 0 auto;
+}
+
 #menu ul li:first-child {
     margin-top: 2.5em;
 } 
@@ -53,8 +58,7 @@ main > p {
     color: white;
     font-weight: 600;
     list-style: none;
-    padding: 1.2em;
-    margin: 0.1em 0;
+    margin: 0.5em 0;
 } 
 
 #menu li:hover {
@@ -64,16 +68,10 @@ main > p {
     transition: 0.4s;
 }
 
-#menu li:first-child {
+#menu .active {
     background-color: #141427;
     border: 1px solid #141427;
     border-radius: 1em;
-}
-
-#menu li:first-child:hover {
-    background-color: #000000;
-    border: 1px solid #000000;
-    transition: 0.4s;
 }
 
 #menu li .material-symbols-outlined {
@@ -83,7 +81,9 @@ main > p {
 
 #menu li a {
     font-weight: 600;
-    margin-top: 2em;
+    display: block;
+    height: 100%;
+    padding: 1.2em;
 }
 
 #menu ul {
@@ -92,20 +92,11 @@ main > p {
     flex-direction: column;
 } 
 
-#menu > h2{
-    font-family: "Montserrat",sans-serif;
-    color:white;
-    letter-spacing: 0.1em;
-    font-size: 3em;
-    text-align: center;
-    margin-top: 3em;
-}
-
 #menu footer {
     margin-top: auto;
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 3em;
+    padding-bottom: 4em;
 }
 
 #menu footer {

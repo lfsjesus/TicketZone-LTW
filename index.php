@@ -1,3 +1,3 @@
 <?php
-  //header('Location: actions/login.php');
+header('Location: pages/login_page.php');
 ?>
