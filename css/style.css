@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+body {
+    margin: 0;
+}
 
-body{
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    margin: 0 0;
+#dashboard {
     background-color:#9092a3;
     display: grid;
     grid-template-columns:20% 80%;
     grid-template-rows: 20% 75% 5%;
     background-image: "../images/background-image.jpg";
-
 }
-
 
 main > p {
     font-family: "Montserrat",sans-serif;
@@ -24,7 +28,7 @@ main > p {
     margin: 0 auto;
 }
 
-#menu{
+#menu {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
     background-color:#24252A;
@@ -34,12 +38,12 @@ main > p {
     flex-direction: column;
     align-items: center;
 }   
-#menu ul li:first-child {
 
-    
+#menu ul li:first-child {
     margin-top: 5em;
 } 
-#menu li,a{
+
+#menu li {
     font-family: "Montserrat",sans-serif;
     text-decoration: none;
     color: white;
@@ -48,6 +52,12 @@ main > p {
     list-style: none;
     margin-top: 2em;
 } 
+
+#menu li a {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-top: 2em;
+}
 
 #menu ul{
     padding: 0;
@@ -85,8 +95,7 @@ main {
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
                         /* CSS for index.php */
 
-#home_main{
-
+#home_main {
     grid-row: 1/4;
     background-image: url("../images/background-image.jpg");
     background-size: cover;
@@ -198,3 +207,91 @@ body header{
     font-size: 14px;
     margin-left: 3px;
   }
+
+
+  /** LOGIN PAGE **/
+  .authentication {
+    background-image: url("../images/background-image.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+ 
+  .authentication #credentials-form {
+    font-family: "Montserrat", sans-serif;
+    background-color: rgba(255, 255, 255, 0.80);
+    border-radius: 4em;
+    padding: 2.5em;
+    min-width: 30em;
+    min-height: 30em;
+    max-width: 40em;
+    max-height: 50em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .authentication #credentials-form > h1 {
+    color: #050c2e;
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .authentication #credentials-form > h1 > p {
+    font-size: 0.8em;
+    color: #24252A;
+    font-weight: 400;
+    padding-top: 1em;
+  }
+  
+  .authentication #credentials-form form {
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .authentication #credentials-form form input {
+    margin: 0.5em 0;
+    padding: 1em;
+    border-radius: 1em;
+    border: 1px solid #ccc;
+    width: 25em;
+  }
+
+  .authentication #credentials-form form input[type="submit"] {
+    background-color: #24252A;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .authentication #credentials-form form input[type="submit"]:hover {
+    background-color: #000;
+    opacity: 1.0;
+    transition: 0.3s;
+  }
+
+  .authentication #credentials-form p {
+    font-size: 0.8em;
+  }
+
+  .authentication #credentials-form form a {
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 1em;
+  }
+

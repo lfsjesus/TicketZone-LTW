@@ -1,8 +1,8 @@
-<?php function drawHeader() { ?>
+<?php function drawHeader(string $pageName) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>TicketZone</title>
+    <title><?=$pageName . " - TicketZone"?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">

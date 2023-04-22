@@ -6,7 +6,10 @@ require_once(__DIR__ . '/../utils/session.php');
 
 $session = new Session();
 
-  drawHeader();
+  drawHeader("About Us");
+  ?>
+  <section id = "dashboard">
+  <?php
   drawNavbar($session);
   ?>
     <main>
@@ -17,7 +20,7 @@ $session = new Session();
         Thank you for choosing Name as your partner in customer support. We look forward to working with you and helping you achieve your business goals.
         </p>    
     </main>
-  
+  </section>
   <?php
   drawFooter();
 ?>

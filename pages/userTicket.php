@@ -8,11 +8,13 @@
 
   $session = new Session();
   $db = getDatabaseConnection();
-  drawHeader();
+  drawHeader("My Tickets");
+?>
+  <section id="dashboard">
+<?php
   drawNavbar($session);
   drawSearchbar();
 ?>
-
 <main>
 <?php 
   if (!$session->isLoggedIn()) {
@@ -43,6 +45,7 @@
       </tbody>
     </table>
   </main>
+</section>
 <?php
   drawFooter();
 ?>
