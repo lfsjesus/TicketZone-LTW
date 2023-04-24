@@ -117,7 +117,8 @@ main > p {
 
 main {
     grid-column: 2 / 3;
-    
+    padding: 2.5em;
+    word-break: break-word;
 }
 
 .ticket_body {
@@ -143,12 +144,12 @@ main {
     display: flex;
     align-items: center;
     height: 100%;
+    box-sizing: border-box;
 }
 
 #home_main h1 {
     font-family: "Montserrat", sans-serif;
     color: white;
-    padding: auto auto;
     margin: auto auto;
     font-size: 3.3em;
     letter-spacing: 0.1em;
@@ -258,6 +259,7 @@ body header{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding: 0;
   }
 
  
