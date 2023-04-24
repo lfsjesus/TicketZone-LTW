@@ -1,6 +1,7 @@
 <?php 
 declare (strict_types = 1);
 require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../database/comment.class.php');
 
 class Ticket {
     public int $id;
@@ -26,5 +27,57 @@ class Ticket {
         $this->hashtags = $hashtags;
         $this->isFaq = $isFaq;
     } 
+
+    static function getTicket(PDO $db, int $id) : ?Ticket {
+        $stmt = $db->prepare('SELECT id, user_id, agent_id, title, description, status, priority, date, faq FROM Tickets WHERE id = ?');
+        $stmt->execute(array($id));
+        $ticket = $stmt->fetch();
+
+        if ($ticket) {
+            $ticketCreator = User::getUser($db, $ticket['user_id']);
+            $ticketAssignee = User::getUser($db, $ticket['agent_id']);
+
+            $hashtags = array();
+            $stmt = $db->prepare('SELECT hashtag FROM TicketHashtags WHERE ticket_id = ?');
+            $stmt->execute(array($ticket['id']));
+            foreach ($stmt->fetchAll() as $hashtag) {
+                array_push($hashtags, $hashtag['hashtag']);
+            }
+
+            return new Ticket(
+                $ticket['id'],
+                $ticket['title'],
+                $ticket['description'],
+                $ticketCreator,
+                $ticketAssignee,
+                $ticket['status'],
+                $ticket['priority'],
+                new DateTime($ticket['date']),
+                $hashtags,
+                $ticket['faq'] == 1
+            );
+        } else return null;
+
+    }
+
+    public function getAnswers(PDO $db) : array {
+        $stmt = $db->prepare('SELECT id, ticket_id, user_id, comment, date FROM Comments WHERE ticket_id = ?');
+        $stmt->execute(array($this->id));
+
+        $answers = array();
+
+        foreach ($stmt->fetchAll() as $answer) {
+            $answerCreator = User::getUser($db, $answer['user_id']);
+
+            array_push($answers, new Comment(
+                $answer['id'],
+                $answer['ticket_id'],
+                $answerCreator,
+                $answer['comment'],
+                new DateTime($answer['date'])
+            ));
+        }
+        return $answers;
+    }
 }
 ?>
