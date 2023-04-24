@@ -1,0 +1,82 @@
+@media only screen and (min-width: 768px) and (max-width: 1150px) {
+    #menu .logo {
+        padding-bottom: 6em;
+    }
+
+    #menu li{
+        font-size: 0.8em;
+    }
+
+    #menu li .material-symbols-outlined {
+        margin-right: 0.2em;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #menu .logo {
+        display: none;
+    }
+
+    #dashboard {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 85vh;
+        margin-top: 5vh;
+    }
+
+    #home_main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    #menu {
+        position: fixed;
+        display: flex;
+        text-align: center;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 10vh;
+    }
+
+    #menu ul {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin: 0;
+    }
+
+    #menu li a {
+        font-size: 0;
+        padding: 1em;
+        text-align: center;
+    }
+
+    #menu li .material-symbols-outlined {
+        margin: 0;
+        padding: 1em;
+    }
+
+    #menu footer {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+        margin: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5vh;
+        background-color: #24252A;
+    }
+}
+

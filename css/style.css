@@ -15,7 +15,10 @@ a {
     display: grid;
     grid-template-columns:20% 80%;
     grid-template-rows: 20% 75% 5%;
-    background-image: "../images/background-image.jpg";
+}
+
+main {
+    padding: 1.5em;
 }
 
 main > p {
@@ -25,7 +28,7 @@ main > p {
     opacity: 0.5;
     text-align: justify;
     align-items: center;
-    width: 60em;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -45,11 +48,8 @@ main > p {
 #menu .logo {
     max-width: 65%;
     margin: 7em auto 0 auto;
+    padding-bottom: 2.5em;
 }
-
-#menu ul li:first-child {
-    margin-top: 2.5em;
-} 
 
 #menu li {
     font-family: "Montserrat",sans-serif;
@@ -149,6 +149,7 @@ main {
     opacity: 0.8; /* Change the value to make the background less or more opaque */
     display: flex;
     align-items: center;
+    height: 100%;
 }
 
 #home_main h1 {
