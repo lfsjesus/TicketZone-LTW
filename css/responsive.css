@@ -24,6 +24,7 @@
         align-items: center;
         height: 85vh;
         margin-top: 5vh;
+        overflow-y: scroll;
     }
 
     #home_main {
@@ -31,7 +32,6 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        height: 100%;
     }
 
     #menu {
@@ -63,7 +63,7 @@
 
     #menu li .material-symbols-outlined {
         margin: 0;
-        padding: 1em;
+        padding: 0.6em;
     }
 
     #menu footer {

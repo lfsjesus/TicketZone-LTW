@@ -14,11 +14,7 @@ a {
     background-color:#9092a3;
     display: grid;
     grid-template-columns:20% 80%;
-    grid-template-rows: 20% 75% 5%;
-}
-
-main {
-    padding: 1.5em;
+    height: 100vh;
 }
 
 main > p {
@@ -34,10 +30,8 @@ main > p {
 
 #menu {
     grid-column: 1 / 2;
-    grid-row: 1 / 4;
     background-color:#24252A;
     font-size: 1em;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -123,7 +117,7 @@ main > p {
 
 main {
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    
 }
 
 .ticket_body {
@@ -141,7 +135,6 @@ main {
                         /* CSS for index.php */
 
 #home_main {
-    grid-row: 1/4;
     background-image: url("../images/background-image.jpg");
     background-size: cover;
     background-position: center;
@@ -165,7 +158,6 @@ main {
                         /* CSS for search bar */
 
 body header{
-    grid-row: 1 / 2;
     grid-column: 2 / 3;
 }
 
