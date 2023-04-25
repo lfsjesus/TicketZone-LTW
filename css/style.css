@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
+html {
+    
+}
+
 body {
     margin: 0;
 }
@@ -36,12 +40,6 @@ main > p {
     overflow-wrap: anywhere;
     padding: 0 1em;
 }   
-
-#menu .logo {
-    max-width: 65%;
-    margin: 7em auto 0 auto;
-    padding-bottom: 2.5em;
-}
 
 #menu li {
     font-family: "Montserrat",sans-serif;
@@ -341,7 +339,8 @@ body header{
 
 #menu .logo {
   max-width: 65%;
-  margin: 7em auto 0 auto;
+  margin: 25% auto 0 auto;
+  padding-bottom: 10%;
 }
 
 #menu li {
@@ -389,7 +388,7 @@ body header{
   margin-top: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 1em 4em 1em;
+  padding: 0 1em 15% 1em;
   box-sizing: border-box;
   font-family: "Montserrat",sans-serif;
   color: white;

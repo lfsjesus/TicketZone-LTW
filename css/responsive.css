@@ -1,14 +1,15 @@
 @media only screen and (min-width: 768px) and (max-width: 1150px) {
-    #menu .logo {
-        padding-bottom: 6em;
+    #menu li{
+        font-size: 0.6em;
     }
 
-    #menu li{
-        font-size: 0.8em;
+    #menu .logo {
+        margin: 3.5em auto 0 auto;
     }
 
     #menu li .material-symbols-outlined {
         margin-right: 0.2em;
+        font-size: 1.5em;
     }
 
     #menu footer > a {
@@ -17,6 +18,10 @@
 
     #menu footer button {
         font-size: 0;
+    }
+
+    #menu footer .material-symbols-outlined {
+        font-size: 1rem;
     }
 }
 

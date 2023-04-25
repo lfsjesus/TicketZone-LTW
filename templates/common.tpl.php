@@ -27,6 +27,7 @@
       <?php 
           if ($session->isLoggedIn()) { ?>
           <footer>
+            <!--button with href-->
             <a href="/../pages/profile.php"><span class="material-symbols-outlined">person</span>Profile</a>
             <form action="/../actions/action_logout.php" method="post">
               <!-- LOGOUT BUTTON WITH TEXT AND ICON -->
