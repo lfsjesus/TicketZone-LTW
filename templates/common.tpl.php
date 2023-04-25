@@ -22,6 +22,7 @@
         <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
         <li><a href=""><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
         <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>
+        <li><a href="/../pages/profile.php">Profile</a></li>
       </ul>  
       <?php 
           if ($session->isLoggedIn()) { ?>
@@ -34,6 +35,7 @@
       <?php } ?>
   </nav>
 <?php } ?>
+
 
 <?php function drawSearchbar(){ ?>
   <header>

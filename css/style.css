@@ -11,12 +11,12 @@ a {
 }
 
 #dashboard {
-    background-color:#9092a3;
     display: grid;
     grid-template-columns:20% 80%;
     grid-template-rows: 20% 75% 5%;
     background-image: "../images/background-image.jpg";
 }
+
 
 main > p {
     font-family: "Montserrat",sans-serif;
@@ -29,112 +29,12 @@ main > p {
     margin: 0 auto;
 }
 
-#menu {
-    grid-column: 1 / 2;
-    grid-row: 1 / 4;
-    background-color:#24252A;
-    font-size: 1em;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    overflow-wrap: anywhere;
-    padding: 0 1em;
-}   
 
-#menu .logo {
-    max-width: 65%;
-    margin: 7em auto 0 auto;
-}
-
-#menu ul li:first-child {
-    margin-top: 2.5em;
-} 
-
-#menu li {
-    font-family: "Montserrat",sans-serif;
-    font-size: 1.2em;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    list-style: none;
-    margin: 0.5em 0;
-} 
-
-#menu li:hover {
-    background-color: #46464b;
-    border-radius: 1em;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-#menu .active {
-    background-color: #141427;
-    border: 1px solid #141427;
-    border-radius: 1em;
-}
-
-#menu li .material-symbols-outlined {
-    margin-right: 0.8em;
-    vertical-align: middle;
-}
-
-#menu li a {
-    font-weight: 600;
-    display: block;
-    height: 100%;
-    padding: 1.2em;
-}
-
-#menu ul {
-    padding: 0;
-    display: flex;  
-    flex-direction: column;
-} 
-
-#menu footer {
-    margin-top: auto;
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 4em;
-}
-
-#menu footer {
-    font-family: "Montserrat",sans-serif;
-    color: white;
-    font-size: 1em;
-    margin-right: 1em;
-}
-
-#menu footer button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 0.8em;
-    color: white;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-}
-
-#menu footer button > span {
-    padding-left: 0.3em;
-}
 
 main {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
-
-.ticket_body {
-    border: 2px solid gray;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 20px;
-    width: 60em;
-    margin: auto auto;
-}
-
 
 
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
@@ -175,7 +75,7 @@ body header{
     background-color: #24252A;
     border-radius: 25px;
     padding: 5px 10px;
-    width: 30em;
+    width: 25em;
     margin: 2em auto;
   }
   
@@ -184,9 +84,13 @@ body header{
     background-color: transparent;
     font-size: 16px;
     width: 100%;
-    padding: 10px;
+    padding: 0.8em;
     color:white;
+    margin-bottom: 0;
 
+}
+  .search-form input[type="text"]::placeholder {
+    color: white;
 }
   
   .search-form button[type="submit"] {
@@ -209,137 +113,310 @@ body header{
 
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
                         /* CSS for Ticket */
-  .ticket {
-    margin: 0 auto;
-    padding: 20px;
-    margin-top: 1em;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 60em;
-    display:flex;
-    align-items: center;
-    background-color: #a0a4b6;
+
+  table{
+    width: 95%;
+    border: 1px solid black;
+    border-radius: 0.7em;
+    font-family: "Montserrat",sans-serif;
+    margin: auto;
+
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+    margin: 10px;
   }
   
-  .ticket p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
+  th{
+    color: rgb(27, 175, 243);
+    font-weight:bold;
   }
-  
-  .ticket form {
-    display: flex;
-    align-items: center;
+  td{
+    color:rgb(63, 63, 63);
+    font-size: 0.9em;
+    
   }
-  
-
-  .ticket select {
-    font-size: 14px;
-    padding: 5px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-  }
-  
-  .ticket input[type="submit"] {
-    background-color: hwb(210 31% 65%);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-left: 3px;
-  }
-
-
-  /** LOGIN PAGE **/
-  .authentication {
-    background-image: url("../images/background-image.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.90;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-
- 
-  .authentication #credentials-form {
-    font-family: "Montserrat", sans-serif;
-    background-color: rgba(0, 0, 0, 0.90);
-    border-radius: 4em;
-    padding: 2.5em;
-    min-width: 15em;
-    min-height: 30em;
-    max-width: 30em;
-    max-height: 50em;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 200px rgba(255, 255, 255, 0.3);
-  }
-
-  .authentication #credentials-form > h1 {
-    color: #ffffff;
-    margin: 0;
-    font-size: 2em;
+  .table_title{
     font-weight: bold;
+    color:black;
+    font-size: 1em;
+    padding: 0.5em;
+
+  }
+
+  .priority-high{
+    background-color: red;
+    border-radius: 0.5em;
     text-align: center;
+    padding: 0.4em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+  }
+  .priority-medium{
+    background-color: yellow;
+    border-radius: 0.5em;
+    text-align: center;
+    padding: 0.4em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+
+  }
+  .priority-low{
+    background-color: green;
+    border-radius: 0.5em;
+    text-align: center;
+    padding: 0.2em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
   }
 
-  .authentication #credentials-form > h1 > p {
-    font-size: 0.8em;
-    color: #ffffff;
-    font-weight: 400;
-    padding-top: 1em;
-  }
+/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
+                        /* CSS for Login Page */
+.authentication {
+  background-image: url("../images/background-image.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+.authentication #credentials-form {
+  font-family: "Montserrat", sans-serif;
+  background-color: rgba(0, 0, 0, 0.90);
+  border-radius: 4em;
+  padding: 2.5em;
+  min-width: 15em;
+  min-height: 30em;
+  max-width: 30em;
+  max-height: 50em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 200px rgba(255, 255, 255, 0.3);
+}
+
+.authentication #credentials-form > h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.authentication #credentials-form > h1 > p {
+  font-size: 0.8em;
+  color: #ffffff;
+  font-weight: 400;
+  padding-top: 1em;
+}
+
+.authentication #credentials-form form {
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.authentication #credentials-form form input {
+  margin: 0.5em 0;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid #ccc;
+  width: 25em;
+}
+
+.authentication #credentials-form form input[type="submit"] {
+  background-color: #24252A;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.authentication #credentials-form form input[type="submit"]:hover {
+  background-color: #000;
+  opacity: 1.0;
+  transition: 0.3s;
+}
+
+.authentication #credentials-form p {
+  font-size: 0.8em;
+  color: #ffffff;
+}
+
+.authentication #credentials-form form a {
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 1em;
+}
+/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
+                        /* CSS for Navbar */
+#menu {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  background-color:#24252A;
+  font-size: 1em;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow-wrap: anywhere;
+  padding: 0 1em;
+}   
+
+#menu .logo {
+  max-width: 65%;
+  margin: 7em auto 0 auto;
+}
+
+#menu ul li:first-child {
+  margin-top: 2.5em;
+} 
+
+#menu li {
+  font-family: "Montserrat",sans-serif;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  list-style: none;
+  margin: 0.5em 0;
+} 
+
+#menu li:hover {
+  background-color: #46464b;
+  border-radius: 1em;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#menu .active {
+  background-color: #141427;
+  border: 1px solid #141427;
+  border-radius: 1em;
+}
+
+#menu li .material-symbols-outlined {
+  margin-right: 0.8em;
+  vertical-align: middle;
+}
+
+#menu li a {
+  font-weight: 600;
+  display: block;
+  height: 100%;
+  padding: 1.2em;
+}
+
+#menu ul {
+  padding: 0;
+  display: flex;  
+  flex-direction: column;
+} 
+
+#menu footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 4em;
+}
+
+#menu footer {
+  font-family: "Montserrat",sans-serif;
+  color: white;
+  font-size: 1em;
+  margin-right: 1em;
+}
+
+#menu footer button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+#menu footer button > span {
+  padding-left: 0.3em;
+}
+
+
+/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
+                        /* CSS for Edit Profile */
+
+#profile {
+  display: grid;
+  grid-template-columns:20% 80%;
+  grid-template-rows: 20% 75% 5%;
+  background-color:#141427;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto auto;
+  border: 4px solid #ccc;
+  border-radius: 20px;
+  font-family: "Montserrat",sans-serif;
+  padding: 5em;
+  width: 25em;
+  margin-top:5em;
+}
+
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color:white;
   
-  .authentication #credentials-form form {
-    padding-top: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+}
 
-  .authentication #credentials-form form input {
-    margin: 0.5em 0;
-    padding: 1em;
-    border-radius: 1em;
-    border: 1px solid #ccc;
-    width: 25em;
-  }
+#profile input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #03f7ff;
+  border-radius: 2.5em;
+  width: 70%;
+  box-sizing: border-box;
+  font-weight: bold;
+}
 
-  .authentication #credentials-form form input[type="submit"] {
-    background-color: #24252A;
-    color: #ffffff;
-    font-weight: bold;
-    border: none;
+#profile input[type="text"]{
     padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-  .authentication #credentials-form form input[type="submit"]:hover {
-    background-color: #000;
-    opacity: 1.0;
-    transition: 0.3s;
-  }
-
-  .authentication #credentials-form p {
-    font-size: 0.8em;
-    color: #ffffff;
-  }
-
-  .authentication #credentials-form form a {
+    margin-bottom: 15px;
+    border: 2px solid #03f7ff;
+    border-radius: 2.5em;
+    width: 70%;
+    box-sizing: border-box;
     font-weight: bold;
-    text-decoration: none;
-    margin-top: 1em;
-  }
+}
+button[type="submit"] {
+  background-color: #00eeff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color: #0004ff;
+}
 

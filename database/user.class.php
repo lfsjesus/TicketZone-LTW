@@ -26,9 +26,21 @@
         }
 
         function save($db) {
-            $stmt = $db->prepare('UPDATE USERS SET firstName = ?, lastName = ? WHERE id = ?');
-            $stmt->execute(array($this->firstName, $this->lastName, $this->id));
+            // Check if updated email or username already exists in database
+            $stmt = $db->prepare('SELECT id FROM Users WHERE (email = ? OR username = ?) AND id != ?');
+            $stmt->execute(array($this->email, $this->username, $this->id));
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                // Email or username already exists, redirect to profile page with error message
+                header('Location: ../pages/profile.php');
+                exit;
+            }
+        
+            // Email and username do not exist, update user's information
+            $stmt = $db->prepare('UPDATE Users SET firstName = ?, lastName = ?, username = ?, email = ? WHERE id = ?');
+            $stmt->execute(array($this->firstName, $this->lastName, $this->username, $this->email, $this->id));
         }
+        
 
         static function getUserWithEmail(PDO $db, string $email) : ?User {
             $stmt = $db->prepare('SELECT id, username, email, firstName, lastName, type, department_id FROM Users WHERE lower(email) = ?');
