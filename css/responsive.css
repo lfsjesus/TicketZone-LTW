@@ -10,6 +10,14 @@
     #menu li .material-symbols-outlined {
         margin-right: 0.2em;
     }
+
+    #menu footer > a {
+        font-size: 0;
+    }
+
+    #menu footer button {
+        font-size: 0;
+    }
 }
 
 @media only screen and (max-width: 767px) {
