@@ -23,8 +23,6 @@ main > p {
     font-weight: 600;
     opacity: 0.5;
     text-align: justify;
-    align-items: center;
-    width: 100%;
     margin: 0 auto;
 }
 
@@ -118,6 +116,7 @@ main > p {
 main {
     grid-column: 2 / 3;
     padding: 2.5em;
+    overflow-y: scroll;
     word-break: break-word;
 }
 

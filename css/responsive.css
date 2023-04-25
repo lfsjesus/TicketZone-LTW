@@ -19,7 +19,6 @@
 
     #dashboard {
         display: flex;
-        
         align-items: center;
         height: 85vh;
         margin-top: 5vh;
