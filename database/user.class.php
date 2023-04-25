@@ -3,13 +3,13 @@
     require_once(__DIR__ . '/../database/ticket.class.php');
 
     class User {
-        public int $id;
-        public string $username;
-        public string $email;
-        public string $firstName;
-        public string $lastName;
-        public string $type;
-        public int $department_id;
+        public ?int $id;
+        public ?string $username;
+        public ?string $email;
+        public ?string $firstName;
+        public ?string $lastName;
+        public ?string $type;
+        public ?int $department_id;
 
         public function __construct(int $id, string $username, string $email, string $firstName, string $lastName, string $type, int $department_id) {
             $this->id = $id;
@@ -86,8 +86,9 @@
             $tickets = array();
         
             foreach ($stmt->fetchAll() as $ticket) {
-                $ticketCreator = User::getUser($db, $ticket['user_id']);
-                $ticketAssignee = User::getUser($db, $ticket['agent_id']);
+                $ticketCreator = $this;
+                $ticketAssignee = null;
+                if ($ticket['agent_id'] != null) $ticketAssignee = User::getUser($db, $ticket['agent_id']);
                 $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
                 $department->execute(array($ticket['department_id']));
                 $department = $department->fetch()['name'];
@@ -128,7 +129,7 @@
         
             foreach ($stmt->fetchAll() as $ticket) {
                 $ticketCreator = User::getUser($db, $ticket['user_id']);
-                $ticketAssignee = User::getUser($db, $ticket['agent_id']);
+                $ticketAssignee = $this;
                 $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
                 $department->execute(array($ticket['department_id']));
                 $department = $department->fetch()['name'];

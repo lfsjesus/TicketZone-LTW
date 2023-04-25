@@ -23,7 +23,7 @@
   else {
     $user = $session->getUser();
     $tickets = $user->getMyTickets($db); ?>
-    <table>
+    <table class="ticket-list">
       <thead>
         <tr>
           <th><input type="checkbox" id="select-all" name="select-all" value="select-all"></th>
@@ -36,12 +36,12 @@
         </tr>
       </thead>
       <tbody>
-<?php
-    foreach ($tickets as $ticket) {
-      drawTicket($ticket);
-    }
-  }
-?>
+    <?php
+        foreach ($tickets as $ticket) {
+          drawTicket($ticket);
+        }
+      }
+    ?>
       </tbody>
     </table>
   </main>

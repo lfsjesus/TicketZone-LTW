@@ -43,7 +43,11 @@
   <header>
     <form class="search-form">
     <input type="text" placeholder="Search for tickets..." name="ticketName">
-    <button type="submit"><img src ="/../images/searchIcon.png" alt="Search icon image"></i></button>
+    <button type="submit"><span class="material-symbols-outlined">search</span></button>
+    </form>
+    <!-- button to create new ticket that redirect to page to create ticket -->
+    <button class="create-ticket">
+      <a href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a></button>
   </header>
 <?php } ?>
 

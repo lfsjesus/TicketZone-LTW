@@ -20,12 +20,12 @@ CREATE TABLE Users (
 CREATE TABLE Tickets (
     id INT PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(id),
-    agent_id INT NOT NULL REFERENCES users(id),
+    agent_id INT REFERENCES users(id),
     department_id INT REFERENCES departments(id),
     title VARCHAR NOT NULL,
     description VARCHAR NOT NULL,
     status VARCHAR NOT NULL,
-    priority VARCHAR NOT NULL,
+    priority VARCHAR,
     date TIMESTAMP NOT NULL,
     faq BOOLEAN NOT NULL
 );
