@@ -14,11 +14,16 @@ $user = User::getUser($db, $session->getId());
 
   drawHeader("Profile");
   ?>
-  <section id = "profile">
+  <section id = "main-wrapper">
+
   <?php
   drawNavbar($session);
+  ?>
+  <main id="profile">
+  <?php
   drawProfileForm($user);
   ?>
+  </main>
   </section>
   <?php
   drawFooter();

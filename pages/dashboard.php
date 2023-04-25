@@ -12,7 +12,7 @@ $user = User::getUser($db, $session->getId());
 
 drawHeader("Dashboard");
 ?>
-<section id = "dashboard">
+<section id = "main-wrapper">
 <?php
   drawNavbar($session);
 ?>

@@ -8,7 +8,7 @@ $session = new Session();
 
   drawHeader("About Us");
   ?>
-  <section id = "dashboard">
+  <section id = "main-wrapper">
   <?php
   drawNavbar($session);
   ?>

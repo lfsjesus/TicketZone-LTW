@@ -17,12 +17,11 @@
         display: none;
     }
 
-    #dashboard {
+    #main-wrapper {
         display: flex;
         align-items: center;
         height: 85vh;
         margin-top: 5vh;
-        overflow-y: scroll;
     }
 
     #home_main {

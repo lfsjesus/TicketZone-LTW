@@ -23,11 +23,11 @@
         <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
         <li><a href=""><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
         <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>
-        <li><a href="/../pages/profile.php">Profile</a></li>
       </ul>  
       <?php 
           if ($session->isLoggedIn()) { ?>
           <footer>
+            <a href="/../pages/profile.php"><span class="material-symbols-outlined">person</span>Profile</a>
             <form action="/../actions/action_logout.php" method="post">
               <!-- LOGOUT BUTTON WITH TEXT AND ICON -->
               <button type="submit" name="logout" class="logout-button">Logout<span class="material-symbols-outlined">logout</span></button>

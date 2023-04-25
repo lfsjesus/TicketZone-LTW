@@ -10,7 +10,7 @@
   $db = getDatabaseConnection();
   drawHeader("My Tickets");
 ?>
-  <section id="dashboard">
+  <section id="main-wrapper">
 <?php
   drawNavbar($session);
 ?>

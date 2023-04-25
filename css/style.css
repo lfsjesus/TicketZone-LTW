@@ -10,10 +10,11 @@ a {
     color: inherit;
 }
 
-#dashboard {
+#main-wrapper {
     display: grid;
     grid-template-columns:20% 80%;
     height: 100vh;
+    overflow-y: scroll;
 }
 
 
@@ -84,37 +85,21 @@ main > p {
     flex-direction: column;
 } 
 
-#menu footer {
-    margin-top: auto;
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 4em;
-}
-
-#menu footer {
-    font-family: "Montserrat",sans-serif;
-    color: white;
-    font-size: 1em;
-    margin-right: 1em;
-}
-
 #menu footer button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 0.8em;
     color: white;
     font-weight: 600;
     display: flex;
     align-items: center;
 }
 
-
 main {
     grid-column: 2 / 3;
     padding: 2.5em;
-    overflow-y: scroll;
     word-break: break-word;
+    overflow-y: scroll;
 }
 
 
@@ -126,7 +111,7 @@ main {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.8; /* Change the value to make the background less or more opaque */
+    opacity: 0.85; /* Change the value to make the background less or more opaque */
     display: flex;
     align-items: center;
     height: 100%;
@@ -194,14 +179,14 @@ body header{
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
                         /* CSS for Ticket */
 
-  table{
+  table {
     width: 95%;
     border: 1px solid black;
     border-radius: 0.7em;
     font-family: "Montserrat",sans-serif;
     margin: auto;
-
-  }
+  } 
+  
   th, td {
     text-align: left;
     padding: 8px;
@@ -345,7 +330,6 @@ body header{
                         /* CSS for Navbar */
 #menu {
   grid-column: 1 / 2;
-  grid-row: 1 / 4;
   background-color:#24252A;
   font-size: 1em;
   height: 100vh;
@@ -360,10 +344,6 @@ body header{
   max-width: 65%;
   margin: 7em auto 0 auto;
 }
-
-#menu ul li:first-child {
-  margin-top: 2.5em;
-} 
 
 #menu li {
   font-family: "Montserrat",sans-serif;
@@ -409,29 +389,31 @@ body header{
 #menu footer {
   margin-top: auto;
   display: flex;
-  justify-content: flex-end;
-  padding-bottom: 4em;
-}
-
-#menu footer {
+  justify-content: space-between;
+  padding: 0 1em 4em 1em;
+  box-sizing: border-box;
   font-family: "Montserrat",sans-serif;
   color: white;
-  font-size: 1em;
-  margin-right: 1em;
+  font-size: 0.8em;
+  font-weight: 600;
 }
 
-#menu footer button {
+#menu footer > button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 0.8em;
   color: white;
-  font-weight: 600;
   display: flex;
   align-items: center;
 }
 
-#menu footer button > span {
+#menu footer > a {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+}
+
+#menu footer span {
   padding-left: 0.3em;
 }
 
@@ -440,9 +422,6 @@ body header{
                         /* CSS for Edit Profile */
 
 #profile {
-  display: grid;
-  grid-template-columns:20% 80%;
-  grid-template-rows: 20% 75% 5%;
   background-color:#141427;
 }
 
@@ -459,12 +438,10 @@ body header{
   margin-top:5em;
 }
 
-
-label {
+#profile label {
   margin-bottom: 5px;
   font-weight: bold;
-  color:white;
-  
+  color:white; 
 }
 
 #profile input[type="password"] {
@@ -486,7 +463,8 @@ label {
     box-sizing: border-box;
     font-weight: bold;
 }
-button[type="submit"] {
+
+#profile form button[type="submit"] {
   background-color: #00eeff;
   color: white;
   padding: 10px 20px;
