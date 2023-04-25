@@ -80,7 +80,7 @@
         }
 
         public function getMyTickets(PDO $db) : array {
-            $stmt = $db->prepare('SELECT id, user_id, agent_id, title, description, status, priority, date, faq FROM Tickets WHERE user_id = ?');
+            $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE user_id = ?');
             $stmt->execute(array($this->id));
         
             $tickets = array();
@@ -88,9 +88,13 @@
             foreach ($stmt->fetchAll() as $ticket) {
                 $ticketCreator = User::getUser($db, $ticket['user_id']);
                 $ticketAssignee = User::getUser($db, $ticket['agent_id']);
+                $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
+                $department->execute(array($ticket['department_id']));
+                $department = $department->fetch()['name'];
+                $department = $department == null ? "None" : $department;
         
                 $hashtags = array();
-                $stmt = $db->prepare('SELECT hashtag FROM TicketHashtags WHERE ticket_id = ?');
+                $stmt = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
                 $stmt->execute(array($ticket['id']));
                 foreach ($stmt->fetchAll() as $hashtag) {
                     array_push($hashtags, $hashtag['hashtag']);
@@ -102,6 +106,7 @@
                     $ticket['description'],
                     $ticketCreator,
                     $ticketAssignee,
+                    $department,
                     $ticket['status'],
                     $ticket['priority'],
                     new DateTime($ticket['date']),
@@ -116,7 +121,7 @@
             // this functionality is only for agents
             if ($this->type != 'agent') return NULL;
 
-            $stmt = $db->prepare('SELECT id, user_id, agent_id, title, description, status, priority, date, faq FROM Tickets WHERE agent_id = ?');
+            $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE agent_id = ?');
             $stmt->execute(array($this->id));
         
             $tickets = array();
@@ -124,9 +129,13 @@
             foreach ($stmt->fetchAll() as $ticket) {
                 $ticketCreator = User::getUser($db, $ticket['user_id']);
                 $ticketAssignee = User::getUser($db, $ticket['agent_id']);
-        
+                $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
+                $department->execute(array($ticket['department_id']));
+                $department = $department->fetch()['name'];
+                $department = $department == null ? "None" : $department;
+
                 $hashtags = array();
-                $stmt = $db->prepare('SELECT hashtag FROM Hashtags WHERE ticket_id = ?');
+                $stmt = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
                 $stmt->execute(array($ticket['id']));
                 foreach ($stmt->fetchAll() as $hashtag) {
                     array_push($hashtags, $hashtag['hashtag']);
@@ -138,6 +147,7 @@
                     $ticket['description'],
                     $ticketCreator,
                     $ticketAssignee,
+                    $department,
                     $ticket['status'],
                     $ticket['priority'],
                     new DateTime($ticket['date']),

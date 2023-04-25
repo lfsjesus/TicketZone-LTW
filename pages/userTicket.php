@@ -13,10 +13,10 @@
   <section id="dashboard">
 <?php
   drawNavbar($session);
-  drawSearchbar();
 ?>
 <main>
 <?php 
+  drawSearchbar();
   if (!$session->isLoggedIn()) {
     echo '<h1>Access denied</h1>';
   }

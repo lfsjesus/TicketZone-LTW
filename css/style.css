@@ -13,8 +13,7 @@ a {
 #dashboard {
     display: grid;
     grid-template-columns:20% 80%;
-    grid-template-rows: 20% 75% 5%;
-    background-image: "../images/background-image.jpg";
+    height: 100vh;
 }
 
 
@@ -24,16 +23,98 @@ main > p {
     font-weight: 600;
     opacity: 0.5;
     text-align: justify;
-    align-items: center;
-    width: 60em;
     margin: 0 auto;
 }
 
+#menu {
+    grid-column: 1 / 2;
+    background-color:#24252A;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    overflow-wrap: anywhere;
+    padding: 0 1em;
+}   
+
+#menu .logo {
+    max-width: 65%;
+    margin: 7em auto 0 auto;
+    padding-bottom: 2.5em;
+}
+
+#menu li {
+    font-family: "Montserrat",sans-serif;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    list-style: none;
+    margin: 0.5em 0;
+} 
+
+#menu li:hover {
+    background-color: #46464b;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#menu .active {
+    background-color: #141427;
+    border: 1px solid #141427;
+    border-radius: 1em;
+}
+
+#menu li .material-symbols-outlined {
+    margin-right: 0.8em;
+    vertical-align: middle;
+}
+
+#menu li a {
+    font-weight: 600;
+    display: block;
+    height: 100%;
+    padding: 1.2em;
+}
+
+#menu ul {
+    padding: 0;
+    display: flex;  
+    flex-direction: column;
+} 
+
+#menu footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 4em;
+}
+
+#menu footer {
+    font-family: "Montserrat",sans-serif;
+    color: white;
+    font-size: 1em;
+    margin-right: 1em;
+}
+
+#menu footer button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8em;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
 
 
 main {
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    padding: 2.5em;
+    overflow-y: scroll;
+    word-break: break-word;
 }
 
 
@@ -41,7 +122,6 @@ main {
                         /* CSS for index.php */
 
 #home_main {
-    grid-row: 1/4;
     background-image: url("../images/background-image.jpg");
     background-size: cover;
     background-position: center;
@@ -49,12 +129,13 @@ main {
     opacity: 0.8; /* Change the value to make the background less or more opaque */
     display: flex;
     align-items: center;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 #home_main h1 {
     font-family: "Montserrat", sans-serif;
     color: white;
-    padding: auto auto;
     margin: auto auto;
     font-size: 3.3em;
     letter-spacing: 0.1em;
@@ -64,7 +145,6 @@ main {
                         /* CSS for search bar */
 
 body header{
-    grid-row: 1 / 2;
     grid-column: 2 / 3;
 }
 
@@ -171,19 +251,20 @@ body header{
     padding-right: 0.2em;
   }
 
-/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
-                        /* CSS for Login Page */
-.authentication {
-  background-image: url("../images/background-image.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.90;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+
+  /** LOGIN PAGE **/
+  .authentication {
+    background-image: url("../images/background-image.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+  }
 
 
 .authentication #credentials-form {
