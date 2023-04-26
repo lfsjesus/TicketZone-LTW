@@ -16,5 +16,11 @@ class Comment {
         $this->comment = $comment;
         $this->date = $date;
     } 
+
+    public function attachments(PDO $db) {
+        $stmt = $db->prepare("SELECT * FROM Files WHERE comment_id = ?");
+        $stmt->execute([$this->id]);
+        return $stmt->fetchAll();
+    }
 }
 ?>

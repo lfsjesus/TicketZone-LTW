@@ -27,10 +27,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $pdo = getDatabaseConnection();
 
             // Prepare SQL statement to insert user into database
-            $stmt = $pdo->prepare("INSERT INTO Users (id, username, password, email, firstName, lastName,type, department_id) VALUES (:id, :username, :password, :email, :firstName, :lastName, :type, :department_id)");
+            $stmt = $pdo->prepare("INSERT INTO Users (username, password, email, firstName, lastName,type, department_id) VALUES (:username, :password, :email, :firstName, :lastName, :type, :department_id)");
 
             // Bind parameters to statement
-            $stmt->bindValue(':id', $pdo->query('SELECT MAX(id) FROM Users')->fetchColumn() + 1);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $hashed_password);
             $stmt->bindParam(':email', $email);

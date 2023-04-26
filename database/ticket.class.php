@@ -162,5 +162,11 @@ class Ticket {
         }
         return $answers;
     }
+
+    public function attachments(PDO $db) {
+        $stmt = $db->prepare("SELECT * FROM Files WHERE ticket_id = ?");
+        $stmt->execute([$this->id]);
+        return $stmt->fetchAll();
+    }
 }
 ?>

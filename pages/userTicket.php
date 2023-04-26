@@ -38,7 +38,7 @@
       <tbody>
     <?php
         foreach ($tickets as $ticket) {
-          drawTicket($ticket);
+          drawTicketPreview($ticket);
         }
       }
     ?>

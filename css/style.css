@@ -531,10 +531,6 @@ main {
   font-weight: bold;
 }
 
-button[type="submit"]:hover {
-  background-color: #0004ff;
-}
-
 /* CREATE TICKET PAGE AND FORM */
 
 .ticket-form {
@@ -575,10 +571,10 @@ button[type="submit"]:hover {
 
 /* customize description box, wide box */
 .ticket-form textarea {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 2px solid #0e0e24;
-  border-radius: 2.5em;
+  font-family: "Montserrat",sans-serif;
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
   width: 100%;
   box-sizing: border-box;
   font-weight: bold;
@@ -587,10 +583,20 @@ button[type="submit"]:hover {
   resize: none;
 }
 
+.ticket-form input[type="file"] {
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
 .ticket-form input[type="submit"] {
   background-color: #31333a;
+  width: 20%;
+  margin: 0 auto;
   color: white;
-  padding: 10px 20px;
+  padding: 1em;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -598,3 +604,124 @@ button[type="submit"]:hover {
   font-weight: bold;
 }
 
+.ticket-form input[type="submit"]:hover {
+  background-color: #46464b;
+}
+
+/* TICKET PAGE */
+
+/* ticket styles */
+.ticket-body {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  list-style-type: none;
+  border-bottom: 1px solid #46464b;
+  padding: 3em;
+}
+
+.ticket-body > h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  grid-column: 1/2;
+  margin: 0;
+}
+
+.ticket-body > p {
+  grid-column: 1/2;
+}
+
+.ticket-body > form {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2/3;
+
+}
+
+.ticket-meta {
+  font-family: Arial;
+  background-color: rgba(23, 23, 28, 0.5);
+  border-radius: 20px;
+  padding: 1em;
+  font-size: 0.8em;
+  line-height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
+
+.ticket-meta li {
+  display: inline-block;
+}
+
+#comments {
+  padding: 3em;
+}
+
+.comment {
+  padding: 1.5em 1em;
+  background-color: rgba(39, 39, 43, 0.5);
+  border-radius: 5px;
+  margin: 1em 0em;
+}
+
+.comment > h3 {
+  margin-top: 0;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.comment p {
+  font-family: Arial;
+  margin-bottom: 0;
+}
+
+.comment p:nth-child(3) {
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  height: 4em;
+}
+
+.comment-form textarea {
+  width: 100%;
+  border: 0;
+  font-family: Arial;
+  outline: none;
+  padding: 0.5em;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  resize: none;
+}
+
+.comment-form button {
+  background-color: #3c3e46;
+  color: white;
+  padding: 0.5em;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.comment-form input[type="file"] {
+  display: none;
+}
+
+#file-upload-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5em;
+  font-size: 0.8em;
+  width: 15%;
+  color: #000;
+  background-color: #fff;
+}

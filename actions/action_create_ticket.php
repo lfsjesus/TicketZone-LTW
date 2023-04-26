@@ -6,8 +6,6 @@ require_once (__DIR__ . '/../utils/session.php');
 $db = getDatabaseConnection();
 $session = new Session();
 
-$id = $db->query("SELECT MAX(id) FROM tickets")->fetch()['MAX(id)'] + 1;
-
 $department = $_POST['department'];
 $department_id = $db->query("SELECT id FROM Departments WHERE name = '$department'")->fetch()['id'];
 
@@ -18,15 +16,24 @@ $status = 'open';
 $date = date('Y-m-d H:i:s');
 $faq = false;
 
-$stmt = $db->prepare("INSERT INTO tickets (id, user_id, department_id, title, description, status, date, faq) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->execute([$id, $user_id, $department_id, $title, $description, $status, $date, $faq]);
+$stmt = $db->prepare("INSERT INTO tickets (user_id, department_id, title, description, status, date, faq) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->execute([$user_id, $department_id, $title, $description, $status, $date, $faq]);
 
-if ($stmt->rowCount() == 1) {
-    $session->addMessage('success', 'Ticket created successfully!');
-    header('Location: ../pages/userTicket.php');
-} else {
-    $session->addMessage('error', 'Error creating ticket!');
-    header('Location: ../pages/userTicket.php');
+$filename = array_filter($_FILES['file_name']['name']);
+
+if (!empty($filename) && $stmt->rowCount() == 1) {
+    $stmt = $db->prepare("INSERT INTO Files (ticket_id, file_data) VALUES (?, ?)");
+    $fileTempName = $_FILES['file_name']['tmp_name'];
+    $id = $db->lastInsertId();
+    foreach ($fileTempName as $index => $file) {
+        $file_data = file_get_contents($file);
+        $stmt->execute([$id, $file_data]);
+    }
 }
 
+if ($stmt->rowCount() == 1) {
+    header('Location: ../pages/userTicket.php');
+} else {
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 ?>

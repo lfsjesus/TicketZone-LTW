@@ -30,6 +30,8 @@ drawHeader("Create Ticket");
             <?php } ?>
         <label for="description">Description</label>
         <textarea name="description" id="description" cols="30" rows="20" placeholder="Ticket description" required></textarea>
+        <label for="file">Files</label>
+        <input type="file" name="file_name[]" id="file" multiple>
         <input type="submit" value="Create Ticket">
         </form>
     </main>

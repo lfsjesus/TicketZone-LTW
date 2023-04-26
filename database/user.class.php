@@ -61,22 +61,24 @@
             } else return null;
         }
 
-        static function getUser(PDO $db, int $id) : ?User {
+        static function getUser(PDO $db, ?int $id) : ?User {
             $stmt = $db->prepare('SELECT id, username, email, firstName, lastName, type, department_id FROM Users WHERE id = ?');
             $stmt -> execute(array($id));
 
             $stmt->execute(array($id));
             $user = $stmt->fetch();
             
-            return new User(
-                $user['id'],
-                $user['username'],
-                $user['email'],
-                $user['firstName'],
-                $user['lastName'],
-                $user['type'],
-                $user['department_id']
-            );
+            if ($user) {
+                return new User(
+                    $user['id'],
+                    $user['username'],
+                    $user['email'],
+                    $user['firstName'],
+                    $user['lastName'],
+                    $user['type'],
+                    $user['department_id']
+                );
+            } else return null;
         }
 
         public function getMyTickets(PDO $db) : array {

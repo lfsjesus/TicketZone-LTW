@@ -7,3 +7,23 @@ if (currentPageLink) {
 }
 console.log('currentUrl:', currentUrl);
 console.log('currentPageLink:', currentPageLink);
+
+
+/******************************************/
+// MANAGE ATTACHMENT ICON IN COMMENT FORM
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let fileUpload = document.querySelector('.comment-form #file-upload');
+    fileUpload.addEventListener('click', function() {
+      let fileInput = document.querySelector('.comment-form input[type="file"]');
+      fileInput.click();
+    });
+
+    let fileInput = document.querySelector('.comment-form input[type="file"]');
+    fileInput.addEventListener('change', function() {
+        let fileName = document.querySelector('.comment-form #file-name');
+        fileName.textContent = this.files.length > 1 ? this.files.length + " files" : this.files[0].name;
+    })
+    
+  });
