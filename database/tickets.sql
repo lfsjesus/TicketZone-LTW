@@ -66,8 +66,8 @@ CREATE TABLE Actions (
 CREATE TABLE Files (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     ticket_id INT REFERENCES Tickets(id),
-    comment_id INT REFERENCES Comments(id),
+    comment_id INT REFERENCES Comments(id), 
     file_data BLOB NOT NULL,
-    CHECK (ticket_id IS NULL OR comment_id IS NULL)
+    CHECK (ticket_id IS NULL OR comment_id IS NULL),
 );
 

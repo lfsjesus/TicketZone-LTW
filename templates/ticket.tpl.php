@@ -36,6 +36,7 @@ function drawTicket(Ticket $ticket){
           <?php if ($ticket->ticketAssignee): ?>
             <li>Assigned to: <?php echo $ticket->ticketAssignee->name() ?></li>
           <?php endif; ?>
+          <li>Department: <?php echo $ticket->department?></li>
           <li>
             Status:
             <select name="status">
