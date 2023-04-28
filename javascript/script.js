@@ -92,3 +92,12 @@ submitBtn.addEventListener('click', function(e) {
 window.addEventListener('load', function() {
 submitBtn.click();
 });
+
+// select all the possible options
+const option = document.querySelectorAll('.ticket-list select');
+option.forEach(option => {
+    option.addEventListener('change', function() {
+        submitBtn.click();
+    });
+}
+);
