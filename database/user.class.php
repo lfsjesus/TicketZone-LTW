@@ -81,6 +81,44 @@
             } else return null;
         }
 
+        static function getAgents (PDO $db) : array {
+            $stmt = $db->prepare('SELECT * FROM Users WHERE type = ?');
+            $stmt->execute(array('agent'));
+            $stmt = $stmt->fetchAll();
+            $agents = array();
+            foreach ($stmt as $agent) {
+                array_push($agents, new User(
+                    $agent['id'],
+                    $agent['username'],
+                    $agent['email'],
+                    $agent['firstName'],
+                    $agent['lastName'],
+                    $agent['type'],
+                    $agent['department_id']
+                ));
+            }
+            return $agents;
+        }
+        
+        static function getUsers (PDO $db) : array {
+            $stmt = $db->prepare('SELECT * FROM Users');
+            $stmt->execute();
+            $stmt = $stmt->fetchAll();
+            $users = array();
+            foreach ($stmt as $user) {
+                array_push($users, new User(
+                    $user['id'],
+                    $user['username'],
+                    $user['email'],
+                    $user['firstName'],
+                    $user['lastName'],
+                    $user['type'],
+                    $user['department_id']
+                ));
+            }
+            return $users;
+        } 
+
         public function getMyTickets(PDO $db) : array {
             $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE user_id = ?');
             $stmt->execute(array($this->id));

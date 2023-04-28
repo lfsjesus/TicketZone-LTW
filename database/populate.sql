@@ -17,8 +17,8 @@ VALUES
 -- Populate Tickets table and TicketHashtags table
 INSERT INTO Tickets (id, user_id, agent_id, title, description, status, priority, date, faq)
 VALUES 
-    (1, 1, 3, 'Can''t access my account', 'I''ve forgotten my password and the reset link doesn''t work', 'open', 'high', CURRENT_TIMESTAMP, 0),
-    (2, 2, 4, 'Billing issue', 'I was charged twice for my subscription', 'open', 'medium', CURRENT_TIMESTAMP, 0),
+    (1, 1, 3, 'Can''t access my account', 'I''ve forgotten my password and the reset link doesn''t work', 'open', 'High', CURRENT_TIMESTAMP, 0),
+    (2, 2, 4, 'Billing issue', 'I was charged twice for my subscription', 'open', 'Medium', CURRENT_TIMESTAMP, 0),
     (3, 5, 1, 'Ticket 1', 'This is the description for ticket 1', 'open', 'High', CURRENT_TIMESTAMP, 0),
     (4, 5, 1, 'Ticket 2', 'This is the description for ticket 2', 'open', 'Medium', CURRENT_TIMESTAMP, 0);
  

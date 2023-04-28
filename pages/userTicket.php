@@ -5,6 +5,7 @@
   require_once(__DIR__ .  '/../templates/ticket.tpl.php');
   require_once(__DIR__ . '/../utils/session.php');
   require_once(__DIR__ . '/../database/connection.db.php');
+  require_once(__DIR__ . '/../database/user.class.php');
 
   $session = new Session();
   $db = getDatabaseConnection();
@@ -24,17 +25,31 @@
     $user = $session->getUser();
     $tickets = $user->getMyTickets($db); ?>
     <table class="ticket-list">
+    <form action="../api/api.php?" method="get">
       <thead>
         <tr>
           <th><input type="checkbox" id="select-all" name="select-all" value="select-all"></th>
           <th>
             <select name="author" id="author">
               <option value="all">All</option>
+              <?php
+                $users = User::getUsers($db);
+                foreach ($users as $user) {
+                  echo '<option value="' . $user->id . '">' . $user->name() . '</option>';
+                }
+              ?>
+
           </th>
           <th>Message</th>
           <th>
-            <select value="Assignee">
+            <select name="assignee" id="assignee">
             <option value="all">All</option>
+            <?php
+                $agents = User::getAgents($db);
+                foreach ($agents as $agent) {
+                  echo '<option value="' . $agent->id . '">' . $agent->name() . '</option>';
+                }
+              ?>
 
           </th>
           <th>
@@ -45,6 +60,7 @@
           </th>
           <th>
             <select name="priority" id="priority">
+              <option value="all">All</option>
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option value="low">Low</option>
@@ -54,13 +70,12 @@
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
           </th>
-        </tr>
+        </tr>       
       </thead>
+      <th style="display:none"><button type="submit" class="material-symbols-outlined" >filter_alt</button><th>
+      </form>
       <tbody>
     <?php
-        foreach ($tickets as $ticket) {
-          drawTicketPreview($ticket);
-        }
       }
     ?>
       </tbody>
