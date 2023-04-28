@@ -62,7 +62,7 @@ submitBtn.addEventListener('click', function(e) {
                     tr.innerHTML = `
                         <td><input type="checkbox" name="ticket[]"></td>
                         <td class="table-title">${ticket.ticketCreator.firstName + ' ' + ticket.ticketCreator.lastName}</td>
-                        <td class="table-title">${ticket.title}</td>
+                        <td class="table-title"><a href="ticket.php?id=${ticket.id}">${ticket.title}</a></td>
                         <td rowspan="2" class="table-title">${ticket.ticketAssignee.firstName + ' ' + ticket.ticketAssignee.lastName}</td>
                         <td rowspan="2" class="table-title">${ticket.status}</td>
                         <td rowspan="2" class="table-title"><div class="${ticket.priority != null ? 'priority-' + ticket.priority.toLowerCase() : ''}">${ticket.priority ?? ''}</td>
