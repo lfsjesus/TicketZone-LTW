@@ -1,27 +1,7 @@
 <?php 
 declare (strict_types = 1);
 require_once(__DIR__ . '/../database/ticket.class.php');
-require_once(__DIR__ . '/../database/connection.db.php');
-
-function drawTicketPreview(Ticket $ticket){ 
-    ?> 
-        <tr>
-            <td><input type="checkbox" name="ticket[]"></td>
-            <td class = "table-title"><?php echo $ticket->ticketCreator->name(); ?></td>
-            <td class = "table-title"><a href="ticket.php?id=<?php echo $ticket->id;?>"><?php echo $ticket->title; ?></a></td>
-            <td rowspan ="2" class = "table-title"><?php echo ($ticket->ticketAssignee ? $ticket->ticketAssignee->name() : ''); ?></td>
-            <td rowspan ="2" class = "table-title"><?php echo $ticket->status; ?></td>
-            <td rowspan="2" class="table-title"><div class="<?php echo 'priority-' . strtolower($ticket->priority ?? ''); ?>"><?php echo $ticket->priority ?? '';?></td>   
-            <td rowspan= "2" class = "table-title"><?php echo $ticket->dateCreated->format('d/m/Y H:i')?></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><?php echo $ticket->ticketCreator->email; ?></td>
-            <td><?php echo substr($ticket->description, 0, 50) . '...'; ?></td>
-        </tr>
-    
-    <?php 
-    } 
+require_once(__DIR__ . '/../database/connection.db.php'); 
 
 function drawTicket(Ticket $ticket){
     $db = getDatabaseConnection();

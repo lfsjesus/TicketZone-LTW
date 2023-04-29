@@ -32,29 +32,52 @@ document.addEventListener('DOMContentLoaded', function() {
 /******************************************/
 // AJAX TO UPDATE TABLE OF CONTENTS
 const submitBtn = document.querySelector('.ticket-list button[type="submit"]');
-console.log(submitBtn);
+
+
 
 // add event listener to submit button prevent default
 submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    let form = document.querySelector('.ticket-list form');
-    // get data from form
-    let formData = new FormData(form);
+    updateTableData();
+  });
+
+window.addEventListener('load', function() {
+submitBtn.click();
+});
+
+// select all the possible options
+const option = document.querySelectorAll('.ticket-list select');
+option.forEach(option => {
+    option.addEventListener('change', function() {
+        submitBtn.click();
+    });
+}
+);
+
+const search = document.querySelector('.search-form input');
+if (search) {
+    search.addEventListener('input', async function() {
+        updateTableData();
+    });
+}
+
+function updateTableData() {
     let tbody = document.querySelector('.ticket-list tbody');
-    tbody.innerHTML = '';
-
-    // send data to server using ajax
+    let form = document.querySelector('.ticket-list form');
+    let formData = new FormData(form);
+    formData.append('search', search.value);
+    // send data to server using ajax        
     let xhr = new XMLHttpRequest();
-    console.log(formData);
     xhr.open('GET', '../api/api.php?' + new URLSearchParams(formData));
-    console.log('../api/api.php?' + new URLSearchParams(formData));
-
     xhr.onload = function() {
         if (this.status == 200) {
+            console.log('Could load data');
             let response = JSON.parse(this.responseText);
             if (response.length > 0) {
                 // update table of contents
                 let tickets = response;
+                console.log(response)
+                tbody.innerHTML = '';
                 tickets.forEach(ticket => {
                     let tr = document.createElement('tr');
                     const date = new Date(ticket.dateCreated.date);
@@ -80,24 +103,12 @@ submitBtn.addEventListener('click', function(e) {
                     tbody.appendChild(tr);
                     tbody.appendChild(tr2);
                 });
-
+            }
+            else {
+                tbody.innerHTML = '<tr><td colspan="7">No tickets found</td></tr>';
             }
         }
 
-    };
-
+    }
     xhr.send();
-  });
-
-window.addEventListener('load', function() {
-submitBtn.click();
-});
-
-// select all the possible options
-const option = document.querySelectorAll('.ticket-list select');
-option.forEach(option => {
-    option.addEventListener('change', function() {
-        submitBtn.click();
-    });
 }
-);

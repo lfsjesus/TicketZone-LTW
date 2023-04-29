@@ -17,13 +17,13 @@
 ?>
 <main>
 <?php 
-  drawSearchbar();
-  if (!$session->isLoggedIn()) {
-    echo '<h1>Access denied</h1>';
-  }
-  else {
-    $user = $session->getUser();
-    $tickets = $user->getMyTickets($db); ?>
+drawSearchbar();
+if (!$session->isLoggedIn()) {
+  echo '<h1>Access denied</h1>';
+}
+else {
+  $user = $session->getUser();
+?>
     <table class="ticket-list">
     <form action="../api/api.php?" method="get">
       <thead>

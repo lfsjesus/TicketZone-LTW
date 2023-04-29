@@ -8,55 +8,69 @@ require_once(__DIR__ . '/../database/user.class.php');
     $statusFilter = $_GET['status']; // open, closed, 
     $priorityFilter = $_GET['priority']; // high, medium, low
     $sortFilter = $_GET['date']; // newest, oldest
+    $searchQuery = $_GET['search']; // string
 
     $authorFilter = ($authorFilter == 'all' ? null : $authorFilter);
     $assigneeFilter = ($assigneeFilter == 'all' ? null : $assigneeFilter);
     $statusFilter = ($statusFilter == 'all' ? null : $statusFilter);
     $priorityFilter = ($priorityFilter == 'all' ? null : $priorityFilter);
+    $searchQuery = (($searchQuery == '' || $searchQuery == null) ? null : $searchQuery);
     $sortFilter = ($sortFilter == 'newest' ? 'DESC' : 'ASC');
     // get tickets from database according to filters, do it
     $db = getDatabaseConnection();
 
     // start query
     $query = 'SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE ';
-
+    $params = array();
     // add filters
 
     // author
     if ($authorFilter) {
-    $query .= 'user_id = ' . $authorFilter . ' AND ';
+        $query .= 'user_id = ? AND ';
+        $params[] = $authorFilter;
     }
 
     // assignee
     if ($assigneeFilter) {
-    $query .= 'agent_id = ' . $assigneeFilter . ' AND ';
+        $query .= 'agent_id = ? AND ';
+        $params[] = $assigneeFilter;
     }
 
     // status
     if ($statusFilter) {
-    $query .= 'status = "' . $statusFilter . '" AND ';
+        $query .= 'status = ? AND ';
+        $params[] = $statusFilter;
     }
 
     // priority
     if ($priorityFilter) {
-        $query .= 'priority = "' . $priorityFilter . '" AND ';
+        $query .= 'priority = ? AND ';
+        $params[] = $priorityFilter;
     }
 
-    if (substr($query, -5) == ' AND ') {
-        $query = substr($query, 0, -5);
+    // search to title and description
+    if ($searchQuery) {
+        $query .= '(title LIKE ? OR description LIKE ?) AND ';
+        $params[] = '%' . $searchQuery . '%';
+        $params[] = '%' . $searchQuery . '%';
     }
-    else {
-        $query = substr($query, 0, -7);
+
+
+    if (substr($query, -4) == 'AND ') {
+        $query = substr($query, 0, -4);
+    }
+    else if (substr($query, -6) == 'WHERE ') {
+        $query = substr($query, 0, -6);
     }
 
     // add sort
     if ($sortFilter) {
         $query .= ' ORDER BY date ' . $sortFilter;
     }
-
+    
     // execute query
     $stmt = $db->prepare($query);
-    $stmt->execute();
+    $stmt->execute($params);
 
     // get tickets
     $tickets = array();
