@@ -41,7 +41,7 @@
 
 <?php function drawSearchbar(){ ?>
   <header>
-    <form class="search-form">
+    <form class="search-form" action="">
     <input type="text" placeholder="Search for tickets..." name="ticketName">
     <button type="submit"><span class="material-symbols-outlined">search</span></button>
     </form>

@@ -71,12 +71,10 @@ function updateTableData() {
     xhr.open('GET', '../api/api.php?' + new URLSearchParams(formData));
     xhr.onload = function() {
         if (this.status == 200) {
-            console.log('Could load data');
             let response = JSON.parse(this.responseText);
             if (response.length > 0) {
                 // update table of contents
                 let tickets = response;
-                console.log(response)
                 tbody.innerHTML = '';
                 tickets.forEach(ticket => {
                     let tr = document.createElement('tr');
@@ -92,14 +90,12 @@ function updateTableData() {
                         <td rowspan="2" class="table-title">${formattedDate}</td>
                     `
                     ;
-                    console.log(ticket.dateCreated)
                     let tr2 = document.createElement('tr');
                     tr2.innerHTML = `
                         <td></td>
                         <td>${ticket.ticketCreator.email}</td>
                         <td>${ticket.description.substring(0, 15) + '...'}</td>
                     `;
-                    console.log(tr);
                     tbody.appendChild(tr);
                     tbody.appendChild(tr2);
                 });
