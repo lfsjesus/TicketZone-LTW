@@ -9,14 +9,26 @@ function drawTicket(Ticket $ticket){
     <article class="ticket-body">
       <h1><?php echo $ticket->title ?></h1>
       <p class="ticket-description"><?php echo $ticket->description ?></p>
-      <form method="post">
+      <form method="post" action = "../actions/action_edit_ticket.php">
+        <input type="hidden" name="id" value="<?php echo $ticket->id ?>">
         <ul class="ticket-meta">
           <li>Created by: <?php echo $ticket->ticketCreator->name() ?></li>
           <li>Created at: <?php echo $ticket->dateCreated->format('d/m/Y H:i') ?></li>
           <?php if ($ticket->ticketAssignee): ?>
             <li>Assigned to: <?php echo $ticket->ticketAssignee->name() ?></li>
           <?php endif; ?>
-          <li>Department: <?php echo $ticket->department?></li>
+          <li>Department: 
+            <select name = "department">
+              <?php
+                $stmt = $db->prepare('SELECT id, name FROM Departments');
+                $stmt->execute();
+                $departments = $stmt->fetchAll();
+                foreach ($departments as $department) {
+                  echo '<option value="' . $department['id'] . '" ' . ($ticket->department_id === $department['id'] ? 'selected' : '') . '>' . $department['name'] . '</option>';
+                }
+              ?>
+            </select>
+          </li>
           <li>
             Status:
             <select name="status">
@@ -51,6 +63,7 @@ function drawTicket(Ticket $ticket){
             </li>
           <?php } ?>
         </ul>
+        <button type = "submit" name = "submit" value = "submit">Submit</button>
       </form>
     </article>
     <?php
