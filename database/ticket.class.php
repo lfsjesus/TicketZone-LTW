@@ -2,6 +2,7 @@
 declare (strict_types = 1);
 require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../database/comment.class.php');
+require_once(__DIR__ . '/../database/department.class.php');
 
 class Ticket {
     public int $id;
@@ -9,20 +10,20 @@ class Ticket {
     public string $description;
     public User $ticketCreator;
     public ?User $ticketAssignee;
-    public ?int $department_id;
+    public ?Department $department;
     public string $status;
     public ?string $priority;
     public datetime $dateCreated;
     public array $hashtags;
     public bool $isFaq;
 
-    public function __construct(int $id, string $title, string $description, User $ticketCreator, ?User $ticketAssignee, ?int $department_id, string $status, ?string $priority, datetime $dateCreated, array $hashtags, bool $isFaq) {
+    public function __construct(int $id, string $title, string $description, User $ticketCreator, ?User $ticketAssignee, ?Department $department, string $status, ?string $priority, datetime $dateCreated, array $hashtags, bool $isFaq) {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->ticketCreator = $ticketCreator;
         $this->ticketAssignee = $ticketAssignee;
-        $this->department_id = $department_id;
+        $this->department = $department;
         $this->status = $status;
         $this->priority = $priority;
         $this->dateCreated = $dateCreated;
@@ -38,8 +39,7 @@ class Ticket {
         if ($ticket) {
             $ticketCreator = User::getUser($db, $ticket['user_id']);
             $ticketAssignee = User::getUser($db, $ticket['agent_id']);
-
-
+            $department = Department::getDepartment($db, $ticket['department_id']);
             $hashtags = array();
             $stmt = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
             $stmt->execute(array($ticket['id']));
@@ -53,7 +53,7 @@ class Ticket {
                 $ticket['description'],
                 $ticketCreator,
                 $ticketAssignee,
-                $ticket['department_id'],
+                $department,
                 $ticket['status'],
                 $ticket['priority'],
                 new DateTime($ticket['date']),
@@ -92,7 +92,7 @@ class Ticket {
 
     function save($db) {
         $stmt = $db->prepare('Update Tickets SET status = ?, priority = ?, department_id = ? WHERE id = ?');
-        $stmt->execute(array($this->status, $this->priority, $this->department_id, $this->id));
+        $stmt->execute(array($this->status, $this->priority, $this->department->id, $this->id));
     }
 }
 ?>

@@ -32,7 +32,7 @@ function drawTicket(Ticket $ticket){
           <li>
             Status:
             <select name="status">
-              <option value="pending" <?php echo $ticket->status === 'pending' ? 'selected' : ''; ?>>Pending</option>
+              <option value="open" <?php echo $ticket->status === 'open' ? 'selected' : ''; ?>>Pending</option>
               <option value="assigned" <?php echo $ticket->status === 'assigned' ? 'selected' : ''; ?>>Assigned</option>
               <option value="resolved" <?php echo $ticket->status === 'resolved' ? 'selected' : ''; ?>>Resolved</option>
             </select>

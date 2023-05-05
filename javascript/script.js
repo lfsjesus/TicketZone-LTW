@@ -89,6 +89,7 @@ function updateTableData(page = 1) {
                         <td rowspan="2" class="table-title">${ticket.ticketAssignee.firstName + ' ' + ticket.ticketAssignee.lastName}</td>
                         <td rowspan="2" class="table-title">${ticket.status}</td>
                         <td rowspan="2" class="table-title"><div class="${ticket.priority != null ? 'priority-' + ticket.priority.toLowerCase() : ''}">${ticket.priority ?? ''}</td>
+                        <td rowspan="2" class="table-title">${ticket.department != null ? ticket.department.name : ''}</td>
                         <td rowspan="2" class="table-title">${formattedDate}</td>
                     `
                     ;
@@ -103,10 +104,13 @@ function updateTableData(page = 1) {
                 });
                 let pagination = document.querySelector('.pagination');
                 pagination.innerHTML = '';
-                let pages = (response.count + 3) / 3;
+                let pages = (response.count + 6) / 7;
                 for (let i = 1; i <= pages; i++) {
                     let li = document.createElement('li');
                     li.innerHTML = `<a href="#" page="${i}">${i}</a>`;
+                    if (i == page) {
+                        li.classList.add('active');
+                    }
                     pagination.appendChild(li);
                 }
 
@@ -120,13 +124,13 @@ function updateTableData(page = 1) {
     xhr.send();
 }
 
-// add event listener to pagination after it is created
+// add event listener to pagination after it is created, add class active to the one clicked
 let pagination = document.querySelector('.pagination');
+
 pagination.addEventListener('click', function(e) {
-    if (e.target.tagName == 'A') {
-        e.preventDefault();
-        let page = e.target.getAttribute('page');
-        updateTableData(page);
-    }
-}
-);
+  if (e.target.tagName == 'A') {
+    e.preventDefault();
+    let page = e.target.getAttribute('page');
+    updateTableData(page);
+  }
+});

@@ -1,12 +1,14 @@
 <?php
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../database/department.class.php');
 // get tickets from database according to filters, do it
 
     $authorFilter = $_GET['author']; // id
     $assigneeFilter = $_GET['assignee']; // id
     $statusFilter = $_GET['status']; // open, closed, 
     $priorityFilter = $_GET['priority']; // high, medium, low
+    $departmentFilter = $_GET['department']; // id
     $sortFilter = $_GET['date']; // newest, oldest
     $searchQuery = $_GET['search']; // string
 
@@ -14,6 +16,7 @@ require_once(__DIR__ . '/../database/user.class.php');
     $assigneeFilter = ($assigneeFilter == 'all' ? null : $assigneeFilter);
     $statusFilter = ($statusFilter == 'all' ? null : $statusFilter);
     $priorityFilter = ($priorityFilter == 'all' ? null : $priorityFilter);
+    $departmentFilter = ($departmentFilter == 'all' ? null : $departmentFilter);
     $searchQuery = (($searchQuery == '' || $searchQuery == null) ? null : $searchQuery);
     $sortFilter = ($sortFilter == 'newest' ? 'DESC' : 'ASC');
     // get tickets from database according to filters, do it
@@ -53,6 +56,13 @@ require_once(__DIR__ . '/../database/user.class.php');
         $params[] = $priorityFilter;
     }
 
+    // department
+    if ($departmentFilter) {
+        $query .= 'department_id = ? AND ';
+        $countQuery .= 'department_id = ? AND ';
+        $params[] = $departmentFilter;
+    }
+
     // search to title and description
     if ($searchQuery) {
         $query .= '(title LIKE ? OR description LIKE ?) AND ';
@@ -77,7 +87,7 @@ require_once(__DIR__ . '/../database/user.class.php');
     }
 
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $perPage = 3;
+    $perPage = 7;
 
     $offset = ($page - 1) * $perPage;
     $query .= " LIMIT $perPage OFFSET $offset";
@@ -98,6 +108,7 @@ require_once(__DIR__ . '/../database/user.class.php');
         // get author
         $ticketCreator = User::getUser($db, $ticket['user_id']);
         $ticketAssignee = User::getUser($db, $ticket['user_id']);
+        $department = Department::getDepartment($db, $ticket['department_id']);
         $hashtags = array();
 
         $stmt2 = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
@@ -111,7 +122,7 @@ require_once(__DIR__ . '/../database/user.class.php');
             $ticket['description'],
             $ticketCreator,
             $ticketAssignee,
-            $ticket['department_id'],
+            $department,
             $ticket['status'],
             $ticket['priority'],
             new DateTime($ticket['date']),

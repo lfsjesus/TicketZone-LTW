@@ -14,7 +14,7 @@
     
     $ticket->status = $_POST['status'];
     $ticket->priority = $_POST['priority'];
-    $ticket->department_id = (int) $_POST['department'];
+    $ticket->department->id = (int) $_POST['department'];
     $ticket->save($db);
     header('Location: ../pages/userTicket.php');
 

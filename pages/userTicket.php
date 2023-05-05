@@ -66,6 +66,16 @@ else {
               <option value="low">Low</option>
           </th>
           <th>
+            <select name="department" id="department">
+              <option value="all">All</option>
+              <?php
+                $departments = Department::getDepartments($db);
+                foreach ($departments as $department) {
+                  echo '<option value="' . $department->id . '">' . $department->name . '</option>';
+                }
+              ?>
+          </th>
+          <th>
             <select name="date" id="date">
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
@@ -74,14 +84,22 @@ else {
       </thead>
       <th style="display:none"><button type="submit" class="material-symbols-outlined" >filter_alt</button><th>
       </form>
+      
       <tbody>
     <?php
       }
     ?>
       </tbody>
-
+      <tfoot>
+        <tr>
+          <td colspan="8">
+            <div class = "pagination">
+            </div>
+          </td>
+        </tr>
+      </tfoot>
     </table>
-    <div class = "pagination"></div>
+    
   </main>
 </section>
 <?php

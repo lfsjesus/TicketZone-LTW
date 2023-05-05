@@ -179,7 +179,6 @@ main {
     background-color: #31333a;
     color: white;
     border-radius: 25px;
-    padding: 1em 1.5em;
     display: flex;
     border: 1px solid #31333a;
     cursor: pointer;
@@ -189,6 +188,7 @@ main {
 .create-ticket > a {
     display: flex;  
     align-items: center;
+    padding: 1em;
     height: 100%;
 }
 
@@ -297,6 +297,36 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .pagination li {
+    list-style: none;
+    margin: 0.5em;
+    border-radius: 0.5em;
+    background-color: #31333a;
+  }
+
+  .pagination li.active {
+    background-color: #46464b;
+    scale: 1.1;
+    font-weight: bold;
+  }
+
+  .pagination li a {
+    display: block;
+    padding: 1em;
+    color: white;
+  }
+
+  .pagination li a:hover {
+    background-color: #46464b;
+    border-radius: 0.5em;
   }
 
 
