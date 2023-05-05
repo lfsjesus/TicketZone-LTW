@@ -139,21 +139,25 @@ function getCheckedCheckboxes() {
 /* TICKET ACTIONS */
 let deleteBtn = document.querySelector('.ticket-options .delete-ticket');
 console.log(deleteBtn);
-deleteBtn.addEventListener('click', function() {
+deleteBtn.addEventListener('click', function(e) {
+    e.preventDefault();
     let checked = getCheckedCheckboxes();
     console.log(checked);
     if (checked.length > 0) {
         checked.forEach(id => {
             let xhr = new XMLHttpRequest();
-            xhr.open('GET', '../actions/action_delete_ticket.php?id=' + id);
+            let formData = new FormData();
+            formData.append('id', id);
+            xhr.open('POST', '../actions/action_delete_ticket.php');
             xhr.onload = function() {
                 if (this.status == 200) {
                     console.log("Ticket deleted");
                 }
             }
-            xhr.send();
+            xhr.send(formData);
         });
     }
+    location.reload();
 }
 );
 

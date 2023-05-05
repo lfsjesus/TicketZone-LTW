@@ -3,7 +3,7 @@
 include_once('../utils/session.php');
 include_once('../database/connection.db.php');
 
-$ticket_id = $_GET['id'];
+$ticket_id = $_POST['id'];
 
 $db = getDatabaseConnection();
 

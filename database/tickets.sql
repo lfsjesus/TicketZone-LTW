@@ -44,7 +44,7 @@ CREATE TABLE TicketTagJunction (
 
 CREATE TABLE Comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ticket_id INT NOT NULL REFERENCES Tickets(id),
+    ticket_id INT NOT NULL REFERENCES Tickets(id) ON DELETE CASCADE,
     user_id INT NOT NULL REFERENCES Users(id),
     comment VARCHAR NOT NULL,
     date TIMESTAMP NOT NULL
