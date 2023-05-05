@@ -107,7 +107,7 @@ require_once(__DIR__ . '/../database/department.class.php');
     while ($ticket = $stmt->fetch()) {
         // get author
         $ticketCreator = User::getUser($db, $ticket['user_id']);
-        $ticketAssignee = User::getUser($db, $ticket['user_id']);
+        $ticketAssignee = User::getUser($db, $ticket['agent_id']);
         $department = Department::getDepartment($db, $ticket['department_id']);
         $hashtags = array();
 

@@ -31,6 +31,7 @@ else {
           <th><input type="checkbox" id="select-all" name="select-all" value="select-all"></th>
           <th>
             <select name="author" id="author">
+              <option value="" disabled selected hidden>Author</option>
               <option value="all">All</option>
               <?php
                 $users = User::getUsers($db);
@@ -43,6 +44,7 @@ else {
           <th>Message</th>
           <th>
             <select name="assignee" id="assignee">
+            <option value="" disabled selected hidden>Assignee</option>
             <option value="all">All</option>
             <?php
                 $agents = User::getAgents($db);
@@ -54,12 +56,14 @@ else {
           </th>
           <th>
             <select name="status" id="status">
+              <option value="" disabled selected hidden>Status</option>
               <option value="all">All</option>
               <option value="open">Open</option>
               <option value="closed">Closed</option>
           </th>
           <th>
             <select name="priority" id="priority">
+              <option value="" disabled selected hidden>Priority</option>
               <option value="all">All</option>
               <option value="high">High</option>
               <option value="medium">Medium</option>
@@ -67,6 +71,7 @@ else {
           </th>
           <th>
             <select name="department" id="department">
+              <option value="" disabled selected hidden>Department</option>
               <option value="all">All</option>
               <?php
                 $departments = Department::getDepartments($db);

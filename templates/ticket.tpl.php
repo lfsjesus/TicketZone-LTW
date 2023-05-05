@@ -15,9 +15,15 @@ function drawTicket(Ticket $ticket){
         <ul class="ticket-meta">
           <li>Created by: <?php echo $ticket->ticketCreator->name() ?></li>
           <li>Created at: <?php echo $ticket->dateCreated->format('d/m/Y H:i') ?></li>
-          <?php if ($ticket->ticketAssignee): ?>
-            <li>Assigned to: <?php echo $ticket->ticketAssignee->name() ?></li>
-          <?php endif; ?>
+          <li>Assigned to: 
+            <select name = "assignee">
+              <?php
+                $agents = User::getAgents($db);
+                foreach ($agents as $agent) {
+                  echo '<option value="' . $agent->id . '" ' . ($agent->id === $ticket->ticketAssignee->id ? 'selected' : '') . '>' . $agent->name() . '</option>';
+                }
+              ?>
+            </select>
           <li>Department: 
             <select name = "department">
               <?php

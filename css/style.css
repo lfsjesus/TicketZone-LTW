@@ -329,6 +329,48 @@ main {
     border-radius: 0.5em;
   }
 
+  .ticket-options {
+    display: flex;
+    width: 40%;
+    padding: 0 2.5em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7em;
+  }
+
+  .ticket-options .material-symbols-outlined {
+    font-size: 1.5em;
+  }
+
+  button.delete-ticket {
+    display: flex;
+    align-items: center;
+    background-color: rgb(126, 0, 0);
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  button.delete-ticket:hover {
+    background-color: rgb(185, 60, 1);
+  }
+
+  .ticket-options select {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .ticket-options option {
+    background-color: #31333a;
+    color: white;
+  }
+
 
   /** LOGIN PAGE **/
   .authentication {
@@ -514,10 +556,6 @@ main {
 
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
                         /* CSS for Edit Profile */
-
-#profile {
-  background-color:#141427;
-}
 
 .profile {
   display: flex;

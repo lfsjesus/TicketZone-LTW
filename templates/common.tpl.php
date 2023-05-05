@@ -1,4 +1,9 @@
-<?php function drawHeader(string $pageName) { ?>
+<?php 
+declare (strict_types = 1);
+require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../database/connection.db.php');
+
+function drawHeader(string $pageName) { ?>
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -9,13 +14,15 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <script src="../javascript/script.js" defer></script>
+  <?php if ($_SERVER['REQUEST_URI'] == '/pages/userTicket.php') { ?>
+  <script src="../javascript/table_tickets.js" defer></script>
+  <?php } ?>
   </head> 
   <body>           
-<?php } ?>
+<?php } 
 
 
-<!-- Maybe we do not need this function in the future! -->
-<?php function drawNavbar(Session $session){ ?>
+function drawNavbar(Session $session){ ?>
   <nav id="menu">
       <img src="../images/ticketzone_logo.png" alt="logo" class="logo">
       <ul>
@@ -36,22 +43,60 @@
           </footer>
       <?php } ?>
   </nav>
-<?php } ?>
+<?php } 
 
 
-<?php function drawSearchbar(){ ?>
+function drawSearchbar(){
+  $db = getDatabaseConnection();
+?>
   <header>
     <form class="search-form" action="">
     <input type="text" placeholder="Search for tickets..." name="ticketName">
     <button type="submit"><span class="material-symbols-outlined">search</span></button>
     </form>
+
+    <!-- options for tickets when selected like delete, change status, etc-->
+    <form class="ticket-options" style="display: none">
+      <select name="status">
+              <option value="" disabled selected hidden>Status</option>
+              <option value="open">Open</option>
+              <option value="assigned">Assigned</option>
+              <option value="resolved">Resolved</option>
+      </select>
+      <select name="priority">
+              <option value="" disabled selected hidden>Priority</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+      </select>
+      <select name="department">
+              <option value="" disabled selected hidden>Department</option>
+              <?php
+                  $departments = Department::getDepartments($db);
+                  foreach ($departments as $department) { ?>
+                      <option value="<?=$department->id?>"><?=$department->name?></option>
+              <?php }
+              ?>
+      </select>
+      <select name="assignee">
+              <option value="" disabled selected hidden>Assignee</option>
+              <?php
+                  $assignes = User::getAgents($db);
+                  foreach ($assignes as $assignee) { ?>
+                      <option value="<?=$assignee->id?>"><?=$assignee->name()?></option>
+              <?php }
+              ?>
+      </select>
+      <button class="delete-ticket"><span class="material-symbols-outlined">delete</span></button>
+    </form>
+
     <!-- button to create new ticket that redirect to page to create ticket -->
     <button class="create-ticket">
       <a href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a></button>
   </header>
-<?php } ?>
+<?php } 
 
-<?php function drawFooter() { ?>
+function drawFooter() { ?>
   
   </body>
 </html>
