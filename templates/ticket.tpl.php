@@ -1,6 +1,7 @@
 <?php 
 declare (strict_types = 1);
 require_once(__DIR__ . '/../database/ticket.class.php');
+require_once(__DIR__ . '/../database/department.class.php');
 require_once(__DIR__ . '/../database/connection.db.php'); 
 
 function drawTicket(Ticket $ticket){
@@ -20,11 +21,9 @@ function drawTicket(Ticket $ticket){
           <li>Department: 
             <select name = "department">
               <?php
-                $stmt = $db->prepare('SELECT id, name FROM Departments');
-                $stmt->execute();
-                $departments = $stmt->fetchAll();
+                $departments = Department::getDepartments($db);
                 foreach ($departments as $department) {
-                  echo '<option value="' . $department['id'] . '" ' . ($ticket->department_id === $department['id'] ? 'selected' : '') . '>' . $department['name'] . '</option>';
+                  echo '<option value="' . $department->id . '">' . $department->name . '</option>';
                 }
               ?>
             </select>
@@ -32,7 +31,7 @@ function drawTicket(Ticket $ticket){
           <li>
             Status:
             <select name="status">
-              <option value="open" <?php echo $ticket->status === 'open' ? 'selected' : ''; ?>>Pending</option>
+              <option value="open" <?php echo $ticket->status === 'open' ? 'selected' : ''; ?>>Open</option>
               <option value="assigned" <?php echo $ticket->status === 'assigned' ? 'selected' : ''; ?>>Assigned</option>
               <option value="resolved" <?php echo $ticket->status === 'resolved' ? 'selected' : ''; ?>>Resolved</option>
             </select>
