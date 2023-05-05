@@ -79,7 +79,9 @@ else {
       }
     ?>
       </tbody>
+
     </table>
+    <div class = "pagination"></div>
   </main>
 </section>
 <?php

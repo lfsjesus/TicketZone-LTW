@@ -61,20 +61,22 @@ if (search) {
     });
 }
 
-function updateTableData() {
+function updateTableData(page = 1) {
     let tbody = document.querySelector('.ticket-list tbody');
     let form = document.querySelector('.ticket-list form');
     let formData = new FormData(form);
     formData.append('search', search.value);
+    formData.append('page', page);
     // send data to server using ajax        
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '../api/api.php?' + new URLSearchParams(formData));
     xhr.onload = function() {
         if (this.status == 200) {
             let response = JSON.parse(this.responseText);
-            if (response.length > 0) {
+            console.log(response);
+            if (response.tickets.length > 0) {
                 // update table of contents
-                let tickets = response;
+                let tickets = response.tickets;
                 tbody.innerHTML = '';
                 tickets.forEach(ticket => {
                     let tr = document.createElement('tr');
@@ -99,6 +101,15 @@ function updateTableData() {
                     tbody.appendChild(tr);
                     tbody.appendChild(tr2);
                 });
+                let pagination = document.querySelector('.pagination');
+                pagination.innerHTML = '';
+                let pages = (response.count + 3) / 3;
+                for (let i = 1; i <= pages; i++) {
+                    let li = document.createElement('li');
+                    li.innerHTML = `<a href="#" page="${i}">${i}</a>`;
+                    pagination.appendChild(li);
+                }
+
             }
             else {
                 tbody.innerHTML = '<tr><td colspan="7">No tickets found</td></tr>';
@@ -108,3 +119,14 @@ function updateTableData() {
     }
     xhr.send();
 }
+
+// add event listener to pagination after it is created
+let pagination = document.querySelector('.pagination');
+pagination.addEventListener('click', function(e) {
+    if (e.target.tagName == 'A') {
+        e.preventDefault();
+        let page = e.target.getAttribute('page');
+        updateTableData(page);
+    }
+}
+);

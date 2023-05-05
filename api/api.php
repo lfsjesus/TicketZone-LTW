@@ -21,36 +21,42 @@ require_once(__DIR__ . '/../database/user.class.php');
 
     // start query
     $query = 'SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE ';
+    $countQuery = 'SELECT COUNT(*) FROM Tickets WHERE ';
     $params = array();
     // add filters
 
     // author
     if ($authorFilter) {
         $query .= 'user_id = ? AND ';
+        $countQuery .= 'user_id = ? AND ';
         $params[] = $authorFilter;
     }
 
     // assignee
     if ($assigneeFilter) {
         $query .= 'agent_id = ? AND ';
+        $countQuery .= 'agent_id = ? AND ';
         $params[] = $assigneeFilter;
     }
 
     // status
     if ($statusFilter) {
         $query .= 'status = ? AND ';
+        $countQuery .= 'status = ? AND ';
         $params[] = $statusFilter;
     }
 
     // priority
     if ($priorityFilter) {
         $query .= 'priority = ? AND ';
+        $countQuery .= 'priority = ? AND ';
         $params[] = $priorityFilter;
     }
 
     // search to title and description
     if ($searchQuery) {
         $query .= '(title LIKE ? OR description LIKE ?) AND ';
+        $countQuery .= '(title LIKE ? OR description LIKE ?) AND ';
         $params[] = '%' . $searchQuery . '%';
         $params[] = '%' . $searchQuery . '%';
     }
@@ -58,16 +64,29 @@ require_once(__DIR__ . '/../database/user.class.php');
 
     if (substr($query, -4) == 'AND ') {
         $query = substr($query, 0, -4);
+        $countQuery = substr($countQuery, 0, -4);
     }
     else if (substr($query, -6) == 'WHERE ') {
         $query = substr($query, 0, -6);
+        $countQuery = substr($countQuery, 0, -6);
     }
 
     // add sort
     if ($sortFilter) {
         $query .= ' ORDER BY date ' . $sortFilter;
     }
-    
+
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $perPage = 3;
+
+    $offset = ($page - 1) * $perPage;
+    $query .= " LIMIT $perPage OFFSET $offset";
+
+    // execute count query
+    $stmt = $db->prepare($countQuery);
+    $stmt->execute($params);
+    $count = $stmt->fetch()['COUNT(*)'];
+
     // execute query
     $stmt = $db->prepare($query);
     $stmt->execute($params);
@@ -105,5 +124,10 @@ require_once(__DIR__ . '/../database/user.class.php');
         );
     }
 
-    echo json_encode($tickets);
+    $response = [
+        'tickets' => $tickets,
+        'count' => $count        
+    ];
+    
+    echo json_encode($response);
 ?>
