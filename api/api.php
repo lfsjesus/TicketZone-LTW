@@ -98,10 +98,6 @@ require_once(__DIR__ . '/../database/user.class.php');
         // get author
         $ticketCreator = User::getUser($db, $ticket['user_id']);
         $ticketAssignee = User::getUser($db, $ticket['user_id']);
-        $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
-        $department->execute(array($ticket['department_id']));
-        $department = $department->fetch()['name'];
-        $department = $department == null ? "None" : $department;
         $hashtags = array();
 
         $stmt2 = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
@@ -115,7 +111,7 @@ require_once(__DIR__ . '/../database/user.class.php');
             $ticket['description'],
             $ticketCreator,
             $ticketAssignee,
-            $department,
+            $ticket['department_id'],
             $ticket['status'],
             $ticket['priority'],
             new DateTime($ticket['date']),
