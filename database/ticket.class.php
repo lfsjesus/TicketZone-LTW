@@ -91,8 +91,8 @@ class Ticket {
     }
 
     function save($db) {
-        $stmt = $db->prepare('Update Tickets SET status = ?, priority = ?, department_id = ?, agent_id = ?  WHERE id = ?');
-        $stmt->execute(array($this->status, $this->priority, $this->department->id, $this->ticketAssignee->id, $this->id));
+        $stmt = $db->prepare('Update Tickets SET title = ?, description = ?, status = ?, priority = ?, department_id = ?, agent_id = ?  WHERE id = ?');
+        $stmt->execute(array($this->title,$this->description,$this->status, $this->priority, $this->department->id, $this->ticketAssignee->id, $this->id));
     }
 }
 ?>

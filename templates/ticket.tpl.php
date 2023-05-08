@@ -8,9 +8,9 @@ function drawTicket(Ticket $ticket){
     $db = getDatabaseConnection();
     ?>
     <article class="ticket-body">
-      <h1><?php echo $ticket->title ?></h1>
-      <p class="ticket-description"><?php echo $ticket->description ?></p>
       <form method="post" action = "../actions/action_edit_ticket.php">
+        <h1><input type="text" name="title" value="<?php echo $ticket->title ?>"></h1>
+        <textarea name="description"><?php echo $ticket->description ?></textarea>
         <input type="hidden" name="id" value="<?php echo $ticket->id ?>">
         <ul class="ticket-meta">
           <li>Created by: <?php echo $ticket->ticketCreator->name() ?></li>

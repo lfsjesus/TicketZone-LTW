@@ -688,32 +688,31 @@ main {
 
 /* ticket styles */
 .ticket-body {
-  display: grid;
-  grid-template-columns: 80% 20%;
   list-style-type: none;
   border-bottom: 1px solid #46464b;
   padding: 3em;
 }
 
-.ticket-body > h1 {
+.ticket-body form > h1 {
   font-size: 1.5em;
   font-weight: bold;
-  grid-column: 1/2;
+  grid-column: 1/2; 
   margin: 0;
 }
 
-.ticket-body > p {
+.ticket-body form > textarea {
   grid-column: 1/2;
 }
 
 .ticket-body > form {
-  display: flex;
-  flex-direction: column;
-  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: 80% 20%;
 
 }
 
 .ticket-meta {
+  grid-column: 2/3;
+
   font-family: Arial;
   background-color: rgba(23, 23, 28, 0.5);
   border-radius: 20px;
