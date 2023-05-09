@@ -74,6 +74,7 @@ input.addEventListener('keyup', function(e) {
             if (this.status == 200) {
                 console.log("Hashtag added");
                 let returned_id = this.responseText;
+                console.log(returned_id)
                 let li = document.createElement('li');
                 let a = document.createElement('a');
                 let span = document.createElement('span');
@@ -87,8 +88,6 @@ input.addEventListener('keyup', function(e) {
                 hashtags.appendChild(li);
                 a.addEventListener('click', handleHashtagRemoval);
                 input.value = '';
-                
-
             }
         }
         xhr.send();
@@ -96,7 +95,7 @@ input.addEventListener('keyup', function(e) {
 }
 );
 
-let hashtagLinks = document.querySelectorAll('.ticket-body form .ticket-hashtags li a');
+let hashtagLinks = document.querySelectorAll('.ticket-body form .ticket-hashtags li');
 hashtagLinks.forEach(hashtagLink => {
     hashtagLink.addEventListener('click', handleHashtagRemoval);
 }
@@ -104,7 +103,7 @@ hashtagLinks.forEach(hashtagLink => {
 
 function handleHashtagRemoval(e) {
     e.preventDefault();
-    let hashtag_id = e.target.getAttribute('id');
+    let hashtag_id = e.target.id;
     let ticket_id = document.querySelector('.ticket-body form input[name="id"]').value;
     let xhr = new XMLHttpRequest();
     xhr.open('GET', `../actions/action_remove_hashtag.php?hashtag_id=${hashtag_id}&ticket_id=${ticket_id}`);

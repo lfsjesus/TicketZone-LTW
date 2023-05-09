@@ -659,6 +659,7 @@ main {
 
 .ticket-meta .ticket-hashtags li a > span {
   font-size: 0.9em;  
+  pointer-events: none;
 }
 
 .ticket-form label {
