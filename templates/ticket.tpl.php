@@ -54,8 +54,27 @@ function drawTicket(Ticket $ticket){
             </select>
           </li>
           <li>
-            Hashtags:
-            <input type="text" name="hashtags" value="<?php echo ($ticket->hashtags ? implode(', ', $ticket->hashtags) : ''); ?>">
+            <input type="text" name="hashtags" placeholder="Add hashtags" autocomplete="off" list="ticket-hashtags-suggestions">
+            <datalist id="ticket-hashtags-suggestions">
+              <?php 
+              $stmt = $db->prepare('SELECT id, hashtag FROM TicketHashtags');
+              $stmt->execute();
+              $hashtags = $stmt->fetchAll();
+              foreach ($hashtags as $hashtag) { ?>
+                <option value="<?= $hashtag['hashtag'] ?>" id="<?= $hashtag['id'] ?>">
+              <?php }
+              ?>
+            </datalist>
+            <ul class="ticket-hashtags">
+              <?php foreach ($ticket->getHashtags($db) as $hashtag) { ?>
+                <li>
+                  <a href="" id="<?= $hashtag[0] ?>">
+                    <?= $hashtag[1] ?>
+                    <span class="material-symbols-outlined">close</span>
+                  </a>
+                </li>
+              <?php } ?>
+            </ul>
           </li>
           <!-- attachments -->
           <?php if (count($ticket->attachments($db)) > 0) { ?>

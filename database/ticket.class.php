@@ -84,6 +84,17 @@ class Ticket {
         return $answers;
     }
 
+    public function getHashtags(PDO $db) : array {
+        $stmt = $db->prepare('SELECT th.id, th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
+        $stmt->execute(array($this->id));
+        $hashtags = array();
+
+        foreach ($stmt->fetchAll() as $hashtag) {
+            array_push($hashtags, array($hashtag['id'], $hashtag['hashtag']));
+        }
+        return $hashtags;
+    }
+
     public function attachments(PDO $db) {
         $stmt = $db->prepare("SELECT * FROM Files WHERE ticket_id = ?");
         $stmt->execute([$this->id]);

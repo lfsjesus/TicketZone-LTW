@@ -53,3 +53,66 @@ selects.forEach(select => {
     });
 }
 );
+
+
+// hashtags
+
+let hashtags = document.querySelector('.ticket-body form .ticket-hashtags');
+let input = document.querySelector('.ticket-body form input[name="hashtags"]');
+let datalist = document.querySelector('.ticket-body form datalist');
+let suggestions = document.querySelectorAll('.ticket-body form datalist option');
+console.log(suggestions);
+
+input.addEventListener('keyup', function(e) {
+    if (e.keyCode == 13) {
+        e.preventDefault();
+        let hashtag = input.value;
+        let ticket_id = document.querySelector('.ticket-body form input[name="id"]').value;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', `../actions/action_add_hashtag.php?hashtag_name=${hashtag}&ticket_id=${ticket_id}`);
+        xhr.onload = function() {
+            if (this.status == 200) {
+                console.log("Hashtag added");
+                let returned_id = this.responseText;
+                let li = document.createElement('li');
+                let a = document.createElement('a');
+                let span = document.createElement('span');
+                span.classList.add('material-symbols-outlined');
+                span.innerHTML = 'close';
+                a.setAttribute('href', '');
+                a.setAttribute('id', returned_id);
+                a.innerHTML = `${hashtag}`;
+                a.appendChild(span);
+                li.appendChild(a);
+                hashtags.appendChild(li);
+                a.addEventListener('click', handleHashtagRemoval);
+                input.value = '';
+                
+
+            }
+        }
+        xhr.send();
+    }
+}
+);
+
+let hashtagLinks = document.querySelectorAll('.ticket-body form .ticket-hashtags li a');
+hashtagLinks.forEach(hashtagLink => {
+    hashtagLink.addEventListener('click', handleHashtagRemoval);
+}
+);
+
+function handleHashtagRemoval(e) {
+    e.preventDefault();
+    let hashtag_id = e.target.getAttribute('id');
+    let ticket_id = document.querySelector('.ticket-body form input[name="id"]').value;
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `../actions/action_remove_hashtag.php?hashtag_id=${hashtag_id}&ticket_id=${ticket_id}`);
+    xhr.onload = function() {
+        if (this.status == 200) {
+            console.log("Hashtag removed");
+            e.target.parentElement.remove();
+        }
+    }
+    xhr.send();
+}
