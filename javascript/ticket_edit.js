@@ -6,7 +6,12 @@ editBtn.addEventListener('click', function() {
     console.log(editBtn.classList);
     if (editBtn.classList.contains('save')) {
         let form = document.querySelector('.ticket-body form');
+        // only send title and description
         let formData = new FormData(form);
+        formData.delete('status');
+        formData.delete('priority');
+        formData.delete('department');
+        formData.delete('assignee');
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '../actions/action_edit_ticket.php');
         xhr.onload = function() {
