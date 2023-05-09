@@ -13,6 +13,7 @@ $user = User::getUser($db, $session->getId());
 $ticket = Ticket::getTicket($db, (int) $_POST['id']);
 
 $ticket->status = ($_POST['status'] ?? $ticket->status);
+
 $ticket->priority = ($_POST['priority'] ?? $ticket->priority);
 
 if ($_POST['department'] !== null) {
@@ -32,7 +33,8 @@ if ($_POST['assignee'] !== null) {
 }
 
 $ticket->title = ($_POST['title'] ?? $ticket->title);
-$ticket->description = ($_POST['description'] ?? $ticket->description);
+
+$ticket->description = ($_POST['description'] ? nl2br(htmlspecialchars($_POST['description'])) : $ticket->description);
 
 $ticket->save($db);
 header('Location: ../pages/userTicket.php');

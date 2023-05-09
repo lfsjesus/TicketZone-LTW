@@ -693,15 +693,47 @@ main {
   padding: 3em;
 }
 
-.ticket-body form > h1 {
+.ticket-body .ticket-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-column: 1/2;
+}
+
+.ticket-body form .ticket-header > h1 {
   font-size: 1.5em;
   font-weight: bold;
-  grid-column: 1/2; 
   margin: 0;
 }
 
-.ticket-body form > textarea {
+.ticket-body form .ticket-header > span {
+  cursor: pointer;
+}
+
+.ticket-body form .ticket-description {
   grid-column: 1/2;
+}
+
+.ticket-body form .ticket-header > input[type="text"] {
+  background-color: transparent;
+  color: white;
+  font-family: Arial;
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: 1px solid #46464b;
+  padding: 0.5em;
+}
+
+.ticket-body form textarea.ticket-description {
+  background-color: transparent;
+  color: white;
+  font-family: Arial;
+  resize: none;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #46464b;
+  padding: 0.5em;
+  margin: 0.5em 0;
 }
 
 .ticket-body > form {

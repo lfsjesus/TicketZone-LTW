@@ -11,7 +11,8 @@ $department_id = $db->query("SELECT id FROM Departments WHERE name = '$departmen
 
 $user_id = $session->getId();
 $title = htmlspecialchars($_POST['title']);
-$description = htmlspecialchars($_POST['description']);
+// replace all new lines with <br> tags
+$description = nl2br(htmlspecialchars($_POST['description']));
 $status = 'open';
 $date = date('Y-m-d H:i:s');
 $faq = false;

@@ -8,10 +8,13 @@ function drawTicket(Ticket $ticket){
     $db = getDatabaseConnection();
     ?>
     <article class="ticket-body">
-      <form method="post" action = "../actions/action_edit_ticket.php">
-        <h1><input type="text" name="title" value="<?php echo $ticket->title ?>"></h1>
-        <textarea name="description"><?php echo $ticket->description ?></textarea>
-        <input type="hidden" name="id" value="<?php echo $ticket->id ?>">
+      <form>
+        <input type="hidden" name="id" value="<?= $ticket->id ?>">
+        <div class="ticket-header">
+          <h1><?=$ticket->title?></h1>
+          <span class="material-symbols-outlined">edit</span>
+        </div>
+        <p class="ticket-description"><?=$ticket->description?></p>
         <ul class="ticket-meta">
           <li>Created by: <?php echo $ticket->ticketCreator->name() ?></li>
           <li>Created at: <?php echo $ticket->dateCreated->format('d/m/Y H:i') ?></li>
@@ -68,7 +71,6 @@ function drawTicket(Ticket $ticket){
             </li>
           <?php } ?>
         </ul>
-        <button type = "submit" name = "submit" value = "submit">Submit</button>
       </form>
     </article>
     <?php

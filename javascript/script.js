@@ -26,3 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 });
 
+
+/******************************************/
+// in al text areas replace \n with <br>
+let textareas = document.querySelectorAll('textarea');
+textareas.forEach(textarea => {
+    textarea.innerHTML = textarea.innerHTML.replace(/\n/g, '<br>');
+}
+);

@@ -16,7 +16,12 @@ function drawHeader(string $pageName) { ?>
     <script src="../javascript/script.js" defer></script>
   <?php if ($_SERVER['REQUEST_URI'] == '/pages/userTicket.php') { ?>
   <script src="../javascript/table_tickets.js" defer></script>
-  <?php } ?>
+  <?php } 
+  // if inside ticket page
+  if (strpos($_SERVER['REQUEST_URI'], 'ticket.php') !== false) { ?>
+  <script src="../javascript/ticket_edit.js" defer></script>
+  <?php }
+  ?>
   </head> 
   <body>           
 <?php } 
