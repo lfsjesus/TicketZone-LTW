@@ -47,9 +47,9 @@ function updateTableData(page = 1) {
                     const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
                     tr.innerHTML = `
                         <td><input type="checkbox" value="${ticket.id}" name="ticket[]"></td>
-                        <td class="table-title">${ticket.ticketCreator.firstName + ' ' + ticket.ticketCreator.lastName}</td>
+                        <td class="table-title"><a href="user_profile.php?id=${ticket.ticketCreator.id}">${ticket.ticketCreator.firstName + ' ' + ticket.ticketCreator.lastName}</td>
                         <td class="table-title"><a href="ticket.php?id=${ticket.id}">${ticket.title}</a></td>
-                        <td rowspan="2" class="table-title">${ticket.ticketAssignee != null ? ticket.ticketAssignee.firstName + ' ' + ticket.ticketAssignee.lastName : ''}</td>
+                        <td rowspan="2" class="table-title"><a href="user_profile.php?id=${ticket.ticketAssignee.id}">${ticket.ticketAssignee != null ? ticket.ticketAssignee.firstName + ' ' + ticket.ticketAssignee.lastName : ''}</td>
                         <td rowspan="2" class="table-title">${ticket.status}</td>
                         <td rowspan="2" class="table-title"><div class="${ticket.priority != null ? 'priority-' + ticket.priority.toLowerCase() : ''}">${ticket.priority ?? ''}</td>
                         <td rowspan="2" class="table-title">${ticket.department != null ? ticket.department.name : ''}</td>

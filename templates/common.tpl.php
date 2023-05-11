@@ -40,7 +40,7 @@ function drawNavbar(Session $session){ ?>
           if ($session->isLoggedIn()) { ?>
           <footer>
             <!--button with href-->
-            <a href="/../pages/profile.php"><span class="material-symbols-outlined">person</span>Profile</a>
+            <a href="/../pages/edit_profile.php"><span class="material-symbols-outlined">person</span>Profile</a>
             <form action="/../actions/action_logout.php" method="post">
               <!-- LOGOUT BUTTON WITH TEXT AND ICON -->
               <button type="submit" name="logout" class="logout-button">Logout<span class="material-symbols-outlined">logout</span></button>

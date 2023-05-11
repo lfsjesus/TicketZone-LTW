@@ -12,7 +12,7 @@ $session = new Session();
 $db = getDatabaseConnection();
 $user = User::getUser($db, $session->getId());
 
-  drawHeader("Profile");
+  drawHeader("Edit Profile");
   ?>
   <section id = "main-wrapper">
 
