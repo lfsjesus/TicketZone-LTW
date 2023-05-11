@@ -67,6 +67,9 @@ input.addEventListener('keyup', function(e) {
     if (e.keyCode == 13) {
         e.preventDefault();
         let hashtag = input.value;
+        if (hashtag[0] == '#') {
+            hashtag = '%23' + hashtag.slice(1);
+        }
         let ticket_id = document.querySelector('.ticket-body form input[name="id"]').value;
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `../actions/action_add_hashtag.php?hashtag_name=${hashtag}&ticket_id=${ticket_id}`);

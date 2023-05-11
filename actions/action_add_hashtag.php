@@ -6,10 +6,10 @@ $db = getDatabaseConnection();
 
 $hashtag_name = $_GET['hashtag_name'];
 
+// if the hashtag name starts with #, remove it
 if (substr($hashtag_name, 0, 1) === '#') {
   $hashtag_name = substr($hashtag_name, 1);
 }
-
 
 $hashtag_check = $db->prepare('SELECT id FROM TicketHashtags WHERE hashtag = ?');
 $hashtag_check->execute([$hashtag_name]);
