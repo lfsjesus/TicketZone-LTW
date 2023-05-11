@@ -44,7 +44,12 @@ function updateTableData(page = 1) {
                 tickets.forEach(ticket => {
                     let tr = document.createElement('tr');
                     const date = new Date(ticket.dateCreated.date);
-                    const formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
+                    const formattedDate = date.getDate().toString().padStart(2, '0') + '/' + 
+                      (date.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+                      date.getFullYear() + ' ' + 
+                      date.getHours().toString().padStart(2, '0') + ':' + 
+                      date.getMinutes().toString().padStart(2, '0');
+
                     tr.innerHTML = `
                         <td><input type="checkbox" value="${ticket.id}" name="ticket[]"></td>
                         <td class="table-title">${ticket.ticketCreator.firstName + ' ' + ticket.ticketCreator.lastName}</td>
