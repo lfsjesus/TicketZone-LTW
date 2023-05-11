@@ -30,6 +30,7 @@ if ($_POST['assignee'] !== null) {
   } else {
     $ticket->ticketAssignee->id = ((int) $_POST['assignee'] ?? $ticket->ticketAssignee->id);
   }
+  $ticket->status = 'assigned';
 }
 
 $ticket->title = ($_POST['title'] ?? $ticket->title);
