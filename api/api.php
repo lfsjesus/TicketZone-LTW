@@ -65,10 +65,18 @@ require_once(__DIR__ . '/../database/department.class.php');
 
     // search to title and description
     if ($searchQuery) {
-        $query .= '(title LIKE ? OR description LIKE ?) AND ';
-        $countQuery .= '(title LIKE ? OR description LIKE ?) AND ';
-        $params[] = '%' . $searchQuery . '%';
-        $params[] = '%' . $searchQuery . '%';
+        // if the search query starts with #, find tickets with like hashtag
+        if (substr($searchQuery, 0, 1) === '#') {
+            $query .= 'id IN (SELECT ticket_id FROM TicketTagJunction WHERE hashtag_id IN (SELECT id FROM TicketHashtags WHERE hashtag LIKE ?)) AND ';
+            $countQuery .= 'id IN (SELECT ticket_id FROM TicketTagJunction WHERE hashtag_id IN (SELECT id FROM TicketHashtags WHERE hashtag LIKE ?)) AND ';
+            $params[] = '%' . substr($searchQuery, 1) . '%';
+        }
+        else {
+            $query .= '(title LIKE ? OR description LIKE ?) AND ';
+            $countQuery .= '(title LIKE ? OR description LIKE ?) AND ';
+            $params[] = '%' . $searchQuery . '%';
+            $params[] = '%' . $searchQuery . '%';
+        }
     }
 
 

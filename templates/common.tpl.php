@@ -56,7 +56,7 @@ function drawSearchbar(){
 ?>
   <header>
     <form class="search-form" action="">
-    <input type="text" placeholder="Search for tickets..." name="ticketName">
+    <input type="text" placeholder="Search for tickets... Use # for hashtags" name="ticketName">
     <button type="submit"><span class="material-symbols-outlined">search</span></button>
     </form>
 
