@@ -26,3 +26,34 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 });
 
+
+/******************************************/
+// FAQ click event
+let faqItems = document.querySelectorAll('.faq li h2');
+faqItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+        let answer = this.parentElement.nextSibling;
+        answer.classList.toggle('active');
+    })
+}
+);
+
+/******************************************/
+// FAQ DELETE click event, send AJAX request for action_delete_faq.php
+let faqDelete = document.querySelectorAll('.faq header button');
+faqDelete.forEach(function(item) {
+    item.addEventListener('click', function() {
+        let xhr = new XMLHttpRequest();
+        let formData = new FormData();
+        let li = this.parentElement.parentElement;
+        formData.append('id', li.id);
+        xhr.open('POST', '../actions/action_delete_faq.php');
+        xhr.onload = function() {
+            if (this.status == 200) {
+                li.remove();
+            }
+        }
+        xhr.send(formData);
+    })
+}
+);

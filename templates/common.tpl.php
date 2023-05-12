@@ -33,7 +33,7 @@ function drawNavbar(Session $session){ ?>
       <ul>
         <li><a href="/../pages/dashboard.php"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
         <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
-        <li><a href=""><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
+        <li><a href="/../pages/faq_page.php"><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
         <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>
       </ul>  
       <?php 
@@ -97,7 +97,8 @@ function drawSearchbar(){
 
     <!-- button to create new ticket that redirect to page to create ticket -->
     <button class="create-ticket">
-      <a href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a></button>
+      <a href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a>
+    </button>
   </header>
 <?php } 
 

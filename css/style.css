@@ -128,12 +128,12 @@ main {
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
                         /* CSS for search bar */
 
-#main-wrapper header{
+#main-wrapper main > header:first-child {
     display: flex;  
     width: 95%;
-    margin: auto;
     align-items: center;
     justify-content: space-between;
+    margin: auto auto 2.5em auto;
 }
 
 .search-form {
@@ -145,7 +145,6 @@ main {
     border-radius: 25px;
     padding: 5px 10px;
     width: 25em;
-    margin: 2.5em 0;
   }
   
   .search-form input[type="text"] {
@@ -175,7 +174,7 @@ main {
     outline: none;
   }
 
-.create-ticket {
+.create-ticket, .add-faq {
     font-family: "Montserrat",sans-serif;
     background-color: #31333a;
     color: white;
@@ -186,19 +185,19 @@ main {
     transition: 0.4s;
 }
 
-.create-ticket > a {
+.create-ticket > a, .add-faq > a {
     display: flex;  
     align-items: center;
     padding: 1em;
     height: 100%;
 }
 
-.create-ticket:hover {
+.create-ticket:hover, .add-faq:hover {
     background-color: #46464b;
     border: 1px solid #46464b;
 }
 
-.create-ticket .material-symbols-outlined {
+.create-ticket .material-symbols-outlined, .add-faq .material-symbols-outlined {
     margin-right: 0.5em;
 }
 
@@ -344,7 +343,7 @@ main {
     font-size: 1.5em;
   }
 
-  button.delete-ticket {
+  button.delete-ticket, button.delete-faq {
     display: flex;
     align-items: center;
     background-color: rgb(126, 0, 0);
@@ -355,7 +354,7 @@ main {
     cursor: pointer;
   }
 
-  button.delete-ticket:hover {
+  button.delete-ticket:hover, button.delete-faq:hover {
     background-color: rgb(185, 60, 1);
   }
 
@@ -610,7 +609,7 @@ main {
 
 /* CREATE TICKET PAGE AND FORM */
 
-.ticket-form {
+.ticket-form, .faq-form {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -663,13 +662,13 @@ main {
   pointer-events: none;
 }
 
-.ticket-form label {
+.ticket-form label, .faq-form label {
   margin-bottom: 5px;
   font-weight: bold;
   color:white; 
 }
 
-.ticket-form input[type="text"]{
+.ticket-form input[type="text"], .faq-form input[type="text"]{
     padding: 10px;
     margin-bottom: 15px;
     border: 2px solid #0e0e24;
@@ -692,7 +691,7 @@ main {
 }
 
 /* customize description box, wide box */
-.ticket-form textarea {
+.ticket-form textarea, .faq-form textarea {
   font-family: "Montserrat",sans-serif;
   padding: 1em;
   border-radius: 0.5em;
@@ -713,7 +712,7 @@ main {
   font-weight: bold;
 }
 
-.ticket-form input[type="submit"] {
+.ticket-form input[type="submit"], .faq-form input[type="submit"] {
   background-color: #31333a;
   width: 20%;
   margin: 0 auto;
@@ -726,7 +725,7 @@ main {
   font-weight: bold;
 }
 
-.ticket-form input[type="submit"]:hover {
+.ticket-form input[type="submit"]:hover, .faq-form input[type="submit"]:hover {
   background-color: #46464b;
 }
 
@@ -877,4 +876,54 @@ main {
   width: 15%;
   color: #000;
   background-color: #fff;
+}
+
+
+/* FAQ PAGE */
+
+.faq h2 {
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.faq h2::after {
+  content: "+";
+  margin-left: 0.5em;
+}
+
+.faq p {
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.faq p.active {
+  margin: 1em 0;
+  display: block;
+  opacity: 1;
+  max-height: 100%;
+  
+  visibility: visible;
+  transition: all 0.3s ease;
+
+}
+
+.faq li {
+  padding: 1em;
+  border-bottom: 1px solid #46464b;
+}
+
+.faq li button {
+  float: right;
+}
+
+.faq li > header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

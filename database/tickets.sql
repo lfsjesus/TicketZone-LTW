@@ -28,7 +28,6 @@ CREATE TABLE Tickets (
     status VARCHAR NOT NULL,
     priority VARCHAR,
     date TIMESTAMP NOT NULL,
-    faq BOOLEAN NOT NULL
 );
 
 CREATE TABLE TicketHashtags (
@@ -71,3 +70,8 @@ CREATE TABLE Files (
     CHECK (ticket_id IS NULL OR comment_id IS NULL),
 );
 
+CREATE TABLE FAQ (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question VARCHAR NOT NULL,
+    answer VARCHAR NOT NULL
+);
