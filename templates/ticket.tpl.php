@@ -20,6 +20,7 @@ function drawTicket(Ticket $ticket){
           <li>Created at: <?php echo $ticket->dateCreated->format('d/m/Y H:i') ?></li>
           <li>Assigned to: 
             <select name = "assignee">
+            <option value="" disabled selected hidden></option>
               <?php
                 $agents = User::getAgents($db);
                 foreach ($agents as $agent) {
@@ -32,7 +33,7 @@ function drawTicket(Ticket $ticket){
               <?php
                 $departments = Department::getDepartments($db);
                 foreach ($departments as $department) {
-                  echo '<option value="' . $department->id . '">' . $department->name . '</option>';
+                  echo '<option value="' . $department->id . '" ' . ($department->id === $ticket->department->id ? 'selected' : '') . '>' . $department->name . '</option>';
                 }
               ?>
             </select>
@@ -48,6 +49,8 @@ function drawTicket(Ticket $ticket){
           <li>
             Priority:
             <select name="priority">
+              <!-- dummy option -->
+              <option value="" disabled selected hidden></option>
               <option value="low" <?php echo $ticket->priority === 'low' ? 'selected' : ''; ?>>Low</option>
               <option value="medium" <?php echo $ticket->priority === 'medium' ? 'selected' : ''; ?>>Medium</option>
               <option value="high" <?php echo $ticket->priority === 'high' ? 'selected' : ''; ?>>High</option>
