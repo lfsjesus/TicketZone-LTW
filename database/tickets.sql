@@ -67,7 +67,7 @@ CREATE TABLE Files (
     ticket_id INT REFERENCES Tickets(id),
     comment_id INT REFERENCES Comments(id), 
     file_data BLOB NOT NULL,
-    CHECK (ticket_id IS NULL OR comment_id IS NULL),
+    CHECK (ticket_id IS NULL OR comment_id IS NULL)
 );
 
 CREATE TABLE FAQ (
