@@ -151,8 +151,7 @@
                     $ticket['status'],
                     $ticket['priority'],
                     new DateTime($ticket['date']),
-                    $hashtags,
-                    $ticket['faq'] == 1
+                    $hashtags
                 ));
             }
             return $tickets;
@@ -192,8 +191,7 @@
                     $ticket['status'],
                     $ticket['priority'],
                     new DateTime($ticket['date']),
-                    $hashtags,
-                    $ticket['faq'] == 1
+                    $hashtags
                 ));
             }
             return $tickets;

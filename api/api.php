@@ -135,7 +135,6 @@ require_once(__DIR__ . '/../database/department.class.php');
             $ticket['priority'],
             new DateTime($ticket['date']),
             $hashtags,
-            $ticket['faq'] == 1 ? true : false
         );
     }
 
@@ -143,6 +142,6 @@ require_once(__DIR__ . '/../database/department.class.php');
         'tickets' => $tickets,
         'count' => $count        
     ];
-    
+
     echo json_encode($response);
 ?>
