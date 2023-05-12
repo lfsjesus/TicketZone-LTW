@@ -14,7 +14,7 @@ $title = htmlspecialchars($_POST['title']);
 // replace all new lines with <br> tags
 $description = nl2br(htmlspecialchars($_POST['description']));
 $status = 'open';
-$date = date('Y-m-d H:i:s');
+$date = date('Y-m-d H:i:s');   
 $faq = false;
 
 $stmt = $db->prepare("INSERT INTO tickets (user_id, department_id, title, description, status, date, faq) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -30,6 +30,13 @@ if (!empty($filename) && $stmt->rowCount() == 1) {
         $file_data = file_get_contents($file);
         $stmt->execute([$id, $file_data]);
     }
+}
+
+if ($stmt->rowCount() == 1) {
+    $ticket_id = $db->lastInsertId();
+    $action_stmt = $db->prepare("INSERT INTO actions (user_id, ticket_id, action, date) VALUES (?, ?, ?, ?)");
+    $action_stmt->execute([$user_id, $ticket_id, "Created a ticket", $date]);
+    header('Location: ../pages/userTicket.php');
 }
 
 if ($stmt->rowCount() == 1) {

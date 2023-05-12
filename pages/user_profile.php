@@ -31,8 +31,9 @@ drawHeader($user->firstName . ' ' . $user->lastName );
         <?php
     $actions = Action::getActionsByUserId($db, $user->id);
     foreach ($actions as $action) {
-            echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action->action}</li>";
-        }
+        $ticket = Ticket::getTicket($db,$action->ticketId);
+        echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action->action} : <a href='ticket.php?id={$ticket->id}'>{$ticket->title}</a></li>";
+    }
         ?>
     </ul>
 </main>
