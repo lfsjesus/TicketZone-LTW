@@ -15,9 +15,8 @@ class Ticket {
     public ?string $priority;
     public datetime $dateCreated;
     public array $hashtags;
-    public bool $isFaq;
 
-    public function __construct(int $id, string $title, string $description, User $ticketCreator, ?User $ticketAssignee, ?Department $department, string $status, ?string $priority, datetime $dateCreated, array $hashtags, bool $isFaq) {
+    public function __construct(int $id, string $title, string $description, User $ticketCreator, ?User $ticketAssignee, ?Department $department, string $status, ?string $priority, datetime $dateCreated, array $hashtags) {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
@@ -28,7 +27,6 @@ class Ticket {
         $this->priority = $priority;
         $this->dateCreated = $dateCreated;
         $this->hashtags = $hashtags;
-        $this->isFaq = $isFaq;
     } 
 
     static function getTicket(PDO $db, int $id) : ?Ticket {
@@ -57,8 +55,7 @@ class Ticket {
                 $ticket['status'],
                 $ticket['priority'],
                 new DateTime($ticket['date']),
-                $hashtags,
-                $ticket['faq'] == 1
+                $hashtags
             );
         } else return null;
 
