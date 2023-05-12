@@ -29,11 +29,11 @@ drawHeader($user->firstName . ' ' . $user->lastName );
     <h2>Action History</h2>
     <ul>
         <?php
-    $actions = Action::getActionsByUserId($db, $user->id);
-    foreach ($actions as $action) {
-        $ticket = Ticket::getTicket($db,$action->ticketId);
-        echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action->action} : <a href='ticket.php?id={$ticket->id}'>{$ticket->title}</a></li>";
-    }
+        $actions = Action::getActionsByUserId($db, $user->id);
+        foreach ($actions as $action) {
+            $ticket = Ticket::getTicket($db,$action->ticketId);
+            echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action->action} : <a href='ticket.php?id={$ticket->id}'>{$ticket->title}</a></li>";
+        }
         ?>
     </ul>
 </main>

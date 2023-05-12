@@ -14,7 +14,7 @@ $db = getDatabaseConnection();
   <?php
   drawNavbar($session);
   ?>
-    <main>
+    <main id = "faq-page">
         <header>
           <h1>Frequently Asked Questions - FAQ</h1>
           <button class="add-faq">

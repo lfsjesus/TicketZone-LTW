@@ -912,6 +912,10 @@ main {
 
 }
 
+.faq ol {
+  padding-inline-start: 1.5em;
+}
+
 .faq li {
   padding: 1em;
   border-bottom: 1px solid #46464b;
@@ -926,4 +930,8 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+#main-wrapper #faq-page > header {
+  width: 100%;
 }

@@ -18,8 +18,6 @@ class Action
         $this->date = $date;
     }
 
-
-
     static function getActionsByUserId(PDO $db, int $userId): array
     {
         $stmt = $db->prepare('SELECT * FROM Actions WHERE user_id = ? ORDER BY date DESC');
