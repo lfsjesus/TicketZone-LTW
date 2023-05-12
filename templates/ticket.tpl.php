@@ -83,10 +83,10 @@ function drawTicket(Ticket $ticket){
           <?php if (count($ticket->attachments($db)) > 0) { ?>
             <li>
               Attachments:
-              <ul>
+              <ul class="attachments">
                 <?php foreach ($ticket->attachments($db) as $attachment) { ?>
                   <li>
-                    <a href="actions/action_download.php?id=<?= $attachment['id'] ?>">Attachment <?= $attachment['id'] ?></a>
+                    <a href="../actions/action_download_file.php?id=<?= $attachment['id'] ?>"><span class="material-symbols-outlined">download</span>Attachment <?= $attachment['id'] ?></a>
                   </li>
                 <?php } ?>
               </ul>

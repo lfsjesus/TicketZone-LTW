@@ -15,10 +15,10 @@ function drawComment(Comment $comment) {
         <!-- if comment has files -->
         <?php if (count($comment->attachments($db)) > 0) { ?>
             <h4>Attachments</h4>
-            <ul>
+            <ul class = "attachments">
                 <?php foreach ($comment->attachments($db) as $attachment) { ?>
                     <li>
-                        <a href="actions/action_download.php?id=<?= $attachment['id'] ?>">Attachment <?= $attachment['id'] ?></a>
+                        <a href="../actions/action_download_file.php?id=<?= $attachment['id'] ?>"><span class="material-symbols-outlined">download</span>Attachment <?= $attachment['id'] ?></a>
                     </li>
                 <?php } ?>
             </ul>

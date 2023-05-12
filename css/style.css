@@ -576,24 +576,13 @@ main {
   color:white; 
 }
 
-#profile input[type="password"] {
+#profile input {
   padding: 10px;
   margin-bottom: 15px;
-  border: 2px solid #03f7ff;
-  border-radius: 2.5em;
+  border-radius: 1em;
   width: 70%;
   box-sizing: border-box;
   font-weight: bold;
-}
-
-#profile input[type="text"]{
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #03f7ff;
-    border-radius: 2.5em;
-    width: 70%;
-    box-sizing: border-box;
-    font-weight: bold;
 }
 
 #profile form button[type="submit"] {
@@ -652,6 +641,17 @@ main {
   align-items: center;
   margin: 0.5em;
 }
+
+.ticket-meta li:last-child ul {
+  padding: 0;
+}
+
+.attachments > li > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 
 .ticket-meta .ticket-hashtags li a:before {
   content: "#";
@@ -816,10 +816,18 @@ main {
   margin: 1em 0em;
 }
 
+.comment .attachments {
+  font-size: 0.8em;
+}
+
 .comment > h3 {
   margin-top: 0;
   font-size: 0.9em;
   font-weight: bold;
+}
+
+.comment > h4 {
+  font-size: 0.8em;
 }
 
 .comment p {
