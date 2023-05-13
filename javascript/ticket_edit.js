@@ -3,7 +3,6 @@ let title = document.querySelector('.ticket-body form .ticket-header > h1');
 let description = document.querySelector('.ticket-body form .ticket-description');
 
 editBtn.addEventListener('click', function() {
-    console.log(editBtn.classList);
     if (editBtn.classList.contains('save')) {
         let form = document.querySelector('.ticket-body form');
         // only send title and description

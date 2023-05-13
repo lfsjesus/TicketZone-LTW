@@ -9,8 +9,8 @@ function drawComment(Comment $comment) {
     $db = getDatabaseConnection();
     ?>
     <article class="comment">
-        <h3><?= $comment->user->name() ?></h3>
-        <p><?= $comment->comment ?></p>
+        <h3><?=htmlspecialchars($comment->user->name())?></h3>
+        <p><?=nl2br(htmlspecialchars($comment->comment))?></p>
         <p><?= $comment->date->format('d/m/Y H:i') ?></p>
         <!-- if comment has files -->
         <?php if (count($comment->attachments($db)) > 0) { ?>

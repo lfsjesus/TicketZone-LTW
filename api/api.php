@@ -122,17 +122,17 @@ require_once(__DIR__ . '/../database/department.class.php');
         $stmt2 = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
         $stmt2->execute(array($ticket['id']));
         foreach ($stmt2->fetchAll() as $hashtag) {
-            array_push($hashtags, $hashtag['hashtag']);
+            array_push($hashtags, htmlspecialchars($hashtag['hashtag']));
         }
         $tickets[] = new Ticket(
             $ticket['id'],
-            $ticket['title'],
-            $ticket['description'],
+            htmlspecialchars($ticket['title']),
+            htmlspecialchars($ticket['description']),
             $ticketCreator,
             $ticketAssignee,
             $department,
-            $ticket['status'],
-            $ticket['priority'],
+            htmlspecialchars($ticket['status']),
+            htmlspecialchars($ticket['priority']),
             new DateTime($ticket['date']),
             $hashtags,
         );

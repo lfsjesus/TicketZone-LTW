@@ -10,9 +10,8 @@ $department = $_POST['department'];
 $department_id = $db->query("SELECT id FROM Departments WHERE name = '$department'")->fetch()['id'];
 
 $user_id = $session->getId();
-$title = htmlspecialchars($_POST['title']);
-// replace all new lines with <br> tags
-$description = nl2br(htmlspecialchars($_POST['description']));
+$title = $_POST['title'];
+$description = $_POST['description'];
 $status = 'open';
 $date = date('Y-m-d H:i:s');   
 $faq = false;

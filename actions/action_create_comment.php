@@ -14,7 +14,7 @@ $db = getDatabaseConnection();
 
 $ticket_id = (int)$_POST['ticket_id'];
 $user_id = $session->getId();
-$comment = htmlspecialchars($_POST['message']);
+$comment = $_POST['message'];
 $date = date('Y-m-d H:i:s');
 
 $stmt = $db->prepare("INSERT INTO Comments (ticket_id, user_id, comment, date) VALUES (?, ?, ?, ?)");

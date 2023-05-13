@@ -11,13 +11,13 @@ function drawTicket(Ticket $ticket){
       <form>
         <input type="hidden" name="id" value="<?= $ticket->id ?>">
         <div class="ticket-header">
-          <h1><?=$ticket->title?></h1>
+          <h1><?=htmlspecialchars($ticket->title)?></h1>
           <span class="material-symbols-outlined">edit</span>
         </div>
-        <p class="ticket-description"><?=$ticket->description?></p>
+        <p class="ticket-description"><?=nl2br(htmlspecialchars($ticket->description))?></p>
         <ul class="ticket-meta">
-          <li>Created by: <?php echo $ticket->ticketCreator->name() ?></li>
-          <li>Created at: <?php echo $ticket->dateCreated->format('d/m/Y H:i') ?></li>
+          <li>Created by: <?=$ticket->ticketCreator->name()?></li>
+          <li>Created at: <?=$ticket->dateCreated->format('d/m/Y H:i') ?></li>
           <li>Assigned to: 
             <select name = "assignee">
             <option value="" disabled selected hidden></option>

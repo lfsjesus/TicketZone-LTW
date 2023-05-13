@@ -69,7 +69,7 @@ if ($_POST['assignee'] !== null) {
 
 $ticket->title = ($_POST['title'] ?? $ticket->title);
 
-$ticket->description = ($_POST['description'] ? nl2br(htmlspecialchars($_POST['description'])) : $ticket->description);
+$ticket->description = ($_POST['description'] ? $_POST['description'] : $ticket->description);
 
 $ticket->save($db);
 header('Location: ../pages/userTicket.php');
