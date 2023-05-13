@@ -55,7 +55,7 @@ function drawSearchbar(){
   $db = getDatabaseConnection();
 ?>
   <header>
-    <form class="search-form" action="">
+    <form class="search-form">
     <input type="text" placeholder="Search for tickets... Use # for hashtags" name="ticketName">
     <button type="submit"><span class="material-symbols-outlined">search</span></button>
     </form>

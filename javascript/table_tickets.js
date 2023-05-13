@@ -1,24 +1,21 @@
 /* TABLE CONTENT GENERATION AND FILTERING */
-const submitBtn = document.querySelector('.ticket-list button[type="submit"]');
-submitBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    updateTableData();
-  });
-
 window.addEventListener('load', function() {
-submitBtn.click();
+    updateTableData();
 });
 
 const option = document.querySelectorAll('.ticket-list select');
 option.forEach(option => {
     option.addEventListener('change', function() {
-        submitBtn.click();
+        updateTableData();
     });
 }
 );
 
 const search = document.querySelector('.search-form input');
 if (search) {
+    document.querySelector('.search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
     search.addEventListener('input', async function() {
         updateTableData();
     });

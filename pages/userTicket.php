@@ -25,7 +25,7 @@ else {
   $user = $session->getUser();
 ?>
     <table class="ticket-list">
-    <form action="../api/api.php?" method="get">
+    <form>
       <thead>
         <tr>
           <th><input type="checkbox" id="select-all" name="select-all" value="select-all"></th>
@@ -87,9 +87,7 @@ else {
           </th>
         </tr>       
       </thead>
-      <th style="display:none"><button type="submit" class="material-symbols-outlined" >filter_alt</button><th>
       </form>
-      
       <tbody>
     <?php
       }
