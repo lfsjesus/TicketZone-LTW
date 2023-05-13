@@ -1,6 +1,7 @@
 <?php
     declare(strict_types = 1);
     require_once(__DIR__ . '/../database/ticket.class.php');
+    require_once(__DIR__ . '/../database/department.class.php');
 
     class User {
         public ?int $id;
@@ -9,16 +10,16 @@
         public ?string $firstName;
         public ?string $lastName;
         public ?string $type;
-        public ?int $department_id;
+        public ?Department $department;
 
-        public function __construct(int $id, string $username, string $email, string $firstName, string $lastName, string $type, int $department_id) {
+        public function __construct(int $id, string $username, string $email, string $firstName, string $lastName, string $type, ?Department $department) {
             $this->id = $id;
             $this->username = $username;
             $this->email = $email;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
             $this->type = $type;
-            $this->department_id = $department_id;
+            $this->department = $department;
         }
 
         function name() {
@@ -37,8 +38,8 @@
             }
         
             // Email and username do not exist, update user's information
-            $stmt = $db->prepare('UPDATE Users SET firstName = ?, lastName = ?, username = ?, email = ? WHERE id = ?');
-            $stmt->execute(array($this->firstName, $this->lastName, $this->username, $this->email, $this->id));
+            $stmt = $db->prepare('UPDATE Users SET firstName = ?, lastName = ?, username = ?, email = ?, department_id = ?, type = ? WHERE id = ?');
+            $stmt->execute(array($this->firstName, $this->lastName, $this->username, $this->email, $this->department->id, $this->type, $this->id));
         }
         
 
@@ -47,7 +48,7 @@
             $stmt -> execute(array(strtolower($email)));
 
             $user = $stmt->fetch(); 
-            
+            $department = Department::getDepartment($db, $user['department_id']);            
             if ($user) {
                 return new User(
                     $user['id'],
@@ -56,7 +57,7 @@
                     $user['firstName'],
                     $user['lastName'],
                     $user['type'],
-                    $user['department_id']
+                    $department
                 );
             } else return null;
         }
@@ -65,9 +66,9 @@
             $stmt = $db->prepare('SELECT id, username, email, firstName, lastName, type, department_id FROM Users WHERE id = ?');
             $stmt -> execute(array($id));
 
-            $stmt->execute(array($id));
             $user = $stmt->fetch();
-            
+            $department = Department::getDepartment($db, $user['department_id']);
+
             if ($user) {
                 return new User(
                     $user['id'],
@@ -76,7 +77,7 @@
                     $user['firstName'],
                     $user['lastName'],
                     $user['type'],
-                    $user['department_id']
+                    $department
                 );
             } else return null;
         }
@@ -87,6 +88,7 @@
             $stmt = $stmt->fetchAll();
             $agents = array();
             foreach ($stmt as $agent) {
+                $department = Department::getDepartment($db, $agent['department_id']);
                 array_push($agents, new User(
                     $agent['id'],
                     $agent['username'],
@@ -94,7 +96,7 @@
                     $agent['firstName'],
                     $agent['lastName'],
                     $agent['type'],
-                    $agent['department_id']
+                    $department
                 ));
             }
             return $agents;
@@ -106,6 +108,7 @@
             $stmt = $stmt->fetchAll();
             $users = array();
             foreach ($stmt as $user) {
+                $department = Department::getDepartment($db, $user['department_id']);
                 array_push($users, new User(
                     $user['id'],
                     $user['username'],
@@ -113,88 +116,10 @@
                     $user['firstName'],
                     $user['lastName'],
                     $user['type'],
-                    $user['department_id']
+                    $department
                 ));
             }
             return $users;
         } 
-
-        public function getMyTickets(PDO $db) : array {
-            $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE user_id = ?');
-            $stmt->execute(array($this->id));
-        
-            $tickets = array();
-        
-            foreach ($stmt->fetchAll() as $ticket) {
-                $ticketCreator = $this;
-                $ticketAssignee = null;
-                if ($ticket['agent_id'] != null) $ticketAssignee = User::getUser($db, $ticket['agent_id']);
-                $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
-                $department->execute(array($ticket['department_id']));
-                $department = $department->fetch()['name'];
-                $department = $department == null ? "None" : $department;
-        
-                $hashtags = array();
-                $stmt = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
-                $stmt->execute(array($ticket['id']));
-                foreach ($stmt->fetchAll() as $hashtag) {
-                    array_push($hashtags, $hashtag['hashtag']);
-                }
-        
-                array_push($tickets, new Ticket(
-                    $ticket['id'],
-                    $ticket['title'],
-                    $ticket['description'],
-                    $ticketCreator,
-                    $ticketAssignee,
-                    $department,
-                    $ticket['status'],
-                    $ticket['priority'],
-                    new DateTime($ticket['date']),
-                    $hashtags
-                ));
-            }
-            return $tickets;
-        }
-
-        public function getMyAssignedTickets(PDO $db) : array {
-            // this functionality is only for agents
-            if ($this->type != 'agent') return NULL;
-
-            $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE agent_id = ?');
-            $stmt->execute(array($this->id));
-        
-            $tickets = array();
-        
-            foreach ($stmt->fetchAll() as $ticket) {
-                $ticketCreator = User::getUser($db, $ticket['user_id']);
-                $ticketAssignee = $this;
-                $department = $db->prepare('SELECT name FROM Departments WHERE id = ?');
-                $department->execute(array($ticket['department_id']));
-                $department = $department->fetch()['name'];
-                $department = $department == null ? "None" : $department;
-
-                $hashtags = array();
-                $stmt = $db->prepare('SELECT th.hashtag FROM TicketHashtags th JOIN TicketTagJunction ttj ON th.id = ttj.hashtag_id WHERE ttj.ticket_id = ?');
-                $stmt->execute(array($ticket['id']));
-                foreach ($stmt->fetchAll() as $hashtag) {
-                    array_push($hashtags, $hashtag['hashtag']);
-                }
-        
-                array_push($tickets, new Ticket(
-                    $ticket['id'],
-                    $ticket['title'],
-                    $ticket['description'],
-                    $ticketCreator,
-                    $ticketAssignee,
-                    $department,
-                    $ticket['status'],
-                    $ticket['priority'],
-                    new DateTime($ticket['date']),
-                    $hashtags
-                ));
-            }
-            return $tickets;
-        }
     }
 ?>

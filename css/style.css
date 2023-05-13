@@ -94,7 +94,7 @@ main > p {
 
 main {
     grid-column: 2 / 3;
-    padding: 2.5em;
+    padding: 3em;
     word-break: break-word;
     overflow-y: scroll;
     background-color: #17171c;
@@ -216,7 +216,7 @@ main {
     padding: 0.5em;
   }
   
-  .ticket-list select {
+  table select {
     background-color: transparent;
     border: none;
     color: white;
@@ -224,7 +224,7 @@ main {
     font-weight: bold;
   }
 
-  .ticket-list option {
+  table option {
     background-color: #31333a;
     color: white;
   }
@@ -343,7 +343,7 @@ main {
     font-size: 1.5em;
   }
 
-  button.delete-ticket, button.delete-faq {
+  button.delete {
     display: flex;
     align-items: center;
     background-color: rgb(126, 0, 0);
@@ -354,7 +354,7 @@ main {
     cursor: pointer;
   }
 
-  button.delete-ticket:hover, button.delete-faq:hover {
+  button.delete:hover {
     background-color: rgb(185, 60, 1);
   }
 
@@ -943,3 +943,140 @@ main {
 #main-wrapper #faq-page > header {
   width: 100%;
 }
+
+/* MANAGEMENT PAGE */
+
+#main-wrapper #management-page > header {
+  display: block;
+  margin-left: 0;
+}
+
+/* three tab <a> to switch between content */
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.7em;
+  margin-top: 4em;
+}
+
+.tabs a {
+  display: inline-block;
+  padding: 0 5em 0 0;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tabs a > span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
+/*show horizontal line on hover appearing left to right */
+.tabs a:after {
+  display: block;
+  content: '';
+  padding-bottom: 5px;
+  border-bottom: solid 2px #31333a;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+  transition: transform 250ms ease-in-out;
+}
+
+.tabs a:hover:after {
+  transform: scaleX(1);
+}
+
+.tabs a.active {
+  color: lightblue;
+}
+
+.tabs a.active::after {
+  transform: scaleX(1);
+  border-bottom: solid 2px lightblue;
+}
+
+#management-page > section {
+  display: none;
+}
+
+#management-page > section.active {
+  display: block;
+}
+
+#management-page table {
+  width: 90%;
+  font-size: 1em;
+  border-collapse: collapse;
+  margin-top: 2em;
+  text-align: left; 
+}
+
+#management-page table thead {
+  background-color: #31333a;
+  opacity: 0.6;
+  color: #fff;
+}
+
+#management-page table thead th:first-child {
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+#management-page table thead th:last-child {
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+#management-page table thead th {
+  padding: 1em;
+}
+
+#management-page table tbody td {
+  padding: 1em;
+  font-size: 0.9em;
+}
+
+#management-page table td:last-child, #management-page table th:last-child {
+  float: right;
+}
+
+#management-page .add-department {
+  background-color: #3c3e46;
+  padding: 0.5em 1em;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#management-page .add-department > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#management-page .add-department > a > span {
+  margin-right: 0.5em;
+}
+
+#management-page .add-department:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+}
+  
+
+
+
+
+
+
+
+
+

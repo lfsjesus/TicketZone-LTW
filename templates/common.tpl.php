@@ -32,6 +32,9 @@ function drawNavbar(Session $session){ ?>
       <img src="../images/ticketzone_logo.png" alt="logo" class="logo">
       <ul>
         <li><a href="/../pages/dashboard.php"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+        <?php if ($session->getUser()->type == 'admin') { ?>
+        <li><a href="/../pages/management.php"><span class="material-symbols-outlined">people</span>Management</a></li>
+        <?php } ?>
         <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
         <li><a href="/../pages/faq_page.php"><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
         <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>
@@ -92,7 +95,7 @@ function drawSearchbar(){
               <?php }
               ?>
       </select>
-      <button class="delete-ticket"><span class="material-symbols-outlined">delete</span></button>
+      <button class="delete"><span class="material-symbols-outlined">delete</span></button>
     </form>
 
     <!-- button to create new ticket that redirect to page to create ticket -->
