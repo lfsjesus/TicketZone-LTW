@@ -13,7 +13,7 @@ option.forEach(option => {
 
 const search = document.querySelector('.search-form input');
 if (search) {
-    document.querySelector('.search-form').addEventListener('submit', function(e) {
+    search.parentElement.addEventListener('submit', function(e) {
         e.preventDefault();
     });
     search.addEventListener('input', async function() {
