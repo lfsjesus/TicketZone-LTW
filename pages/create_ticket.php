@@ -5,12 +5,11 @@ require_once(__DIR__ .  '/../templates/common.tpl.php');
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../database/department.class.php');
 
 $session = new Session();
 $db = getDatabaseConnection();
-$departments = $db->prepare('SELECT name FROM Departments');
-$departments->execute();
-$departments = $departments->fetchAll();
+$departments = Department::getDepartments($db);
 
 drawHeader("Create Ticket");
 ?>
@@ -26,7 +25,7 @@ drawHeader("Create Ticket");
         <label for="department">Department</label>
         <select name="department" id="department">
             <?php foreach ($departments as $department) { ?>
-                <option value="<?= $department['name'] ?>"><?= $department['name'] ?></option>
+                <option value="<?= $department->name ?>"><?= $department->name?></option>
             <?php } ?>
         <label for="description">Description</label>
         <textarea name="description" id="description" cols="30" rows="20" placeholder="Ticket description" required></textarea>

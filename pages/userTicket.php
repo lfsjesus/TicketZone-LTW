@@ -57,9 +57,15 @@ else {
           <th>
             <select name="status" id="status">
               <option value="" disabled selected hidden>Status</option>
-              <option value="all">All</option>
-              <option value="open">Open</option>
-              <option value="closed">Closed</option>
+            <?php 
+              $stmt = $db->prepare('SELECT * FROM Statuses');
+              $stmt->execute();
+              $statuses = $stmt->fetchAll();
+              foreach ($statuses as $status) {
+                // only name is needed
+                echo '<option>' . $status['name'] . '</option>';
+              }
+            ?>
           </th>
           <th>
             <select name="priority" id="priority">

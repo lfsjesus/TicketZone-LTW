@@ -1045,31 +1045,37 @@ main {
   float: right;
 }
 
-#management-page .add-department {
-  background-color: #3c3e46;
-  padding: 0.5em 1em;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-#management-page .add-department > a {
+#management-page .add-entry form {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
 }
 
-#management-page .add-department > a > span {
-  margin-right: 0.5em;
+
+#management-page .add-entry input {
+  border: 0;
+  font-family: Arial;
+  outline: none;
+  padding: 0.5em;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-#management-page .add-department:hover {
-  background-color: white;
-  color: black;
-  transition: all 0.3s ease;
+#management-page .add-entry button {
+  background-color: #3c3e46;
+  color: white;
+  padding: 0.5em;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
+
+
+
+
+  
   
 
 

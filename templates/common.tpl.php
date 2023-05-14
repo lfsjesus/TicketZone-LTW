@@ -21,6 +21,10 @@ function drawHeader(string $pageName) { ?>
   if (strpos($_SERVER['REQUEST_URI'], 'ticket.php') !== false) { ?>
   <script src="../javascript/ticket_edit.js" defer></script>
   <?php }
+
+  if (strpos($_SERVER['REQUEST_URI'], 'management.php') !== false) { ?>
+  <script src="../javascript/management.js" defer></script>
+  <?php }
   ?>
   </head> 
   <body>           

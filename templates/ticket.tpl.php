@@ -41,15 +41,19 @@ function drawTicket(Ticket $ticket){
           <li>
             Status:
             <select name="status">
-              <option value="open" <?php echo $ticket->status === 'open' ? 'selected' : ''; ?>>Open</option>
-              <option value="assigned" <?php echo $ticket->status === 'assigned' ? 'selected' : ''; ?>>Assigned</option>
-              <option value="resolved" <?php echo $ticket->status === 'resolved' ? 'selected' : ''; ?>>Resolved</option>
+            <?php 
+              $stmt = $db->prepare('SELECT * FROM Statuses');
+              $stmt->execute();
+              $statuses = $stmt->fetchAll();
+              foreach ($statuses as $status) {
+                echo '<option value="' . $status['name'] . '" ' . ($status['name'] === $ticket->status ? 'selected' : '') . '>' . $status['name'] . '</option>';
+              }
+            ?>
             </select>
           </li>
           <li>
             Priority:
             <select name="priority">
-              <!-- dummy option -->
               <option value="" disabled selected hidden></option>
               <option value="low" <?php echo $ticket->priority === 'low' ? 'selected' : ''; ?>>Low</option>
               <option value="medium" <?php echo $ticket->priority === 'medium' ? 'selected' : ''; ?>>Medium</option>

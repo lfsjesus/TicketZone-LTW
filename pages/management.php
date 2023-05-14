@@ -82,13 +82,20 @@ $db = getDatabaseConnection();
               <th>Id</th>
               <th>Name</th>
               <th>
-                <button class="add-department">
-                    <a href=""><span class="material-symbols-outlined">add_circle</span>Add Department</a>
-                </button>
               </th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>-</td>
+              <td class="add-entry">
+                <form action="../actions/action_add_department.php" method="post">
+                  <input type="text" name="department" placeholder="Add a new department">
+                  <button type="submit" class="material-symbols-outlined">add</button>
+                </form>
+              </td>
+              <td></td>
+            </tr>
           <?php
           $departments = Department::getDepartments($db);
           foreach ($departments as $department) { ?>
@@ -96,7 +103,9 @@ $db = getDatabaseConnection();
               <td><?=$department->id?></td>
               <td><?=$department->name?></td>
               <td>
-                <button class="delete"><span class="material-symbols-outlined">delete</span></button>
+                <form action="../actions/action_delete_department.php" method="post">
+                  <button class="delete" name="department_id" value="<?=$department->id?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
+                </form>
               </td>
             </tr>
           <?php } ?>
@@ -104,6 +113,42 @@ $db = getDatabaseConnection();
         </table>
         </section>
         <section class="statuses">
+            <table>
+              <thead>
+                  <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>-</td>
+                  <td class="add-entry">
+                    <form action="../actions/action_add_status.php" method="post">
+                      <input type="text" name="status" placeholder="Add a new Status">
+                      <button type="submit" class="material-symbols-outlined">add</button>
+                    </form>
+                  </td>
+                  <td></td>
+                </tr>
+              <?php
+              $stmt = $db->prepare('SELECT * FROM Statuses');
+              $stmt->execute();
+              $statuses = $stmt->fetchAll();
+              foreach ($statuses as $status) { ?>
+                <tr>
+                  <td><?=$status['id']?></td>
+                  <td><?=$status['name']?></td>
+                  <td>
+                    <form action="../actions/action_delete_status.php" method="post">
+                      <button class="delete" name="status_id" value="<?=$status['id']?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
+                    </form>
+                  </td>
+                </tr>
+              <?php } ?>
+              </tbody>
+            </table>
         </section>
     </main>
   </section>

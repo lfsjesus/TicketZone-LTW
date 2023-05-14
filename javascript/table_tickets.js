@@ -139,7 +139,7 @@ function getCheckedCheckboxes() {
 }
 
 /* TICKET ACTIONS */
-let deleteBtn = document.querySelector('.ticket-options .delete-ticket');
+let deleteBtn = document.querySelector('.ticket-options .delete');
 console.log(deleteBtn);
 deleteBtn.addEventListener('click', function(e) {
     e.preventDefault();
