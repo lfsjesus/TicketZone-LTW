@@ -30,7 +30,7 @@ $db = getDatabaseConnection();
                 echo '<header>';
                 echo '<h2>' . htmlspecialchars($faq['question']) . '</h2>';
                 // put delete button here. modify so it's only visible to agents and admins
-                echo '<button class="delete-faq"><span class="material-symbols-outlined">delete</span></button>';
+                echo '<button class="delete"><span class="material-symbols-outlined">delete</span></button>';
                 echo '</header>';
                 echo '<p>' . htmlspecialchars($faq['answer']) . '</p>';
                 echo '</li>';
