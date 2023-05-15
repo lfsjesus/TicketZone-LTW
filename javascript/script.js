@@ -24,6 +24,31 @@ document.addEventListener('DOMContentLoaded', function() {
         let fileName = document.querySelector('.comment-form #file-name');
         fileName.textContent = this.files.length > 1 ? this.files.length + " files" : this.files[0].name;
     })
+
+    let answerFaq = document.getElementById('faq-select');
+    let faqIcon = document.getElementById('faq-answer');
+    console.log(faqIcon);
+    if (faqIcon) {
+        faqIcon.addEventListener('click', function() {
+            if (answerFaq.style.display == 'flex') {
+                answerFaq.style.display = 'none';
+            }
+            else {
+                answerFaq.style.display = 'flex';
+            }  
+        })
+    }
+
+    // if an option is selected, put the answer in the textarea
+    let faqOptions = document.querySelectorAll('#faq-select select');
+    let commentTextarea = document.querySelector('.comment-form textarea');
+
+    faqOptions.forEach(function(option) {
+        option.addEventListener('change', function() {
+            commentTextarea.value = option.value;
+        })
+    }
+    );
 });
 
 

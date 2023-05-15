@@ -806,6 +806,8 @@ main {
 }
 
 #comments {
+  display: flex;
+  flex-direction: column;
   padding: 3em;
 }
 
@@ -874,7 +876,7 @@ main {
   display: none;
 }
 
-#file-upload-container {
+#comment-extras {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -886,6 +888,31 @@ main {
   background-color: #fff;
 }
 
+#comment-extras > span {
+  cursor: pointer
+}
+
+#comments #faq-select {
+  background-color: #31333a;
+  border-radius: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+  margin-left: auto;
+}
+
+#comments #faq-select select {
+  background-color: #3c3e46;
+  color: white;
+  padding: 0.5em;
+  margin-left: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
 
 /* FAQ PAGE */
 

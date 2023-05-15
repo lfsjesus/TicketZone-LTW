@@ -30,19 +30,33 @@ drawHeader($ticket->title);
         ?>
         <section id="comments">
             <h2>Comments</h2>
+            <section id="faq-select" style="display: none;">
+                <h3>Select FAQ as answer: </h3>
+                <select name="faq" id="faq">
+                    <option value="">None</option>
+                    <?php
+                        $faqs = $db->query('SELECT * FROM FAQ');
+                        foreach ($faqs as $faq) {
+                            echo '<option value="' . htmlspecialchars($faq['answer']) . '">' . htmlspecialchars($faq['question']) . '</option>';
+                        }
+                    ?>
+                </select>
+            </section>
             <form action="../actions/action_create_comment.php" class = "comment-form" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
                 <textarea name="message" id="comment" cols="30" rows="5" placeholder="Comment" required></textarea>
-                <div id="file-upload-container">
+                <div id="comment-extras">
+                    <span id="faq-answer" class="material-symbols-outlined">quiz</span>
                     <a href="#" id="file-upload" class="material-symbols-outlined">attach_file</a>
                     <input type="file" name="file_name[]" id="file" multiple>
                     <span id="file-name"></span>
                 </div>
                 <button type="submit" class="material-symbols-outlined">send</button>
             </form>
+            
             <?php
                 $comments = $ticket->getAnswers($db);
-                foreach ($comments as $comment) {
+                foreach (array_reverse($comments) as $comment) {
                     drawComment($comment);
                 }
             ?>
