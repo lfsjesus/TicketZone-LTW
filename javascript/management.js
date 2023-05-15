@@ -33,6 +33,7 @@ selects.forEach(function(select) {
         let formData = new FormData();
         let user_id = this.parentElement.parentElement.querySelector('input[type="hidden"]').value;
         let field = this.name;
+        console.log(field);
         formData.append('user_id', user_id);
         formData.append(field, this.value);  
         xhr.open('POST', '../actions/action_upgrade_user.php');

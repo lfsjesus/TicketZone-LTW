@@ -59,7 +59,7 @@ $db = getDatabaseConnection();
                 <td>
                     <select name="type">
                     <option value="" disabled selected hidden></option>
-                    <option value="user" <?php echo $user->type === 'client' ? 'selected' : ''; ?>>Client</option>
+                    <option value="client" <?php echo $user->type === 'client' ? 'selected' : ''; ?>>Client</option>
                     <option value="agent" <?php echo $user->type === 'agent' ? 'selected' : ''; ?>>Agent</option>
                     <option value="admin" <?php echo $user->type === 'admin' ? 'selected' : ''; ?>>Admin</option>
                     </select>
