@@ -83,6 +83,7 @@ function drawTicket(Ticket $ticket){
               <?php } ?>
             </ul>
           </li>
+          <li><a href="ticket_history.php?id=<?php echo $ticket->id; ?>">History</a></li>
           <!-- attachments -->
           <?php if (count($ticket->attachments($db)) > 0) { ?>
             <li>

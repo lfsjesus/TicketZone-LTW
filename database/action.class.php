@@ -37,4 +37,24 @@ class Action
     
         return $actions;
     } 
+
+    static function getActionsByTicketId(PDO $db, int $ticketId): array
+    {
+        $stmt = $db->prepare('SELECT * FROM Actions WHERE ticket_id = ? ORDER BY date DESC');
+        $stmt->execute([$ticketId]);
+
+        $actions = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $action = new Action(
+                (int)$row['id'],
+                (int)$row['ticket_id'],
+                (int)$row['user_id'],
+                $row['action'],
+                new DateTime($row['date'])
+            );
+            $actions[] = $action;
+        }
+
+        return $actions;
+    }
 }
