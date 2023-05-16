@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $pdo = getDatabaseConnection();
 
             // Prepare SQL statement to insert user into database
-            $stmt = $pdo->prepare("INSERT INTO Users (username, password, email, firstName, lastName,type, department_id) VALUES (:username, :password, :email, :firstName, :lastName, :type, :department_id)");
+            $stmt = $pdo->prepare("INSERT INTO Users (username, password, email, firstName, lastName,type) VALUES (:username, :password, :email, :firstName, :lastName, :type)");
 
             // Bind parameters to statement
             $stmt->bindParam(':username', $username);
@@ -36,7 +36,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $stmt->bindParam(':firstName', $firstName);
             $stmt->bindParam(':lastName', $lastName);
             $stmt->bindValue(':type', 'client'); // default to 'client' type
-            $stmt->bindValue(':department_id', 1); // default to department 1
 
             // Execute statement
             if ($stmt->execute()) {
