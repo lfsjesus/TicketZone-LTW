@@ -19,7 +19,7 @@
 
     $user->save($db);
 
-    header('Location: ../pages/dashboard.php');
+    header('Location: ../pages/userTicket.php');
   }
 
   $error = '';

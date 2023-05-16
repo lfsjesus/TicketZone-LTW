@@ -35,7 +35,6 @@ function drawNavbar(Session $session){ ?>
   <nav id="menu">
       <img src="../images/ticketzone_logo.png" alt="logo" class="logo">
       <ul>
-        <li><a href="/../pages/dashboard.php"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
         <?php if ($session->getUser()->type == 'admin') { ?>
         <li><a href="/../pages/management.php"><span class="material-symbols-outlined">people</span>Management</a></li>
         <?php } ?>

@@ -14,7 +14,7 @@ $db = getDatabaseConnection();
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
 
 if ($ticket == null) {
-    header('Location: ../pages/userTickets.php');
+    header('Location: ../pages/userTicket.php');
     die();
 }
 

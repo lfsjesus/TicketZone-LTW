@@ -21,7 +21,7 @@
         $session->setId($user->id);
         $session->setUser($user);
         $session->addMessage('success', 'Login successful!');
-        header('Location: ../pages/dashboard.php');
+        header('Location: ../pages/userTicket.php');
         
     } else {
         $session->addMessage('error', 'Wrong email or password!');

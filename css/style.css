@@ -20,16 +20,6 @@ a {
     height: 100vh;
 }
 
-
-main > p {
-    font-family: "Montserrat",sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    opacity: 0.5;
-    text-align: justify;
-    margin: 0 auto;
-}
-
 #menu {
     grid-column: 1 / 2;
     background-color:#24252A;
@@ -101,28 +91,8 @@ main {
     color: white;
 }
 
-
-/*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
-                        /* CSS for index.php */
-
-#home_main {
-    background-image: url("../images/background-image.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.85; /* Change the value to make the background less or more opaque */
-    display: flex;
-    align-items: center;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-#home_main h1 {
-    font-family: "Montserrat", sans-serif;
-    color: white;
-    margin: auto auto;
-    font-size: 3.3em;
-    letter-spacing: 0.1em;
+main > h1:first-child {
+  margin-bottom: 2em;
 }
 
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/

@@ -22,7 +22,7 @@ function draw_login() {
     $session = new Session();
 
     if ($session->isLoggedIn()) {
-        header('Location: ../pages/dashboard.php');
+        header('Location: ../pages/userTicket.php');
     }
     else {
         drawHeader("Login");

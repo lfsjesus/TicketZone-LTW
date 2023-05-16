@@ -15,7 +15,7 @@ $db = getDatabaseConnection();
 $user = User::getUser($db, (int)$_GET['id']);
 
 if ($user == null) {
-    header('Location: ../pages/userTickets.php');
+    header('Location: ../pages/userTicket.php');
     die();
 }
 
