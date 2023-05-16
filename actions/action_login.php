@@ -1,7 +1,7 @@
 <?php
     declare(strict_types = 1);
     require_once(__DIR__ . '/../utils/session.php');
-
+    $error = '';
     $session = new Session();
 
     require_once(__DIR__ . '/../database/connection.db.php');
@@ -20,12 +20,11 @@
     if ($user && password_verify($password, $hash)) {
         $session->setId($user->id);
         $session->setUser($user);
-        $session->addMessage('success', 'Login successful!');
         header('Location: ../pages/userTicket.php');
         
     } else {
-        $session->addMessage('error', 'Wrong email or password!');
-        header('Location: ../pages/login_page.php');
+        $error = 'Wrong email or password!';
+        header('Location: ../pages/login_page.php?error=' . urlencode($error));
     }
 
 ?> 

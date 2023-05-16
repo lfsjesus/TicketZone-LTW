@@ -1,6 +1,8 @@
 <?php declare(strict_types = 1); ?>
 
-<?php function drawProfileForm(User $user) { ?>
+<?php function drawProfileForm(User $user) { 
+  $error = $_GET['error'];
+  ?>
 <form action="../actions/action_edit_profile.php" method="post" class="profile">
 
     <label for="first_name">First Name:</label>
@@ -22,5 +24,7 @@
     <input id="repeat_password" type="password" name="repeat_password" placeholder="Repeat new password">
 
   <button type="submit">Save</button>
+  <span><?php echo $error ?></span>
+
 </form>
 <?php } ?>

@@ -4,6 +4,7 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
 
 function draw_login() {
+    $error = $_GET['error'];
     ?>
     <main class="authentication">
         <section id="credentials-form">
@@ -14,13 +15,13 @@ function draw_login() {
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <input type="submit" name="login" value="Login">
                 <p>Don't have an account? <a href="registration_page.php">Register here</a></p>
+                <span><?php echo $error ?></span>
             </form>
         </section>
     </main>
     <?php
 }
     $session = new Session();
-
     if ($session->isLoggedIn()) {
         header('Location: ../pages/userTicket.php');
     }
