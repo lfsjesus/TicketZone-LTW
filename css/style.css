@@ -646,6 +646,10 @@ main {
   padding: 0;
 }
 
+.ticket-meta span {
+  vertical-align: middle;
+}
+
 .attachments > li > a {
   display: flex;
   flex-direction: row;
@@ -1099,7 +1103,16 @@ main {
   border-bottom-right-radius: 5px;
 }
 
+/* ACTION HISTORY */
 
+#history li {
+  line-height: 2em;
+}
+
+#history a {
+  border-bottom: 2px solid lightblue;
+  font-weight: bold;
+}
 
 
   

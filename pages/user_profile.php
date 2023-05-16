@@ -25,7 +25,7 @@ drawHeader($user->firstName . ' ' . $user->lastName );
     <?php
     drawNavbar($session);
     ?>
-    <main id="profile">
+    <main id="history">
     <h2>Action History</h2>
     <ul>
         <?php
