@@ -17,7 +17,7 @@ $db = getDatabaseConnection();
     <main id = "faq-page">
         <header>
           <h1>Frequently Asked Questions - FAQ</h1>
-          <button class="add-faq">
+          <button class="create-button">
             <a href="/../pages/add_faq.php"><span class="material-symbols-outlined">add_circle</span>Add FAQ</a>
           </button>
         </header>

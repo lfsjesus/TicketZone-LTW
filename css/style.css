@@ -89,6 +89,7 @@ main {
     overflow-y: scroll;
     background-color: #17171c;
     color: white;
+    max-height: 100vh;
 }
 
 main > h1:first-child {
@@ -144,7 +145,7 @@ main > h1:first-child {
     outline: none;
   }
 
-.create-ticket, .add-faq {
+.create-button {
     font-family: "Montserrat",sans-serif;
     background-color: #31333a;
     color: white;
@@ -155,19 +156,19 @@ main > h1:first-child {
     transition: 0.4s;
 }
 
-.create-ticket > a, .add-faq > a {
+.create-button > a {
     display: flex;  
     align-items: center;
     padding: 1em;
     height: 100%;
 }
 
-.create-ticket:hover, .add-faq:hover {
+.create-button:hover {
     background-color: #46464b;
     border: 1px solid #46464b;
 }
 
-.create-ticket .material-symbols-outlined, .add-faq .material-symbols-outlined {
+.create-button .material-symbols-outlined {
     margin-right: 0.5em;
 }
 
