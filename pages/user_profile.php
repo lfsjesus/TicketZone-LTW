@@ -10,14 +10,14 @@ require_once(__DIR__ . '/../database/action.class.php');
 
 $session = new Session();
 
+if(!$session->isLoggedIn()) {
+    header('Location: ../pages/login_page.php');
+    die();
+}
+
 $db = getDatabaseConnection();
 
 $user = User::getUser($db, (int)$_GET['id']);
-
-if ($user == null) {
-    header('Location: ../pages/userTicket.php');
-    die();
-}
 
 drawHeader($user->firstName . ' ' . $user->lastName );
 ?>

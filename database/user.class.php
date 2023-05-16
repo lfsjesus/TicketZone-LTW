@@ -120,6 +120,10 @@
                 ));
             }
             return $users;
-        } 
+        }
+        
+        static function isAdmin() : bool {
+            return $_SESSION['user']->type == 'admin';
+        }
     }
 ?>

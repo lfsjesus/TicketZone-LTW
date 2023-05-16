@@ -6,7 +6,15 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 
 $session = new Session();
+
+if (!$session->isLoggedIn()) {
+    header('Location: ../pages/login_page.php');
+    die();
+}
+
 $db = getDatabaseConnection();
+
+$userType = $session->getUser()->type;
 
   drawHeader("FAQ");
   ?>
@@ -17,9 +25,11 @@ $db = getDatabaseConnection();
     <main id = "faq-page">
         <header>
           <h1>Frequently Asked Questions - FAQ</h1>
-          <button class="create-button">
-            <a href="/../pages/add_faq.php"><span class="material-symbols-outlined">add_circle</span>Add FAQ</a>
-          </button>
+          <?php
+            if ($userType === 'admin' || $userType === 'agent') {
+                echo '<button class="create-button"><a href="/../pages/add_faq.php"><span class="material-symbols-outlined">add_circle</span>Add FAQ</a></button>';
+            }
+            ?>
         </header>
         <section class="faq">
             <?php 
@@ -29,8 +39,9 @@ $db = getDatabaseConnection();
                 echo '<li id="' . $faq['id'] . '">';
                 echo '<header>';
                 echo '<h2>' . htmlspecialchars($faq['question']) . '</h2>';
-                // put delete button here. modify so it's only visible to agents and admins
-                echo '<button class="delete"><span class="material-symbols-outlined">delete</span></button>';
+                if ($userType === 'admin' || $userType === 'agent') {
+                  echo '<button class="delete"><span class="material-symbols-outlined">delete</span></button>';
+                }
                 echo '</header>';
                 echo '<p>' . htmlspecialchars($faq['answer']) . '</p>';
                 echo '</li>';

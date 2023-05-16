@@ -8,7 +8,10 @@ require_once(__DIR__ . '/../templates/ticket.tpl.php');
 require_once(__DIR__ . '/../templates/comment.tpl.php');
 
 $session = new Session();
-
+if (!$session->isLoggedIn()) {
+    header('Location: ../pages/login.php');
+    die();
+}
 $db = getDatabaseConnection();
 
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
