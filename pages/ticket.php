@@ -13,7 +13,7 @@ if (!$session->isLoggedIn()) {
     die();
 }
 $db = getDatabaseConnection();
-
+$userType = $session->getUser()->type;
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
 
 if ($ticket == null) {
@@ -29,7 +29,7 @@ drawHeader($ticket->title);
     ?>
     <main id="ticket">
         <?php
-            drawTicket($ticket);
+            drawTicket($ticket, $userType);
         ?>
         <section id="comments">
             <h2>Comments</h2>
