@@ -1043,7 +1043,7 @@ main > h1:first-child {
   font-size: 0.9em;
 }
 
-#management-page table td:last-child, #management-page table th:last-child {
+#management-page table tbody td:last-child, #management-page table tbody th:last-child {
   float: right;
 }
 

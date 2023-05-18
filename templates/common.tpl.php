@@ -57,7 +57,7 @@ function drawNavbar(Session $session){ ?>
 <?php } 
 
 
-function drawSearchbar(){
+function drawUserTicketHeader(Session $session){
   $db = getDatabaseConnection();
 ?>
   <header>
@@ -68,6 +68,10 @@ function drawSearchbar(){
 
     <!-- options for tickets when selected like delete, change status, etc-->
     <form class="ticket-options" style="display: none">
+      <?php 
+      $userType = $session->getUser()->type;
+      if ($userType === 'admin' || $userType === 'agent') {
+      ?>      
       <select name="status">
               <option value="" disabled selected hidden>Status</option>
               <option value="open">Open</option>
@@ -98,6 +102,7 @@ function drawSearchbar(){
               <?php }
               ?>
       </select>
+      <?php } ?>
       <button class="delete"><span class="material-symbols-outlined">delete</span></button>
     </form>
 

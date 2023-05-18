@@ -21,7 +21,8 @@ function drawTicket(Ticket $ticket, string $userType)
             </div>
             <p class="ticket-description"><?= nl2br(htmlspecialchars($ticket->description)) ?></p>
             <ul class="ticket-meta">
-                <li>Created by: <?= $ticket->ticketCreator->name() ?></li>
+                
+                <li>Created by: <?= $ticket->ticketCreator != null ? $ticket->ticketCreator->name() : 'Unknown' ?></li>
                 <li>Created at: <?= $ticket->dateCreated->format('d/m/Y H:i') ?></li>
                 <li>Assigned to:
                     <select name="assignee" <?= !$isAdminOrAgent ? 'disabled' : '' ?>>

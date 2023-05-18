@@ -49,7 +49,7 @@ function updateTableData(page = 1) {
 
                     tr.innerHTML = `
                         <td><input type="checkbox" value="${ticket.id}" name="ticket[]"></td>
-                        <td class="table-title"><a href="user_profile.php?id=${ticket.ticketCreator.id}">${ticket.ticketCreator.firstName + ' ' + ticket.ticketCreator.lastName}</td>
+                        <td class="table-title"><a href="${ticket.ticketCreator != null ? 'user_profile.php?id=' + ticket.ticketCreator.id : ''}">${ticket.ticketCreator != null ? ticket.ticketCreator.firstName + ' ' + ticket.ticketCreator.lastName : ''}</td>
                         <td class="table-title"><a href="ticket.php?id=${ticket.id}">${ticket.title}</a></td>
                         <td rowspan="2" class="table-title"><a href="${ticket.ticketAssignee != null ? 'user_profile.php?id=' + ticket.ticketAssignee.id : ''}">${ticket.ticketAssignee != null ? ticket.ticketAssignee.firstName + ' ' + ticket.ticketAssignee.lastName : ''}</td>
                         <td rowspan="2" class="table-title">${ticket.status}</td>
@@ -61,27 +61,26 @@ function updateTableData(page = 1) {
                     let tr2 = document.createElement('tr');
                     tr2.innerHTML = `
                         <td></td>
-                        <td>${ticket.ticketCreator.email}</td>
+                        <td>${ticket.ticketCreator != null ? ticket.ticketCreator.email : ''}</td>
                         <td>${ticket.description.substring(0, 15) + '...'}</td>
                     `;
                     tbody.appendChild(tr);
                     tbody.appendChild(tr2);
                 });
-                let pagination = document.querySelector('.pagination');
-                pagination.innerHTML = '';
-                let pages = (response.count + 6) / 7;
-                for (let i = 1; i <= pages; i++) {
-                    let li = document.createElement('li');
-                    li.innerHTML = `<a href="#" page="${i}">${i}</a>`;
-                    if (i == page) {
-                        li.classList.add('active');
-                    }
-                    pagination.appendChild(li);
-                }
-
             }
             else {
                 tbody.innerHTML = '<tr><td colspan="7">No tickets found</td></tr>';
+            }
+            let pagination = document.querySelector('.pagination');
+            pagination.innerHTML = '';
+            let pages = (response.count + 6) / 7;
+            for (let i = 1; i <= pages; i++) {
+                let li = document.createElement('li');
+                li.innerHTML = `<a href="#" page="${i}">${i}</a>`;
+                if (i == page) {
+                    li.classList.add('active');
+                }
+                pagination.appendChild(li);
             }
         }
 

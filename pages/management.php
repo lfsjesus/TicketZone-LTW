@@ -35,91 +35,91 @@ $db = getDatabaseConnection();
           </div>
         </header>
         <section class="people active">
-        <!-- list all users -->
+          <header>
+          <form class="search-form">
+            <input type="text" placeholder="Search for person's name" name="personName">
+            <button type="submit"><span class="material-symbols-outlined">search</span></button>
+          </form>
+          </header>
             <table>
             <thead>
                 <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Department</th>
-                <th>Role</th>
+                <form>
+                <th>
+                  <select name="department_id" id="department_id">
+                    <option value="" disabled selected hidden>Department</option>
+                    <option value="all">All</option>
+                  <?php
+                  $departments = Department::getDepartments($db);
+                  foreach ($departments as $department) {
+                  echo '<option value="' . $department->id . '">' . $department->name . '</option>';
+                  }
+                  ?>
+                  </select>
+                </th>
+                <th>
+                  <select name="type" id="type">
+                      <option value="" disabled selected hidden>Role</option>
+                      <option value="all">All</option>
+                      <option value="admin">Admin</option>
+                      <option value="agent">Agent</option>
+                      <option value="client">Client</option>
+                  </select>
+                </th>
+                </form>
                 <th></th>
                 </tr>
             </thead>
             <tbody>
-            <?php
-            $users = User::getUsers($db);
-            foreach ($users as $user) { ?>
-                <tr>
-                <input type="hidden" name="id" value="<?=$user->id?>">
-                <td><?=$user->name()?></td>
-                <td><?=$user->email?></td>
-                <td>
-                    <select name="department_id">
-                    <option value="" disabled selected hidden></option>
-                    <?php
-                    $departments = Department::getDepartments($db);
-                    foreach ($departments as $department) { 
-                    echo '<option value="' . $department->id . '" ' . ($department->id === $user->department->id ? 'selected' : '') . '>' . $department->name . '</option>';
-                    }
-                    ?>
-                    </select>
-                </td>
-                <td>
-                    <select name="type">
-                    <option value="" disabled selected hidden></option>
-                    <option value="client" <?php echo $user->type === 'client' ? 'selected' : ''; ?>>Client</option>
-                    <option value="agent" <?php echo $user->type === 'agent' ? 'selected' : ''; ?>>Agent</option>
-                    <option value="admin" <?php echo $user->type === 'admin' ? 'selected' : ''; ?>>Admin</option>
-                    </select>
-                </td>
-                <td>
-                    <form action="../actions/action_delete_user.php" method="post">
-                        <button class="delete" name="id" value="<?=$user->id?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
-                    </form>
-                </td>
-                </tr>
-            <?php } ?>
             </tbody>
-            </table>
-
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  <div class = "pagination">
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+        </table>
         </section>
         <section class="departments">
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>-</td>
-              <td class="add-entry">
-                <form action="../actions/action_add_department.php" method="post">
-                  <input type="text" name="department" placeholder="Add a new department">
-                  <button type="submit" class="material-symbols-outlined">add</button>
-                </form>
-              </td>
-              <td></td>
-            </tr>
-          <?php
-          $departments = Department::getDepartments($db);
-          foreach ($departments as $department) { ?>
-            <tr>
-              <td><?=$department->id?></td>
-              <td><?=$department->name?></td>
-              <td>
-                <form action="../actions/action_delete_department.php" method="post">
-                  <button class="delete" name="department_id" value="<?=$department->id?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
-                </form>
-              </td>
-            </tr>
-          <?php } ?>
-          </tbody>
-        </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-</td>
+                <td class="add-entry">
+                  <form action="../actions/action_add_department.php" method="post">
+                    <input type="text" name="department" placeholder="Add a new department">
+                    <button type="submit" class="material-symbols-outlined">add</button>
+                  </form>
+                </td>
+                <td></td>
+              </tr>
+            <?php
+            $departments = Department::getDepartments($db);
+            foreach ($departments as $department) { ?>
+              <tr>
+                <td><?=$department->id?></td>
+                <td><?=$department->name?></td>
+                <td>
+                  <form action="../actions/action_delete_department.php" method="post">
+                    <button class="delete" name="department_id" value="<?=$department->id?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
+                  </form>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+          </table>
         </section>
         <section class="statuses">
             <table>

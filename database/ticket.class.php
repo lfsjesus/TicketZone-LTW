@@ -8,7 +8,7 @@ class Ticket {
     public int $id;
     public string $title;
     public string $description;
-    public User $ticketCreator;
+    public ?User $ticketCreator;
     public ?User $ticketAssignee;
     public ?Department $department;
     public string $status;
@@ -16,7 +16,7 @@ class Ticket {
     public datetime $dateCreated;
     public array $hashtags;
 
-    public function __construct(int $id, string $title, string $description, User $ticketCreator, ?User $ticketAssignee, ?Department $department, string $status, ?string $priority, datetime $dateCreated, array $hashtags) {
+    public function __construct(int $id, string $title, string $description, ?User $ticketCreator, ?User $ticketAssignee, ?Department $department, string $status, ?string $priority, datetime $dateCreated, array $hashtags) {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;

@@ -23,7 +23,7 @@
 ?>
 <main>
 <?php 
-drawSearchbar();
+drawUserTicketHeader($session);
 if (!$session->isLoggedIn()) {
   echo '<h1>Access denied</h1>';
 }
@@ -45,7 +45,7 @@ else {
                   echo '<option value="' . $user->id . '">' . $user->name() . '</option>';
                 }
               ?>
-
+            </select>
           </th>
           <th>Message</th>
           <th>
@@ -58,7 +58,7 @@ else {
                   echo '<option value="' . $agent->id . '">' . $agent->name() . '</option>';
                 }
               ?>
-
+            </select>
           </th>
           <th>
             <select name="status" id="status">
@@ -72,6 +72,7 @@ else {
                 echo '<option>' . $status['name'] . '</option>';
               }
             ?>
+            </select>
           </th>
           <th>
             <select name="priority" id="priority">
@@ -80,6 +81,7 @@ else {
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option value="low">Low</option>
+            </select>
           </th>
           <th>
             <select name="department" id="department">
@@ -91,11 +93,13 @@ else {
                   echo '<option value="' . $department->id . '">' . $department->name . '</option>';
                 }
               ?>
+            </select>
           </th>
           <th>
             <select name="date" id="date">
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
+            </select>
           </th>
         </tr>       
       </thead>
