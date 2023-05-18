@@ -7,6 +7,7 @@ require_once(__DIR__ . '/../database/department.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 
 $session = new Session();
+$userType = $session->getUser()->type;
 
 if (!$session->isLoggedIn()) {
     header('Location: ../pages/login_page.php');
