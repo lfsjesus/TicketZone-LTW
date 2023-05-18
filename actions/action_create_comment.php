@@ -10,6 +10,8 @@ if (!$session->isLoggedIn()) {
     die();
 }
 
+// Verificar se ticket é do user logged (para poder comentar), ou então é agente ou admin
+
 $db = getDatabaseConnection();
 
 $ticket_id = (int)$_POST['ticket_id'];

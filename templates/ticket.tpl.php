@@ -37,6 +37,7 @@ function drawTicket(Ticket $ticket, string $userType)
                 </li>
                 <li>Department:
                     <select name="department" <?= !$isAdminOrAgent ? 'disabled' : '' ?>>
+                        <option value="" disabled selected hidden></option>
                         <?php
                         $departments = Department::getDepartments($db);
                         foreach ($departments as $department) {
