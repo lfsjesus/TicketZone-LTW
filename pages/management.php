@@ -21,7 +21,7 @@ $db = getDatabaseConnection();
 
 drawHeader("Management");
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
@@ -159,7 +159,7 @@ drawHeader("Management");
       </table>
     </section>
   </main>
-</section>
+</div>
 <?php
 drawFooter();
 ?>

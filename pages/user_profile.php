@@ -22,7 +22,7 @@ $user = User::getUser($db, (int)$_GET['id']);
 
 drawHeader($user->firstName . ' ' . $user->lastName);
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
     <?php
     drawNavbar($session);
     ?>
@@ -38,7 +38,7 @@ drawHeader($user->firstName . ' ' . $user->lastName);
             ?>
         </ul>
     </main>
-</section>
+</div>
 <?php
 drawFooter();
 ?>

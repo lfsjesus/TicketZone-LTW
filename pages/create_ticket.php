@@ -20,7 +20,7 @@ $departments = Department::getDepartments($db);
 
 drawHeader("Create Ticket");
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
     <?php
     drawNavbar($session);
     ?>
@@ -41,7 +41,7 @@ drawHeader("Create Ticket");
                 <input type="submit" value="Create Ticket">
         </form>
     </main>
-</section>
+</div>
 <?php
 drawFooter();
 ?>

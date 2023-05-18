@@ -14,7 +14,7 @@ if (!$session->isLoggedIn()) {
 
 drawHeader("About Us");
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
@@ -44,7 +44,7 @@ drawHeader("About Us");
     <p>At TicketZone, we prioritize customer satisfaction. We continuously monitor and improve our support processes to ensure that your experience exceeds expectations.</p>
     <p>Join the TicketZone community today and experience hassle-free support ticket management. We are committed to streamlining the support process, empowering businesses, and providing excellent customer service. Let us assist you in resolving your queries and providing the support you deserve.</p>
   </main>
-</section>
+</div>
 <?php
 drawFooter();
 ?>

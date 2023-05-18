@@ -20,7 +20,7 @@ $user = User::getUser($db, $session->getId());
 
 drawHeader("Edit Profile");
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
 
   <?php
   drawNavbar($session);
@@ -30,7 +30,7 @@ drawHeader("Edit Profile");
     drawProfileForm($user);
     ?>
   </main>
-</section>
+</div>
 <?php
 drawFooter();
 ?>

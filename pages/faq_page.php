@@ -19,7 +19,7 @@ $userType = $session->getUser()->type;
 
 drawHeader("FAQ");
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
@@ -51,7 +51,7 @@ drawHeader("FAQ");
       ?>
     </section>
   </main>
-</section>
+</div>
 <?php
 drawFooter();
 ?>

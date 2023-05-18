@@ -18,7 +18,7 @@ if (!$session->isLoggedIn()) {
 $db = getDatabaseConnection();
 drawHeader("My Tickets");
 ?>
-<section id="main-wrapper">
+<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
@@ -118,7 +118,7 @@ drawHeader("My Tickets");
       </table>
 
   </main>
-</section>
+    </div>
 <?php
 drawFooter();
 ?>
