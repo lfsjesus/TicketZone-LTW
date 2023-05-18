@@ -15,18 +15,20 @@ if ($userType !== 'admin') {
     header('Location: ../pages/userTicket.php');
     die();
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$db = getDatabaseConnection();
+    $db = getDatabaseConnection();
 
-$status = strtolower($_POST['status']);
+    $status = strtolower($_POST['status']);
 
-try {
-    $stmt = $db->prepare('INSERT INTO Statuses (name) VALUES (?)');
-    $stmt->execute(array($status));
-} catch (PDOException $e) {
-    if ($e->getCode() == 23000) {
-        echo 'Status already exists';
+    try {
+        $stmt = $db->prepare('INSERT INTO Statuses (name) VALUES (?)');
+        $stmt->execute(array($status));
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) {
+            echo 'Status already exists';
+        }
     }
-}
 
-header('Location: ../pages/management.php?tab=2');
+    header('Location: ../pages/management.php?tab=2');
+}

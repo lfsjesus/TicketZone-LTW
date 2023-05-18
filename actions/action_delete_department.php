@@ -16,11 +16,16 @@ if ($userType !== 'admin') {
     die();
 }
 
-$db = getDatabaseConnection();
 
-$department_id = $_POST['department_id'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$stmt = $db->prepare('DELETE FROM Departments WHERE id = ?');
-$stmt->execute(array($department_id));
 
-header('Location: ../pages/management.php?tab=1');
+    $db = getDatabaseConnection();
+
+    $department_id = $_POST['department_id'];
+
+    $stmt = $db->prepare('DELETE FROM Departments WHERE id = ?');
+    $stmt->execute(array($department_id));
+
+    header('Location: ../pages/management.php?tab=1');
+}

@@ -4,25 +4,28 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
 
-$session = new Session();
-$userType = $session->getUser()->type;
 
-if (!$session->isLoggedIn()) {
-    header('Location: ../pages/login_page.php');
-    die();
-}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $session = new Session();
+    $userType = $session->getUser()->type;
 
-if ($userType !== 'admin') {
-    header('Location: ../pages/userTicket.php');
-    die();
-}
+    if (!$session->isLoggedIn()) {
+        header('Location: ../pages/login_page.php');
+        die();
+    }
 
-$db = getDatabaseConnection();
+    if ($userType !== 'admin') {
+        header('Location: ../pages/userTicket.php');
+        die();
+    }
 
-$user = User::getUser($db, (int)$_POST['id']);
+    $db = getDatabaseConnection();
 
-if ($user) {
-    $stmt = $db->prepare('DELETE FROM Users WHERE id = ?');
-    $stmt->execute(array($user->id));
-    header('Location: ../pages/management.php');
+    $user = User::getUser($db, (int)$_POST['id']);
+
+    if ($user) {
+        $stmt = $db->prepare('DELETE FROM Users WHERE id = ?');
+        $stmt->execute(array($user->id));
+        header('Location: ../pages/management.php');
+    }
 }

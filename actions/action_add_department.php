@@ -15,18 +15,20 @@ if ($userType !== 'admin') {
     header('Location: ../pages/userTicket.php');
     die();
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$db = getDatabaseConnection();
+    $db = getDatabaseConnection();
 
-$department = ucfirst(strtolower($_POST['department']));
+    $department = ucfirst(strtolower($_POST['department']));
 
-try {
-    $stmt = $db->prepare('INSERT INTO Departments (name) VALUES (?)');
-    $stmt->execute(array($department));
-} catch (PDOException $e) {
-    if ($e->getCode() == 23000) {
-        echo 'Department already exists';
+    try {
+        $stmt = $db->prepare('INSERT INTO Departments (name) VALUES (?)');
+        $stmt->execute(array($department));
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) {
+            echo 'Department already exists';
+        }
     }
-}
 
-header('Location: ../pages/management.php?tab=1');
+    header('Location: ../pages/management.php?tab=1');
+}

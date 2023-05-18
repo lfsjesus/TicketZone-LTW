@@ -3,10 +3,11 @@
     require_once(__DIR__ . '/../utils/session.php');
     require_once(__DIR__ . '/../database/connection.db.php');
     require_once(__DIR__ . '/../database/user.class.php');
+    
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $error = '';
     $session = new Session();
-
     $db = getDatabaseConnection();
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -26,3 +27,5 @@
         $error = 'Wrong email or password!';
         header('Location: ../pages/login_page.php?error=' . urlencode($error));
     }
+
+}

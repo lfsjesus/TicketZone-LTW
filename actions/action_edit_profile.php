@@ -5,20 +5,21 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
 
-$session = new Session();
-
-if (!$session->isLoggedIn()) {
-    header('Location: ../pages/login_page.php');
-    die();
-}
-
-$db = getDatabaseConnection();
-
-$user = User::getUser($db, $session->getId());
-
-$error = '';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $session = new Session();
+
+    if (!$session->isLoggedIn()) {
+        header('Location: ../pages/login_page.php');
+        die();
+    }
+
+    $db = getDatabaseConnection();
+
+    $user = User::getUser($db, $session->getId());
+
+    $error = '';
+
     $new_password = $_POST['password'];
     $repeat_password = $_POST['repeat_password'];
 
