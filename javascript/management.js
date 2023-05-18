@@ -1,7 +1,7 @@
 /******************************************/
 // mark as active the tab clicked, being the first one the default
 
-let tabs = document.querySelectorAll(".tabs a");
+const tabs = document.querySelectorAll(".tabs a");
 tabs.forEach(function (tab) {
   tab.addEventListener("click", function () {
     tabs.forEach(function (tab) {
@@ -12,7 +12,7 @@ tabs.forEach(function (tab) {
 });
 
 // according to the tab clicked, show the corresponding content by adding the class active #management-page > section
-let tabsContent = document.querySelectorAll("#management-page > section");
+const tabsContent = document.querySelectorAll("#management-page > section");
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function () {
     tabsContent.forEach(function (tab) {
@@ -64,9 +64,9 @@ if (tab) {
 const searchInput = document.querySelector(".search-form input");
 
 function updateTablePeople(page = 1) {
-  let tbody = document.querySelector(".people table tbody");
-  let form = document.querySelectorAll(".people table thead select");
-  let formData = new FormData();
+  const tbody = document.querySelector(".people table tbody");
+  const form = document.querySelectorAll(".people table thead select");
+  const formData = new FormData();
   form.forEach((select) => {
     formData.append(select.name, select.value);
   });
@@ -80,7 +80,7 @@ function updateTablePeople(page = 1) {
       tbody.innerHTML = "";
       if (response.users.length > 0) {
         response.users.forEach((person) => {
-          let tr = document.createElement("tr");
+          const tr = document.createElement("tr");
           tr.innerHTML = `
                     <input type="hidden" name="id" value="${person.id}">
                     <td>${person.firstName + " " + person.lastName}</td>
@@ -123,17 +123,17 @@ function updateTablePeople(page = 1) {
           tbody.appendChild(tr);
         });
       } else {
-        let tr = document.createElement("tr");
+        const tr = document.createElement("tr");
         tr.innerHTML = `
                 <td colspan="5">No results found</td>
                 `;
         tbody.appendChild(tr);
       }
-      let pagination = document.querySelector(".pagination");
+      const pagination = document.querySelector(".pagination");
       pagination.innerHTML = "";
-      let pages = (response.count + 6) / 7;
+      const pages = (response.count + 6) / 7;
       for (let i = 1; i <= pages; i++) {
-        let li = document.createElement("li");
+        const li = document.createElement("li");
         li.innerHTML = `<a href="#" page="${i}">${i}</a>`;
         if (i == page) {
           li.classList.add("active");
@@ -146,7 +146,7 @@ function updateTablePeople(page = 1) {
 }
 
 // add event listener in selects of table header
-let selectsThead = document.querySelectorAll(".people table thead select");
+const selectsThead = document.querySelectorAll(".people table thead select");
 selectsThead.forEach(function (select) {
   select.addEventListener("change", function () {
     updateTablePeople();
@@ -168,11 +168,11 @@ window.addEventListener("load", function () {
 });
 
 /* PAGINATION MANAGEMENT OF TABEL TICKETS */
-let pagination = document.querySelector(".pagination");
+const pagination = document.querySelector(".pagination");
 pagination.addEventListener("click", function (e) {
   if (e.target.tagName == "A") {
     e.preventDefault();
-    let page = e.target.getAttribute("page");
+    const page = e.target.getAttribute("page");
     updateTablePeople(page);
   }
 });

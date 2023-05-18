@@ -112,10 +112,8 @@ function drawUserTicketHeader(Session $session)
         <button class="delete"><span class="material-symbols-outlined">delete</span></button>
       </form>
 
-      <!-- button to create new ticket that redirect to page to create ticket -->
-      <button class="create-button">
-        <a href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a>
-      </button>
+      <a class="create-button" href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a>
+
     </header>
   <?php }
 

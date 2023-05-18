@@ -21,8 +21,8 @@ if (search) {
 }
 
 function updateTableData(page = 1) {
-  let tbody = document.querySelector(".ticket-list tbody");
-  let form = document.querySelectorAll(".ticket-list thead select");
+  const tbody = document.querySelector(".ticket-list tbody");
+  const form = document.querySelectorAll(".ticket-list thead select");
   let formData = new FormData();
   form.forEach((input) => {
     formData.append(input.name, input.value);
@@ -38,10 +38,10 @@ function updateTableData(page = 1) {
       console.log(response);
       if (response.tickets.length > 0) {
         // update table of contents
-        let tickets = response.tickets;
+        const tickets = response.tickets;
         tbody.innerHTML = "";
         tickets.forEach((ticket) => {
-          let tr = document.createElement("tr");
+          const tr = document.createElement("tr");
           const date = new Date(ticket.dateCreated.date);
           const formattedDate =
             date.getDate().toString().padStart(2, "0") +
@@ -98,7 +98,7 @@ function updateTableData(page = 1) {
                         }</td>
                         <td rowspan="2" class="table-title">${formattedDate}</td>
                     `;
-          let tr2 = document.createElement("tr");
+          const tr2 = document.createElement("tr");
           tr2.innerHTML = `
                         <td></td>
                         <td>${
@@ -114,11 +114,11 @@ function updateTableData(page = 1) {
       } else {
         tbody.innerHTML = '<tr><td colspan="7">No tickets found</td></tr>';
       }
-      let pagination = document.querySelector(".pagination");
+      const pagination = document.querySelector(".pagination");
       pagination.innerHTML = "";
-      let pages = (response.count + 6) / 7;
+      const pages = (response.count + 6) / 7;
       for (let i = 1; i <= pages; i++) {
-        let li = document.createElement("li");
+        const li = document.createElement("li");
         li.innerHTML = `<a href="#" page="${i}">${i}</a>`;
         if (i == page) {
           li.classList.add("active");
@@ -131,7 +131,7 @@ function updateTableData(page = 1) {
 }
 
 /* PAGINATION MANAGEMENT OF TABEL TICKETS */
-let pagination = document.querySelector(".pagination");
+const pagination = document.querySelector(".pagination");
 pagination.addEventListener("click", function (e) {
   if (e.target.tagName == "A") {
     e.preventDefault();
@@ -141,11 +141,11 @@ pagination.addEventListener("click", function (e) {
 });
 
 /* TICKET SELECTION AND ACTIONS DISPLAY */
-let theadCheckbox = document.querySelector(
+const theadCheckbox = document.querySelector(
   '.ticket-list thead input[type="checkbox"]'
 );
 theadCheckbox.addEventListener("click", function () {
-  let checkboxes = document.querySelectorAll(
+  const checkboxes = document.querySelectorAll(
     '.ticket-list tbody input[type="checkbox"]'
   );
   checkboxes.forEach((checkbox) => {
@@ -153,9 +153,9 @@ theadCheckbox.addEventListener("click", function () {
   });
 });
 
-let ticketOptions = document.querySelector(".ticket-options");
+const ticketOptions = document.querySelector(".ticket-options");
 document.addEventListener("click", function () {
-  let checkboxes = document.querySelectorAll(
+  const checkboxes = document.querySelectorAll(
     '.ticket-list tbody input[type="checkbox"]'
   );
   let checked = false;
@@ -172,7 +172,7 @@ document.addEventListener("click", function () {
 });
 
 function getCheckedCheckboxes() {
-  let checkboxes = document.querySelectorAll(
+  const checkboxes = document.querySelectorAll(
     '.ticket-list tbody input[type="checkbox"]'
   );
   let checked = [];
@@ -185,12 +185,10 @@ function getCheckedCheckboxes() {
 }
 
 /* TICKET ACTIONS */
-let deleteBtn = document.querySelector(".ticket-options .delete");
-console.log(deleteBtn);
+const deleteBtn = document.querySelector(".ticket-options .delete");
 deleteBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  let checked = getCheckedCheckboxes();
-  console.log(checked);
+  const checked = getCheckedCheckboxes();
   if (checked.length > 0) {
     checked.forEach((id) => {
       let xhr = new XMLHttpRequest();
@@ -208,9 +206,9 @@ deleteBtn.addEventListener("click", function (e) {
   location.reload();
 });
 
-let form = document.querySelector("form.ticket-options");
+const form = document.querySelector("form.ticket-options");
 form.addEventListener("change", function (e) {
-  let checked = getCheckedCheckboxes();
+  const checked = getCheckedCheckboxes();
   if (checked.length > 0) {
     let formData = new FormData(form);
     checked.forEach((id) => {

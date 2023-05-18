@@ -154,13 +154,9 @@ main > h1:first-child {
   border: 1px solid #31333a;
   cursor: pointer;
   transition: 0.4s;
-}
-
-.create-button > a {
   display: flex;
   align-items: center;
   padding: 1em;
-  height: 100%;
 }
 
 .create-button:hover {

@@ -1,12 +1,12 @@
-let editBtn = document.querySelector(".ticket-body form .ticket-header > span");
-let title = document.querySelector(".ticket-body form .ticket-header > h1");
-let description = document.querySelector(
+const editBtn = document.querySelector(".ticket-body form .ticket-header > span");
+const title = document.querySelector(".ticket-body form .ticket-header > h1");
+const description = document.querySelector(
   ".ticket-body form .ticket-description"
 );
 
 editBtn.addEventListener("click", function () {
   if (editBtn.classList.contains("save")) {
-    let form = document.querySelector(".ticket-body form");
+    const form = document.querySelector(".ticket-body form");
     // only send title and description
     let formData = new FormData(form);
     formData.delete("status");
@@ -31,8 +31,8 @@ editBtn.addEventListener("click", function () {
 });
 
 // if any change on form input (except title and description) send form data to action_edit_ticket.php
-let form = document.querySelector(".ticket-body form");
-let selects = document.querySelectorAll(".ticket-body form select");
+const form = document.querySelector(".ticket-body form");
+const selects = document.querySelectorAll(".ticket-body form select");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -55,22 +55,21 @@ selects.forEach((select) => {
 
 // hashtags
 
-let hashtags = document.querySelector(".ticket-body form .ticket-hashtags");
-let input = document.querySelector('.ticket-body form input[name="hashtags"]');
-let datalist = document.querySelector(".ticket-body form datalist");
-let suggestions = document.querySelectorAll(
+const hashtags = document.querySelector(".ticket-body form .ticket-hashtags");
+const input = document.querySelector('.ticket-body form input[name="hashtags"]');
+const datalist = document.querySelector(".ticket-body form datalist");
+const suggestions = document.querySelectorAll(
   ".ticket-body form datalist option"
 );
-console.log(suggestions);
 
 input.addEventListener("keyup", function (e) {
   if (e.keyCode == 13) {
     e.preventDefault();
-    let hashtag = input.value;
+    const hashtag = input.value;
     if (hashtag[0] == "#") {
       hashtag = "%23" + hashtag.slice(1);
     }
-    let ticket_id = document.querySelector(
+    const ticket_id = document.querySelector(
       '.ticket-body form input[name="id"]'
     ).value;
     let xhr = new XMLHttpRequest();
@@ -81,9 +80,9 @@ input.addEventListener("keyup", function (e) {
     xhr.onload = function () {
       if (this.status == 200) {
         console.log("Hashtag added");
-        let returned_id = this.responseText;
+        const returned_id = this.responseText;
         console.log(returned_id);
-        let li = document.createElement("li");
+        const li = document.createElement("li");
         let a = document.createElement("a");
         let span = document.createElement("span");
         span.classList.add("material-symbols-outlined");
@@ -102,7 +101,7 @@ input.addEventListener("keyup", function (e) {
   }
 });
 
-let hashtagLinks = document.querySelectorAll(
+const hashtagLinks = document.querySelectorAll(
   ".ticket-body form .ticket-hashtags li"
 );
 hashtagLinks.forEach((hashtagLink) => {
@@ -111,8 +110,8 @@ hashtagLinks.forEach((hashtagLink) => {
 
 function handleHashtagRemoval(e) {
   e.preventDefault();
-  let hashtag_id = e.target.id;
-  let ticket_id = document.querySelector(
+  const hashtag_id = e.target.id;
+  const ticket_id = document.querySelector(
     '.ticket-body form input[name="id"]'
   ).value;
   let xhr = new XMLHttpRequest();
