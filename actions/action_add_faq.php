@@ -15,13 +15,15 @@ if ($userType !== 'admin' && $userType !== 'agent') {
     header('Location: ../pages/userTicket.php');
     die();
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$db = getDatabaseConnection();
+    $db = getDatabaseConnection();
 
-$question = $_POST['question'];
-$answer = $_POST['answer'];
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
 
-$stmt = $db->prepare('INSERT INTO FAQ (question, answer) VALUES (?, ?)');
-$stmt->execute(array($question, $answer));
+    $stmt = $db->prepare('INSERT INTO FAQ (question, answer) VALUES (?, ?)');
+    $stmt->execute(array($question, $answer));
 
-header('Location: ../pages/faq_page.php');
+    header('Location: ../pages/faq_page.php');
+}

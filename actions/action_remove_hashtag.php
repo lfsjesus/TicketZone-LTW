@@ -13,7 +13,10 @@ header('Location: ../pages/userTicket.php');
 die();
 }
 
-$db = getDatabaseConnection();
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-$hashtag_remove = $db->prepare('DELETE FROM TicketTagJunction WHERE ticket_id = ? AND hashtag_id = ?');
-$hashtag_remove->execute([$_GET['ticket_id'], $_GET['hashtag_id']]);
+    $db = getDatabaseConnection();
+
+    $hashtag_remove = $db->prepare('DELETE FROM TicketTagJunction WHERE ticket_id = ? AND hashtag_id = ?');
+    $hashtag_remove->execute([$_GET['ticket_id'], $_GET['hashtag_id']]);
+}

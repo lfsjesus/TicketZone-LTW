@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once(__DIR__ . '/../database/ticket.class.php');
 require_once(__DIR__ . '/../database/department.class.php');
 require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../utils/utils.php');
 
 function drawTicket(Ticket $ticket, string $userType)
 {
@@ -50,9 +51,7 @@ function drawTicket(Ticket $ticket, string $userType)
                     Status:
                     <select name="status" <?= !$isAdminOrAgent ? 'disabled' : '' ?>>
                         <?php
-                        $stmt = $db->prepare('SELECT * FROM Statuses');
-                        $stmt->execute();
-                        $statuses = $stmt->fetchAll();
+                        $statuses = getStatus($db);
                         foreach ($statuses as $status) {
                             echo '<option value="' . $status['name'] . '" ' . ($status['name'] === $ticket->status ? 'selected' : '') . '>' . $status['name'] . '</option>';
                         }
@@ -72,11 +71,9 @@ function drawTicket(Ticket $ticket, string $userType)
                     <input type="text" name="hashtags" placeholder="Add hashtags" autocomplete="off" list="ticket-hashtags-suggestions" <?= !$isAdminOrAgent ? 'readonly' : '' ?>>
                     <datalist id="ticket-hashtags-suggestions">
                         <?php
-                        $stmt = $db->prepare('SELECT id, hashtag FROM TicketHashtags');
-                        $stmt->execute();
-                        $hashtags = $stmt->fetchAll();
+                        $hashtags = getHashtags($db);
                         foreach ($hashtags as $hashtag) { ?>
-                            <option value="<?= $hashtag['hashtag'] ?>" id="<?= $hashtag['id'] ?>">
+                            <option value="<?= htmlspecialchars($hashtag['hashtag']) ?>" id="<?= $hashtag['id'] ?>">
                             <?php }
                             ?>
                     </datalist>
@@ -94,9 +91,7 @@ function drawTicket(Ticket $ticket, string $userType)
                     </ul>
                 </li>
                 <li>
-                    <?php if ($isAdminOrAgent) { ?>
-                        <a href="ticket_history.php?id=<?php echo $ticket->id; ?>"><span class="material-symbols-outlined">history</span>History</a>
-                    <?php } ?>
+                    <a href="ticket_history.php?id=<?php echo $ticket->id; ?>"><span class="material-symbols-outlined">history</span>History</a>
                 </li>
                 <!-- attachments -->
                 <?php if (count($ticket->attachments($db)) > 0) { ?>

@@ -9,43 +9,46 @@ if (!$session->isLoggedIn()) {
     header('Location: ../pages/login_page.php');
     die();
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$db = getDatabaseConnection();
 
-$department = $_POST['department'];
-$department_id = $db->query("SELECT id FROM Departments WHERE name = '$department'")->fetch()['id'];
+    $db = getDatabaseConnection();
 
-$user_id = $session->getId();
-$title = $_POST['title'];
-$description = $_POST['description'];
-$status = 'open';
-$date = date('Y-m-d H:i:s');   
-$faq = false;
+    $department = $_POST['department'];
+    $department_id = $db->query("SELECT id FROM Departments WHERE name = '$department'")->fetch()['id'];
 
-$stmt = $db->prepare("INSERT INTO tickets (user_id, department_id, title, description, status, date, faq) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->execute([$user_id, $department_id, $title, $description, $status, $date, $faq]);
+    $user_id = $session->getId();
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $status = 'open';
+    $date = date('Y-m-d H:i:s');   
+    $faq = false;
 
-$filename = array_filter($_FILES['file_name']['name']);
+    $stmt = $db->prepare("INSERT INTO tickets (user_id, department_id, title, description, status, date, faq) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$user_id, $department_id, $title, $description, $status, $date, $faq]);
 
-if (!empty($filename) && $stmt->rowCount() == 1) {
-    $stmt = $db->prepare("INSERT INTO Files (ticket_id, file_data) VALUES (?, ?)");
-    $fileTempName = $_FILES['file_name']['tmp_name'];
-    $id = $db->lastInsertId();
-    foreach ($fileTempName as $index => $file) {
-        $file_data = file_get_contents($file);
-        $stmt->execute([$id, $file_data]);
+    $filename = array_filter($_FILES['file_name']['name']);
+
+    if (!empty($filename) && $stmt->rowCount() == 1) {
+        $stmt = $db->prepare("INSERT INTO Files (ticket_id, file_data) VALUES (?, ?)");
+        $fileTempName = $_FILES['file_name']['tmp_name'];
+        $id = $db->lastInsertId();
+        foreach ($fileTempName as $index => $file) {
+            $file_data = file_get_contents($file);
+            $stmt->execute([$id, $file_data]);
+        }
     }
-}
 
-if ($stmt->rowCount() == 1) {
-    $ticket_id = $db->lastInsertId();
-    $action_stmt = $db->prepare("INSERT INTO actions (user_id, ticket_id, action, date) VALUES (?, ?, ?, ?)");
-    $action_stmt->execute([$user_id, $ticket_id, "Created a ticket", $date]);
-    header('Location: ../pages/userTicket.php');
-}
+    if ($stmt->rowCount() == 1) {
+        $ticket_id = $db->lastInsertId();
+        $action_stmt = $db->prepare("INSERT INTO actions (user_id, ticket_id, action, date) VALUES (?, ?, ?, ?)");
+        $action_stmt->execute([$user_id, $ticket_id, "Created a ticket", $date]);
+        header('Location: ../pages/userTicket.php');
+    }
 
-if ($stmt->rowCount() == 1) {
-    header('Location: ../pages/userTicket.php');
-} else {
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    if ($stmt->rowCount() == 1) {
+        header('Location: ../pages/userTicket.php');
+    } else {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 }

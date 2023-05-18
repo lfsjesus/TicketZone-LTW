@@ -7,15 +7,26 @@ require_once(__DIR__ . '/../templates/common.tpl.php');
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/ticket.tpl.php');
 require_once(__DIR__ . '/../templates/comment.tpl.php');
+require_once(__DIR__ . '/../utils/utils.php');
 
 $session = new Session();
 if (!$session->isLoggedIn()) {
     header('Location: ../pages/login.php');
     die();
 }
+
 $db = getDatabaseConnection();
-$userType = $session->getUser()->type;
+$user = $session->getUser();
+$userType = $user->type;
+$isAdminOrAgent = ($userType == 'admin' || $userType == 'agent');
+
+
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
+
+if(!$isAdminOrAgent && ($user->id !== $ticket->ticketCreator->id)){
+    header('Location: ../pages/userTicket.php');
+    die();
+}
 
 if ($ticket == null) {
     header('Location: ../pages/userTicket.php');
@@ -39,7 +50,7 @@ drawHeader($ticket->title);
                 <select name="faq" id="faq">
                     <option value="">None</option>
                     <?php
-                    $faqs = $db->query('SELECT * FROM FAQ');
+                    $faqs = getFAQ($db);
                     foreach ($faqs as $faq) {
                         echo '<option value="' . htmlspecialchars($faq['answer']) . '">' . htmlspecialchars($faq['question']) . '</option>';
                     }

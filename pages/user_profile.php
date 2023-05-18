@@ -16,10 +16,20 @@ if (!$session->isLoggedIn()) {
     die();
 }
 
+$session_user = $session->getUser();
+$userType = $session_user->type;
+$isAdminOrAgent = ($userType == 'admin' || $userType == 'agent');
+
+
 $db = getDatabaseConnection();
 
 $user = User::getUser($db, (int)$_GET['id']);
 
+
+if (!$isAdminOrAgent && ($user->id !== $session_user->id)) {
+    header('Location: ../pages/userTicket.php');
+    die();
+}
 drawHeader($user->firstName . ' ' . $user->lastName);
 ?>
 <section id="main-wrapper">

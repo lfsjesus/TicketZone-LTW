@@ -15,12 +15,14 @@ if ($userType !== 'admin' && $userType !== 'agent') {
     header('Location: ../pages/userTicket.php');
     die();
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$db = getDatabaseConnection();
+    $db = getDatabaseConnection();
 
-$id = $_POST['id'];
+    $id = $_POST['id'];
 
-$stmt = $db->prepare('DELETE FROM FAQ WHERE id = ?');
-$stmt->execute(array($id));
+    $stmt = $db->prepare('DELETE FROM FAQ WHERE id = ?');
+    $stmt->execute(array($id));
 
-header('Location: ../pages/faq_page.php');
+    header('Location: ../pages/faq_page.php');
+}

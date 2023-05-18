@@ -6,7 +6,7 @@ require_once(__DIR__ .  '/../templates/common.tpl.php');
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
-
+require_once(__DIR__ . '/../utils/utils.php');
 $session = new Session();
 
 if (!$session->isLoggedIn()) {
@@ -143,9 +143,7 @@ drawHeader("Management");
             <td></td>
           </tr>
           <?php
-          $stmt = $db->prepare('SELECT * FROM Statuses');
-          $stmt->execute();
-          $statuses = $stmt->fetchAll();
+          $statuses = getStatus($db);
           foreach ($statuses as $status) { ?>
             <tr>
               <td><?= $status['id'] ?></td>

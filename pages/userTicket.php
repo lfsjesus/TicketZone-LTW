@@ -7,6 +7,7 @@ require_once(__DIR__ .  '/../templates/ticket.tpl.php');
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../utils/utils.php');
 
 $session = new Session();
 
@@ -36,7 +37,7 @@ drawHeader("My Tickets");
             <tr>
               <th><input type="checkbox" id="select-all" name="select-all" value="select-all"></th>
               <th>
-                <select name="author" id="author">
+                <select name="author" id="author" <?= !$isAdminOrAgent ? 'disabled' : ''?>>
                   <option value="" disabled selected hidden>Author</option>
                   <option value="all">All</option>
                   <?php
@@ -49,7 +50,7 @@ drawHeader("My Tickets");
               </th>
               <th>Message</th>
               <th>
-                <select name="assignee" id="assignee">
+                <select name="assignee" id="assignee" <?= !$isAdminOrAgent  ? 'disabled' : ''?>>
                   <option value="" disabled selected hidden>Assignee</option>
                   <option value="all">All</option>
                   <?php
@@ -65,9 +66,7 @@ drawHeader("My Tickets");
                   <option value="" disabled selected hidden>Status</option>
                   <option value="all">All</option>
                   <?php
-                  $stmt = $db->prepare('SELECT * FROM Statuses');
-                  $stmt->execute();
-                  $statuses = $stmt->fetchAll();
+                  $statuses = getStatus($db);
                   foreach ($statuses as $status) {
                     echo '<option>' . $status['name'] . '</option>';
                   }

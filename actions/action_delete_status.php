@@ -17,11 +17,14 @@ if ($userType !== 'admin') {
     die();
 }
 
-$db = getDatabaseConnection();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$status_id = $_POST['status_id'];
+    $db = getDatabaseConnection();
 
-$stmt = $db->prepare('DELETE FROM Statuses WHERE id = ?');
-$stmt->execute(array($status_id));
+    $status_id = $_POST['status_id'];
 
-header('Location: ../pages/management.php?tab=2');
+    $stmt = $db->prepare('DELETE FROM Statuses WHERE id = ?');
+    $stmt->execute(array($status_id));
+
+    header('Location: ../pages/management.php?tab=2');
+}

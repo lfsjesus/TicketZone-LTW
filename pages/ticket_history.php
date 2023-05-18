@@ -15,11 +15,18 @@ if (!$session->isLoggedIn()) {
     header('Location: ../pages/login_page.php');
     die();
 }
+$session_user = $session->getUser();
+$userType = $session_user->type;
+$isAdminOrAgent = ($userType == 'admin' || $userType == 'agent');
 
 $db = getDatabaseConnection();
 
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
 
+if (!$isAdminOrAgent && ($ticket->ticketCreator->id !== $session_user->id)) {
+    header('Location: ../pages/userTicket.php');
+    die();
+}
 if ($ticket == null) {
     header('Location: ../pages/userTicket.php');
     die();

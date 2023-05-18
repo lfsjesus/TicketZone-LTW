@@ -53,9 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
+
+    if ($error) {
+        header('Location: ../pages/registration_page.php?error=' . urlencode($error));
+        exit();
+    }
 }
 
-if ($error) {
-    header('Location: ../pages/registration_page.php?error=' . urlencode($error));
-    exit();
-}
+
