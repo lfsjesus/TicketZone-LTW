@@ -10,7 +10,8 @@ require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../utils/utils.php');
 
 $session = new Session();
-
+$user = $session->getUser();
+$isAdminOrAgent = ($user->type == 'admin' || $user->type == 'agent');
 if (!$session->isLoggedIn()) {
   header('Location: ../pages/login_page.php');
   die();
