@@ -22,8 +22,11 @@ if (search) {
 
 function updateTableData(page = 1) {
   let tbody = document.querySelector(".ticket-list tbody");
-  let form = document.querySelector(".ticket-list form");
-  let formData = new FormData(form);
+  let form = document.querySelectorAll(".ticket-list thead select");
+  let formData = new FormData();
+  form.forEach((input) => {
+    formData.append(input.name, input.value);
+  });
   formData.append("search", search.value);
   formData.append("page", page);
   // send data to server using ajax

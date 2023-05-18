@@ -47,7 +47,6 @@ drawHeader("Management");
           <tr>
             <th>Name</th>
             <th>Email</th>
-            <form>
               <th>
                 <select name="department_id" id="department_id">
                   <option value="" disabled selected hidden>Department</option>
@@ -69,7 +68,6 @@ drawHeader("Management");
                   <option value="client">Client</option>
                 </select>
               </th>
-            </form>
             <th></th>
           </tr>
         </thead>

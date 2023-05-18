@@ -65,8 +65,11 @@ const searchInput = document.querySelector(".search-form input");
 
 function updateTablePeople(page = 1) {
   let tbody = document.querySelector(".people table tbody");
-  let form = document.querySelector(".people table form");
-  let formData = new FormData(form);
+  let form = document.querySelectorAll(".people table thead select");
+  let formData = new FormData();
+  form.forEach((select) => {
+    formData.append(select.name, select.value);
+  });
   formData.append("search", searchInput.value);
   formData.append("page", page);
   let xhr = new XMLHttpRequest();

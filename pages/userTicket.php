@@ -31,7 +31,6 @@ drawHeader("My Tickets");
       $user = $session->getUser();
     ?>
       <table class="ticket-list">
-        <form>
           <thead>
             <tr>
               <th><input type="checkbox" id="select-all" name="select-all" value="select-all"></th>
@@ -103,7 +102,6 @@ drawHeader("My Tickets");
               </th>
             </tr>
           </thead>
-        </form>
         <tbody>
         <?php
       }
