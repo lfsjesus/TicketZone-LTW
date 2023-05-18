@@ -6,5 +6,3 @@ $db = getDatabaseConnection();
 
 $hashtag_remove = $db->prepare('DELETE FROM TicketTagJunction WHERE ticket_id = ? AND hashtag_id = ?');
 $hashtag_remove->execute([$_GET['ticket_id'], $_GET['hashtag_id']]);
-
-?>

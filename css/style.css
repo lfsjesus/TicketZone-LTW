@@ -1,95 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 
 html {
-  font-family: "Montserrat",sans-serif;    
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 #main-wrapper {
-    display: grid;
-    grid-template-columns:20% 80%;
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: 100vh;
 }
 
 #menu {
-    grid-column: 1 / 2;
-    background-color:#24252A;
-    font-size: 1em;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    overflow-wrap: anywhere;
-    padding: 0 1em;
-}   
+  grid-column: 1 / 2;
+  background-color: #24252a;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow-wrap: anywhere;
+  padding: 0 1em;
+}
 
 #menu li {
-    font-family: "Montserrat",sans-serif;
-    font-size: 1.2em;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    list-style: none;
-    margin: 0.5em 0;
-} 
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  list-style: none;
+  margin: 0.5em 0;
+}
 
 #menu li:hover {
-    background-color: #46464b;
-    border-radius: 1em;
-    cursor: pointer;
-    transition: 0.4s;
+  background-color: #46464b;
+  border-radius: 1em;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 #menu .active {
-    background-color: #141427;
-    border: 1px solid #141427;
-    border-radius: 1em;
+  background-color: #141427;
+  border: 1px solid #141427;
+  border-radius: 1em;
 }
 
 #menu li .material-symbols-outlined {
-    margin-right: 0.8em;
-    vertical-align: middle;
+  margin-right: 0.8em;
+  vertical-align: middle;
 }
 
 #menu li a {
-    font-weight: 600;
-    display: block;
-    height: 100%;
-    padding: 1.2em;
+  font-weight: 600;
+  display: block;
+  height: 100%;
+  padding: 1.2em;
 }
 
 #menu ul {
-    padding: 0;
-    display: flex;  
-    flex-direction: column;
-} 
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
 
 #menu footer button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 main {
-    grid-column: 2 / 3;
-    padding: 3em;
-    word-break: break-word;
-    overflow-y: scroll;
-    background-color: #17171c;
-    color: white;
-    max-height: 100vh;
+  grid-column: 2 / 3;
+  padding: 3em;
+  word-break: break-word;
+  overflow-y: scroll;
+  background-color: #17171c;
+  color: white;
+  max-height: 100vh;
 }
 
 main > h1:first-child {
@@ -97,270 +97,269 @@ main > h1:first-child {
 }
 
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
-                        /* CSS for search bar */
+/* CSS for search bar */
 
 #main-wrapper main > header:first-child {
-    display: flex;  
-    width: 95%;
-    align-items: center;
-    justify-content: space-between;
-    margin: auto auto 2.5em auto;
+  display: flex;
+  width: 95%;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto auto 2.5em auto;
 }
 
 .search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #31333a;
-    color: white;
-    border-radius: 25px;
-    padding: 5px 10px;
-    width: 25em;
-  }
-  
-  .search-form input[type="text"] {
-    border: none;
-    background-color: transparent;
-    font-size: 16px;
-    width: 100%;
-    padding: 0.8em;
-    color:white;
-    margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #31333a;
+  color: white;
+  border-radius: 25px;
+  padding: 5px 10px;
+  width: 25em;
 }
-  .search-form input[type="text"]::placeholder {
-    color: white;
-    opacity: 0.5;
-    font-size: 1em;
-}
-  
-  .search-form button[type="submit"] {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: white;
-    margin-left: -30px;
-  }
 
-  .search-form input[type="text"]:focus {
-    outline: none;
-  }
+.search-form input[type="text"] {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  width: 100%;
+  padding: 0.8em;
+  color: white;
+  margin-bottom: 0;
+}
+.search-form input[type="text"]::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-size: 1em;
+}
+
+.search-form button[type="submit"] {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-left: -30px;
+}
+
+.search-form input[type="text"]:focus {
+  outline: none;
+}
 
 .create-button {
-    font-family: "Montserrat",sans-serif;
-    background-color: #31333a;
-    color: white;
-    border-radius: 25px;
-    display: flex;
-    border: 1px solid #31333a;
-    cursor: pointer;
-    transition: 0.4s;
+  font-family: "Montserrat", sans-serif;
+  background-color: #31333a;
+  color: white;
+  border-radius: 25px;
+  display: flex;
+  border: 1px solid #31333a;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 .create-button > a {
-    display: flex;  
-    align-items: center;
-    padding: 1em;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  height: 100%;
 }
 
 .create-button:hover {
-    background-color: #46464b;
-    border: 1px solid #46464b;
+  background-color: #46464b;
+  border: 1px solid #46464b;
 }
 
 .create-button .material-symbols-outlined {
-    margin-right: 0.5em;
+  margin-right: 0.5em;
 }
 
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
-                        /* CSS for Ticket */
+/* CSS for Ticket */
 
-  .ticket-list {
-    width: 95%;
-    font-family: "Montserrat",sans-serif;
-    margin: auto;
-    border-collapse: collapse;
-  } 
-  
-  .ticket-list th, td {
-    text-align: left;
-    padding: 0.5em;
-  }
-  
-  table select {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-  }
+.ticket-list {
+  width: 95%;
+  font-family: "Montserrat", sans-serif;
+  margin: auto;
+  border-collapse: collapse;
+}
 
-  table option {
-    background-color: #31333a;
-    color: white;
-  }
+.ticket-list th,
+td {
+  text-align: left;
+  padding: 0.5em;
+}
 
-  .ticket-list td{
-    color: #d7d7d7;
-    font-size: 0.9em; 
-  }
+table select {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
 
-  .ticket-list .table-title{
-    font-weight: bold;
-    color:white;
-    font-size: 0.9em;
-    padding: 0.5em;
-  }
+table option {
+  background-color: #31333a;
+  color: white;
+}
 
-  .ticket-list thead::after {
-    content: ' ';
-    display: block;
-    height: 1em;
-  }
+.ticket-list td {
+  color: #d7d7d7;
+  font-size: 0.9em;
+}
 
-  .ticket-list tr:nth-child(2n + 3) td {
-    padding-top: 1em;
-  }
+.ticket-list .table-title {
+  font-weight: bold;
+  color: white;
+  font-size: 0.9em;
+  padding: 0.5em;
+}
 
-  .ticket-list tr:nth-child(2n) {
-    border-bottom:1px solid rgba(255, 255, 255, 0.3);
-  }
+.ticket-list thead::after {
+  content: " ";
+  display: block;
+  height: 1em;
+}
 
-  .ticket-list tr:nth-child(2n) td {
-    padding: 1em 0.5em;
-  }
+.ticket-list tr:nth-child(2n + 3) td {
+  padding-top: 1em;
+}
 
-  .priority-high{
-    background-color: rgb(126, 0, 0);
-    border-radius: 0.5em;
-    text-align: center;
-    border: 0.3em;
-    padding: 0.3em;
-    font-size: 0.8em;
-    width: 85%;
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.ticket-list tr:nth-child(2n) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-  .priority-medium{
-    background-color: rgb(185, 60, 1);
-    border-radius: 0.5em;
-    text-align: center;
-    padding: 0.3em;
-    font-size: 0.8em;
-    width: 85%;
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.ticket-list tr:nth-child(2n) td {
+  padding: 1em 0.5em;
+}
 
-  .priority-low{
-    background-color: rgb(1, 114, 167);
-    border-radius: 0.5em;
-    text-align: center;
-    padding: 0.3em;
-    font-size: 0.8em;
-    width: 85%;
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.priority-high {
+  background-color: rgb(126, 0, 0);
+  border-radius: 0.5em;
+  text-align: center;
+  border: 0.3em;
+  padding: 0.3em;
+  font-size: 0.8em;
+  width: 85%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+.priority-medium {
+  background-color: rgb(185, 60, 1);
+  border-radius: 0.5em;
+  text-align: center;
+  padding: 0.3em;
+  font-size: 0.8em;
+  width: 85%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .pagination li {
-    list-style: none;
-    margin: 0.5em;
-    border-radius: 0.5em;
-    background-color: #31333a;
-  }
+.priority-low {
+  background-color: rgb(1, 114, 167);
+  border-radius: 0.5em;
+  text-align: center;
+  padding: 0.3em;
+  font-size: 0.8em;
+  width: 85%;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .pagination li.active {
-    background-color: #46464b;
-    scale: 1.1;
-    font-weight: bold;
-  }
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  .pagination li a {
-    display: block;
-    padding: 1em;
-    color: white;
-  }
+.pagination li {
+  list-style: none;
+  margin: 0.5em;
+  border-radius: 0.5em;
+  background-color: #31333a;
+}
 
-  .pagination li a:hover {
-    background-color: #46464b;
-    border-radius: 0.5em;
-  }
+.pagination li.active {
+  background-color: #46464b;
+  scale: 1.1;
+  font-weight: bold;
+}
 
-  .ticket-options {
-    display: flex;
-    width: 40%;
-    padding: 0 2.5em;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.7em;
-  }
+.pagination li a {
+  display: block;
+  padding: 1em;
+  color: white;
+}
 
-  .ticket-options .material-symbols-outlined {
-    font-size: 1.5em;
-  }
+.pagination li a:hover {
+  background-color: #46464b;
+  border-radius: 0.5em;
+}
 
-  button.delete {
-    display: flex;
-    align-items: center;
-    background-color: rgb(126, 0, 0);
-    padding: 0.5em;
-    border-radius: 0.5em;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
+.ticket-options {
+  display: flex;
+  width: 40%;
+  padding: 0 2.5em;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7em;
+}
 
-  button.delete:hover {
-    background-color: rgb(185, 60, 1);
-  }
+.ticket-options .material-symbols-outlined {
+  font-size: 1.5em;
+}
 
-  .ticket-options select {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-  }
+button.delete {
+  display: flex;
+  align-items: center;
+  background-color: rgb(126, 0, 0);
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
-  .ticket-options option {
-    background-color: #31333a;
-    color: white;
-  }
+button.delete:hover {
+  background-color: rgb(185, 60, 1);
+}
 
+.ticket-options select {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
 
-  /** LOGIN PAGE **/
-  .authentication {
-    background-image: url("../images/background-image.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.90;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 0;
-  }
+.ticket-options option {
+  background-color: #31333a;
+  color: white;
+}
 
+/** LOGIN PAGE **/
+.authentication {
+  background-image: url("../images/background-image.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0;
+}
 
 .authentication #credentials-form {
   font-family: "Montserrat", sans-serif;
-  background-color: rgba(0, 0, 0, 0.90);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 4em;
   padding: 2.5em;
   min-width: 15em;
@@ -407,7 +406,7 @@ main > h1:first-child {
 }
 
 .authentication #credentials-form form input[type="submit"] {
-  background-color: #24252A;
+  background-color: #24252a;
   color: #ffffff;
   font-weight: bold;
   border: none;
@@ -418,7 +417,7 @@ main > h1:first-child {
 
 .authentication #credentials-form form input[type="submit"]:hover {
   background-color: #000;
-  opacity: 1.0;
+  opacity: 1;
   transition: 0.3s;
 }
 
@@ -433,10 +432,10 @@ main > h1:first-child {
   margin-top: 1em;
 }
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
-                        /* CSS for Navbar */
+/* CSS for Navbar */
 #menu {
   grid-column: 1 / 2;
-  background-color:#24252A;
+  background-color: #24252a;
   font-size: 1em;
   height: 100vh;
   display: flex;
@@ -444,7 +443,7 @@ main > h1:first-child {
   text-align: left;
   overflow-wrap: anywhere;
   padding: 0 1em;
-}   
+}
 
 #menu .logo {
   max-width: 65%;
@@ -453,14 +452,14 @@ main > h1:first-child {
 }
 
 #menu li {
-  font-family: "Montserrat",sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
   text-decoration: none;
   color: white;
   font-weight: 600;
   list-style: none;
   margin: 0.5em 0;
-} 
+}
 
 #menu li:hover {
   background-color: #46464b;
@@ -489,9 +488,9 @@ main > h1:first-child {
 
 #menu ul {
   padding: 0;
-  display: flex;  
+  display: flex;
   flex-direction: column;
-} 
+}
 
 #menu footer {
   margin-top: auto;
@@ -499,7 +498,7 @@ main > h1:first-child {
   justify-content: space-between;
   padding: 0 1em 15% 1em;
   box-sizing: border-box;
-  font-family: "Montserrat",sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
   font-size: 0.8em;
   font-weight: 600;
@@ -524,9 +523,8 @@ main > h1:first-child {
   padding-left: 0.3em;
 }
 
-
 /*-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x*/
-                        /* CSS for Edit Profile */
+/* CSS for Edit Profile */
 
 .profile {
   display: flex;
@@ -535,16 +533,16 @@ main > h1:first-child {
   margin: auto auto;
   border: 4px solid #ccc;
   border-radius: 20px;
-  font-family: "Montserrat",sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding: 5em;
   width: 25em;
-  margin-top:5em;
+  margin-top: 5em;
 }
 
 #profile label {
   margin-bottom: 5px;
   font-weight: bold;
-  color:white; 
+  color: white;
 }
 
 #profile input {
@@ -569,12 +567,13 @@ main > h1:first-child {
 
 /* CREATE TICKET PAGE AND FORM */
 
-.ticket-form, .faq-form {
+.ticket-form,
+.faq-form {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
   width: 100%;
-  margin-top:5em;
+  margin-top: 5em;
 }
 
 /* customize hashtag  that is a ul*/
@@ -627,30 +626,31 @@ main > h1:first-child {
   align-items: center;
 }
 
-
 .ticket-meta .ticket-hashtags li a:before {
   content: "#";
 }
 
 .ticket-meta .ticket-hashtags li a > span {
-  font-size: 0.9em;  
+  font-size: 0.9em;
   pointer-events: none;
 }
 
-.ticket-form label, .faq-form label {
+.ticket-form label,
+.faq-form label {
   margin-bottom: 5px;
   font-weight: bold;
-  color:white; 
+  color: white;
 }
 
-.ticket-form input[type="text"], .faq-form input[type="text"]{
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #0e0e24;
-    border-radius: 2.5em;
-    width: 50%;
-    box-sizing: border-box;
-    font-weight: bold;
+.ticket-form input[type="text"],
+.faq-form input[type="text"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #0e0e24;
+  border-radius: 2.5em;
+  width: 50%;
+  box-sizing: border-box;
+  font-weight: bold;
 }
 
 /* customize dropdown department */
@@ -666,8 +666,9 @@ main > h1:first-child {
 }
 
 /* customize description box, wide box */
-.ticket-form textarea, .faq-form textarea {
-  font-family: "Montserrat",sans-serif;
+.ticket-form textarea,
+.faq-form textarea {
+  font-family: "Montserrat", sans-serif;
   padding: 1em;
   border-radius: 0.5em;
   margin-bottom: 1em;
@@ -687,7 +688,8 @@ main > h1:first-child {
   font-weight: bold;
 }
 
-.ticket-form input[type="submit"], .faq-form input[type="submit"] {
+.ticket-form input[type="submit"],
+.faq-form input[type="submit"] {
   background-color: #31333a;
   width: 20%;
   margin: 0 auto;
@@ -700,7 +702,8 @@ main > h1:first-child {
   font-weight: bold;
 }
 
-.ticket-form input[type="submit"]:hover, .faq-form input[type="submit"]:hover {
+.ticket-form input[type="submit"]:hover,
+.faq-form input[type="submit"]:hover {
   background-color: #46464b;
 }
 
@@ -759,7 +762,6 @@ main > h1:first-child {
 .ticket-body > form {
   display: grid;
   grid-template-columns: 80% 20%;
-
 }
 
 .ticket-meta {
@@ -864,7 +866,7 @@ main > h1:first-child {
 }
 
 #comment-extras > span {
-  cursor: pointer
+  cursor: pointer;
 }
 
 #comments #faq-select {
@@ -916,10 +918,9 @@ main > h1:first-child {
   display: block;
   opacity: 1;
   max-height: 100%;
-  
+
   visibility: visible;
   transition: all 0.3s ease;
-
 }
 
 .faq ol {
@@ -981,7 +982,7 @@ main > h1:first-child {
 /*show horizontal line on hover appearing left to right */
 .tabs a:after {
   display: block;
-  content: '';
+  content: "";
   padding-bottom: 5px;
   border-bottom: solid 2px #31333a;
   transform: scaleX(0);
@@ -1015,7 +1016,7 @@ main > h1:first-child {
   font-size: 1em;
   border-collapse: collapse;
   margin-top: 2em;
-  text-align: left; 
+  text-align: left;
 }
 
 #management-page table thead {
@@ -1043,7 +1044,8 @@ main > h1:first-child {
   font-size: 0.9em;
 }
 
-#management-page table tbody td:last-child, #management-page table tbody th:last-child {
+#management-page table tbody td:last-child,
+#management-page table tbody th:last-child {
   float: right;
 }
 
@@ -1052,7 +1054,6 @@ main > h1:first-child {
   flex-direction: row;
   align-items: stretch;
 }
-
 
 #management-page .add-entry input {
   border: 0;
@@ -1084,16 +1085,3 @@ main > h1:first-child {
   border-bottom: 2px solid lightblue;
   font-weight: bold;
 }
-
-
-  
-  
-
-
-
-
-
-
-
-
-

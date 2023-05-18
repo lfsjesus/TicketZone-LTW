@@ -41,4 +41,3 @@
             $this->messages[] = array('type' => $type, 'message' => $message);
         }
     }
-?>

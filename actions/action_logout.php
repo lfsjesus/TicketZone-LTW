@@ -5,4 +5,3 @@
     $session->logout();
 
     header('Location: ../pages/login_page.php');
-?>

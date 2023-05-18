@@ -33,5 +33,3 @@ class Department {
         return null;
     }
 }
-
-?>

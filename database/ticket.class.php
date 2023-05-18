@@ -103,4 +103,3 @@ class Ticket {
         $stmt->execute(array($this->title,$this->description,$this->status, $this->priority, $this->department->id, $this->ticketAssignee->id, $this->id));
     }
 }
-?>

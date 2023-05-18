@@ -23,4 +23,3 @@ class Comment {
         return $stmt->fetchAll();
     }
 }
-?>

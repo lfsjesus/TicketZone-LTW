@@ -11,4 +11,3 @@ $stmt = $db->prepare('INSERT INTO FAQ (question, answer) VALUES (?, ?)');
 $stmt->execute(array($question, $answer));
 
 header('Location: ../pages/faq_page.php');
-?>

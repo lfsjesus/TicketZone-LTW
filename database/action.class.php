@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 class Action
@@ -22,7 +23,7 @@ class Action
     {
         $stmt = $db->prepare('SELECT * FROM Actions WHERE user_id = ? ORDER BY date DESC');
         $stmt->execute([$userId]);
-    
+
         $actions = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $action = new Action(
@@ -34,9 +35,9 @@ class Action
             );
             $actions[] = $action;
         }
-    
+
         return $actions;
-    } 
+    }
 
     static function getActionsByTicketId(PDO $db, int $ticketId): array
     {

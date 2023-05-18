@@ -37,5 +37,3 @@ if ($stmt->rowCount() == 1) {
 } else {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
-
-?>

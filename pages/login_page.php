@@ -1,16 +1,18 @@
-<?php 
-declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
 
-function draw_login() {
+function draw_login()
+{
     $error = $_GET['error'];
-    ?>
+?>
     <main class="authentication">
         <section id="credentials-form">
             <h1>Nice to see you again...</h1>
             <p> Login to your account to continue.</p>
-            <form method="post" action="../actions/action_login.php" class="login"> 
+            <form method="post" action="../actions/action_login.php" class="login">
                 <input type="email" id="email" name="email" placeholder="Email" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <input type="submit" name="login" value="Login">
@@ -19,18 +21,15 @@ function draw_login() {
             </form>
         </section>
     </main>
-    <?php
+<?php
 }
-    $session = new Session();
-    if ($session->isLoggedIn()) {
-        header('Location: ../pages/userTicket.php');
-    }
-    else {
-        drawHeader("Login");
-        draw_login();
-        drawFooter();
-    }
+$session = new Session();
+if ($session->isLoggedIn()) {
+    header('Location: ../pages/userTicket.php');
+} else {
+    drawHeader("Login");
+    draw_login();
+    drawFooter();
+}
 
 ?>
-
-

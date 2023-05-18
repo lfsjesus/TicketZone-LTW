@@ -1,5 +1,6 @@
-<?php 
-declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 require_once(__DIR__ . '/../database/ticket.class.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
@@ -29,7 +30,7 @@ drawHeader($ticket->title);
     ?>
     <main id="ticket">
         <?php
-            drawTicket($ticket, $userType);
+        drawTicket($ticket, $userType);
         ?>
         <section id="comments">
             <h2>Comments</h2>
@@ -38,14 +39,14 @@ drawHeader($ticket->title);
                 <select name="faq" id="faq">
                     <option value="">None</option>
                     <?php
-                        $faqs = $db->query('SELECT * FROM FAQ');
-                        foreach ($faqs as $faq) {
-                            echo '<option value="' . htmlspecialchars($faq['answer']) . '">' . htmlspecialchars($faq['question']) . '</option>';
-                        }
+                    $faqs = $db->query('SELECT * FROM FAQ');
+                    foreach ($faqs as $faq) {
+                        echo '<option value="' . htmlspecialchars($faq['answer']) . '">' . htmlspecialchars($faq['question']) . '</option>';
+                    }
                     ?>
                 </select>
             </section>
-            <form action="../actions/action_create_comment.php" class = "comment-form" method="post" enctype="multipart/form-data">
+            <form action="../actions/action_create_comment.php" class="comment-form" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
                 <textarea name="message" id="comment" cols="30" rows="5" placeholder="Comment" required></textarea>
                 <div id="comment-extras">
@@ -56,16 +57,16 @@ drawHeader($ticket->title);
                 </div>
                 <button type="submit" class="material-symbols-outlined">send</button>
             </form>
-            
+
             <?php
-                $comments = $ticket->getAnswers($db);
-                foreach (array_reverse($comments) as $comment) {
-                    drawComment($comment);
-                }
+            $comments = $ticket->getAnswers($db);
+            foreach (array_reverse($comments) as $comment) {
+                drawComment($comment);
+            }
             ?>
         </section>
     </main>
 </section>
-<?php 
-    drawFooter();
+<?php
+drawFooter();
 ?>

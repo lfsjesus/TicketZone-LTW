@@ -26,5 +26,3 @@
         $error = 'Wrong email or password!';
         header('Location: ../pages/login_page.php?error=' . urlencode($error));
     }
-
-?> 

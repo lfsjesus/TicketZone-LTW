@@ -15,5 +15,3 @@ if ($user) {
     $stmt->execute(array($user->id));
     header('Location: ../pages/management.php');
 }
-
-?>

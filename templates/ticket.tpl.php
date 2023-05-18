@@ -9,7 +9,7 @@ function drawTicket(Ticket $ticket, string $userType)
 {
     $db = getDatabaseConnection();
     $isAdminOrAgent = ($userType === 'admin' || $userType === 'agent');
-    ?>
+?>
     <article class="ticket-body">
         <form>
             <input type="hidden" name="id" value="<?= $ticket->id ?>">
@@ -21,7 +21,7 @@ function drawTicket(Ticket $ticket, string $userType)
             </div>
             <p class="ticket-description"><?= nl2br(htmlspecialchars($ticket->description)) ?></p>
             <ul class="ticket-meta">
-                
+
                 <li>Created by: <?= $ticket->ticketCreator != null ? $ticket->ticketCreator->name() : 'Unknown' ?></li>
                 <li>Created at: <?= $ticket->dateCreated->format('d/m/Y H:i') ?></li>
                 <li>Assigned to:
@@ -68,8 +68,7 @@ function drawTicket(Ticket $ticket, string $userType)
                     </select>
                 </li>
                 <li>
-                    <input type="text" name="hashtags" placeholder="Add hashtags" autocomplete="off"
-                           list="ticket-hashtags-suggestions" <?= !$isAdminOrAgent ? 'readonly' : '' ?>>
+                    <input type="text" name="hashtags" placeholder="Add hashtags" autocomplete="off" list="ticket-hashtags-suggestions" <?= !$isAdminOrAgent ? 'readonly' : '' ?>>
                     <datalist id="ticket-hashtags-suggestions">
                         <?php
                         $stmt = $db->prepare('SELECT id, hashtag FROM TicketHashtags');
@@ -77,8 +76,8 @@ function drawTicket(Ticket $ticket, string $userType)
                         $hashtags = $stmt->fetchAll();
                         foreach ($hashtags as $hashtag) { ?>
                             <option value="<?= $hashtag['hashtag'] ?>" id="<?= $hashtag['id'] ?>">
-                        <?php }
-                        ?>
+                            <?php }
+                            ?>
                     </datalist>
                     <ul class="ticket-hashtags">
                         <?php foreach ($ticket->getHashtags($db) as $hashtag) { ?>
@@ -95,8 +94,7 @@ function drawTicket(Ticket $ticket, string $userType)
                 </li>
                 <li>
                     <?php if ($isAdminOrAgent) { ?>
-                        <a href="ticket_history.php?id=<?php echo $ticket->id; ?>"><span
-                                    class="material-symbols-outlined">history</span>History</a>
+                        <a href="ticket_history.php?id=<?php echo $ticket->id; ?>"><span class="material-symbols-outlined">history</span>History</a>
                     <?php } ?>
                 </li>
                 <!-- attachments -->
@@ -106,8 +104,7 @@ function drawTicket(Ticket $ticket, string $userType)
                         <ul class="attachments">
                             <?php foreach ($ticket->attachments($db) as $attachment) { ?>
                                 <li>
-                                    <a href="../actions/action_download_file.php?id=<?= $attachment['id'] ?>"><span
-                                                class="material-symbols-outlined">download</span>Attachment <?= $attachment['id'] ?></a>
+                                    <a href="../actions/action_download_file.php?id=<?= $attachment['id'] ?>"><span class="material-symbols-outlined">download</span>Attachment <?= $attachment['id'] ?></a>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -116,5 +113,5 @@ function drawTicket(Ticket $ticket, string $userType)
             </ul>
         </form>
     </article>
-    <?php
+<?php
 }

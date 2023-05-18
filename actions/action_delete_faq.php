@@ -10,4 +10,3 @@ $stmt = $db->prepare('DELETE FROM FAQ WHERE id = ?');
 $stmt->execute(array($id));
 
 header('Location: ../pages/faq_page.php');
-?>

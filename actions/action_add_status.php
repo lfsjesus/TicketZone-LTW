@@ -17,5 +17,3 @@ try {
 }
 
 header('Location: ../pages/management.php?tab=2');
-
-?>

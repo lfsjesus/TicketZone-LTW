@@ -1,5 +1,6 @@
-<?php 
-declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 require_once(__DIR__ . '/../database/ticket.class.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../templates/common.tpl.php');
@@ -10,7 +11,7 @@ require_once(__DIR__ . '/../database/action.class.php');
 
 $session = new Session();
 
-if(!$session->isLoggedIn()) {
+if (!$session->isLoggedIn()) {
     header('Location: ../pages/login_page.php');
     die();
 }
@@ -31,19 +32,19 @@ drawHeader($ticket->title);
     drawNavbar($session);
     ?>
     <main id="history">
-    <h2>Action History</h2>
-    <ul>
-        <?php
-        $actions = Action::getActionsByTicketId($db, $ticket->id);
-        foreach ($actions as $action) {
-            $ticket = Ticket::getTicket($db,$action->ticketId);
-            $action_user = User::getUser($db, $action->userId);
-            echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action_user->firstName} {$action_user->lastName} {$action->action} </li>";
-        }
-        ?>
-    </ul>
-</main>
+        <h2>Action History</h2>
+        <ul>
+            <?php
+            $actions = Action::getActionsByTicketId($db, $ticket->id);
+            foreach ($actions as $action) {
+                $ticket = Ticket::getTicket($db, $action->ticketId);
+                $action_user = User::getUser($db, $action->userId);
+                echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action_user->firstName} {$action_user->lastName} {$action->action} </li>";
+            }
+            ?>
+        </ul>
+    </main>
 </section>
-<?php 
-    drawFooter();
+<?php
+drawFooter();
 ?>

@@ -26,5 +26,4 @@ $ticket_id = $_GET['ticket_id'];
 $hashtag_link = $db->prepare('INSERT INTO TicketTagJunction (ticket_id, hashtag_id) VALUES (?, ?)');
 $hashtag_link->execute([$ticket_id, $hashtag_id]);
 
-echo $hashtag_id; 
-?>
+echo $hashtag_id;

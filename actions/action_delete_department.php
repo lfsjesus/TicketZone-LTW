@@ -11,4 +11,3 @@ $stmt = $db->prepare('DELETE FROM Departments WHERE id = ?');
 $stmt->execute(array($department_id));
 
 header('Location: ../pages/management.php?tab=1');
-?>

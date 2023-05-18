@@ -126,4 +126,3 @@
             return $_SESSION['user']->type == 'admin';
         }
     }
-?>

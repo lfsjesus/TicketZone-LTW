@@ -63,5 +63,3 @@ $ticket->description = ($_POST['description'] ? $_POST['description'] : $ticket-
 
 $ticket->save($db);
 header('Location: ../pages/userTicket.php');
-
-?>

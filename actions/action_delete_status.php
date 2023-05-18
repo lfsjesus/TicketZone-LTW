@@ -11,4 +11,3 @@ $stmt = $db->prepare('DELETE FROM Statuses WHERE id = ?');
 $stmt->execute(array($status_id));
 
 header('Location: ../pages/management.php?tab=2');
-?>

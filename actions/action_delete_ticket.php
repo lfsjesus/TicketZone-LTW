@@ -10,5 +10,3 @@ $db = getDatabaseConnection();
 // delete ticket
 $stmt = $db->prepare('DELETE FROM Tickets WHERE id = ?');
 $stmt->execute([$ticket_id]);
-
-?>

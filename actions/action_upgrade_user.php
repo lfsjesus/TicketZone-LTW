@@ -25,5 +25,3 @@ if ($user) {
     $user->save($db);
     header('Location: ../pages/management.php');
 }
-
-?>

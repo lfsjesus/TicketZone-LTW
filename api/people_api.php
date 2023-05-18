@@ -88,7 +88,3 @@ echo json_encode(array(
     'departments' => $departments,
     'count' => $count
 ));
-?>
-
-
-
