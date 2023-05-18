@@ -2,6 +2,15 @@
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../database/department.class.php');
+require_once(__DIR__ . '/../utils/session.php');
+
+$session = new Session();
+$userType = $session->getUser()->type;
+
+if ($userType !== 'admin') {
+    header('Location: /');
+    exit();
+}
 
 $departmentFilter = $_GET['department_id'];
 $typeFilter = $_GET['type'];
