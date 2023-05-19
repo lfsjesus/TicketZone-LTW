@@ -34,7 +34,7 @@ drawHeader("Add FAQ");
             <label for="question">Question</label>
             <input type="text" name="question" id="question" placeholder="Question" required>
             <label for="answer">Answer</label>
-            <textarea name="answer" id="description" cols="30" rows="20" placeholder="FAQ answer" required></textarea>
+            <textarea name="answer" id="answer" cols="30" rows="20" placeholder="FAQ answer" required></textarea>
             <input type="submit" value="Create FAQ">
         </form>
     </main>
