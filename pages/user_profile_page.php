@@ -27,7 +27,7 @@ $user = User::getUser($db, (int)$_GET['id']);
 
 
 if (!$isAdminOrAgent && ($user->id !== $session_user->id)) {
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../pages/userTicket_page.php');
     die();
 }
 drawHeader($user->firstName . ' ' . $user->lastName);
@@ -43,7 +43,7 @@ drawHeader($user->firstName . ' ' . $user->lastName);
             $actions = Action::getActionsByUserId($db, $user->id);
             foreach ($actions as $action) {
                 $ticket = Ticket::getTicket($db, $action->ticketId);
-                echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action->action} : <a href='ticket.php?id={$ticket->id}'>{$ticket->title}</a></li>";
+                echo "<li>{$action->date->format('Y-m-d H:i:s')} - {$action->action} : <a href='ticket_page.php?id={$ticket->id}'>{$ticket->title}</a></li>";
             }
             ?>
         </ul>

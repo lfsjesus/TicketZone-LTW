@@ -18,7 +18,7 @@ if (!$session->isLoggedIn()) {
 }
 
 $db = getDatabaseConnection();
-drawHeader("My Tickets");
+drawHeader("Tickets");
 ?>
 <div id="main-wrapper">
   <?php

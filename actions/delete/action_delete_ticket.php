@@ -1,12 +1,13 @@
 <?php
-require_once('../utils/session.php');
-require_once('../database/connection.db.php');
-require_once('../database/ticket.class.php');
+declare(strict_types=1);
+require_once(__DIR__ . '/../../utils/session.php');
+require_once(__DIR__ . '/../../database/connection.db.php');
+require_once(__DIR__ . '/../../database/ticket.class.php');
 
 $session = new Session();
 
 if (!$session->isLoggedIn()) {
-    header('Location: ../pages/login_page.php');
+    header('Location: ../../pages/login_page.php');
     die();
 }
 
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ticket = Ticket::getTicket($db, $ticket_id);
 
     if (!$isAdminOrAgent && $ticket->ticketCreator->id !== $session->getUser()->id) {
-        header('Location: ../pages/userTicket.php');
+        header('Location: ../../pages/userTicket_page.php');
         die();
     }
 

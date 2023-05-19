@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(field);
       formData.append("user_id", user_id);
       formData.append(field, target.value);
-      xhr.open("POST", "../actions/action_upgrade_user.php");
+      xhr.open("POST", "../actions/edit/action_edit_user.php");
       xhr.onload = function () {
         if (this.status == 200) {
           console.log("success");
@@ -113,7 +113,7 @@ function updateTablePeople(page = 1) {
                         </select>
                     </td>
                     <td>
-                        <form action="../actions/action_delete_user.php" method="post">
+                        <form action="../actions/delete/action_delete_user.php" method="post">
                             <button class="delete" name="id" value="${
                               person.id
                             }" type="submit"><span class="material-symbols-outlined">delete</span></button>

@@ -16,7 +16,7 @@ if (!$session->isLoggedIn()) {
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!isset($_GET['id'])) {
-        header('Location: ../pages/userTicket.php');
+        header('Location: ../pages/userTicket_page.php');
         exit();
     }
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $ticket = Ticket::getTicket($db, $file['ticket_id']);
 
     if (!$isAdminOrAgent && $ticket->ticketCreator->id !== $session->getUser()->id) {
-        header('Location: ../pages/userTicket.php');
+        header('Location: ../pages/userTicket_page.php');
         exit();
     }
 

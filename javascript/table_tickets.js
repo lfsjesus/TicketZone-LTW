@@ -60,7 +60,7 @@ function updateTableData(page = 1) {
                         }" name="ticket[]"></td>
                         <td class="table-title"><a href="${
                           ticket.ticketCreator != null
-                            ? "user_profile.php?id=" + ticket.ticketCreator.id
+                            ? "user_profile_page.php?id=" + ticket.ticketCreator.id
                             : ""
                         }">${
             ticket.ticketCreator != null
@@ -69,12 +69,12 @@ function updateTableData(page = 1) {
                 ticket.ticketCreator.lastName
               : ""
           }</td>
-                        <td class="table-title"><a href="ticket.php?id=${
+                        <td class="table-title"><a href="ticket_page.php?id=${
                           ticket.id
                         }">${ticket.title}</a></td>
                         <td rowspan="2" class="table-title"><a href="${
                           ticket.ticketAssignee != null
-                            ? "user_profile.php?id=" + ticket.ticketAssignee.id
+                            ? "user_profile_page.php?id=" + ticket.ticketAssignee.id
                             : ""
                         }">${
             ticket.ticketAssignee != null
@@ -194,7 +194,7 @@ deleteBtn.addEventListener("click", function (e) {
       let xhr = new XMLHttpRequest();
       let formData = new FormData();
       formData.append("id", id);
-      xhr.open("POST", "../actions/action_delete_ticket.php");
+      xhr.open("POST", "../actions/delete/action_delete_ticket.php");
       xhr.onload = function () {
         if (this.status == 200) {
           console.log("Ticket deleted");
@@ -214,7 +214,7 @@ form.addEventListener("change", function (e) {
     checked.forEach((id) => {
       formData.append("id", id);
       let xhr = new XMLHttpRequest();
-      xhr.open("POST", "../actions/action_edit_ticket.php");
+      xhr.open("POST", "../actions/edit/action_edit_ticket.php");
       xhr.onload = function () {
         if (this.status == 200) {
           console.log("Ticket edited");

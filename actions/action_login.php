@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($password, $hash)) {
         $session->setId($user->id);
         $session->setUser($user);
-        header('Location: ../pages/userTicket.php');
+        header('Location: ../pages/userTicket_page.php');
         
     } else {
         $error = 'Wrong email or password!';

@@ -24,12 +24,12 @@ $isAdminOrAgent = ($userType == 'admin' || $userType == 'agent');
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
 
 if(!$isAdminOrAgent && ($user->id !== $ticket->ticketCreator->id)){
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../pages/userTicket_page.php');
     die();
 }
 
 if ($ticket == null) {
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../pages/userTicket_page.php');
     die();
 }
 
@@ -57,7 +57,7 @@ drawHeader($ticket->title);
                     ?>
                 </select>
             </section>
-            <form action="../actions/action_create_comment.php" class="comment-form" method="post" enctype="multipart/form-data">
+            <form action="../actions/add/action_add_comment.php" class="comment-form" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
                 <textarea name="message" id="comment" cols="30" rows="5" placeholder="Comment" required></textarea>
                 <div id="comment-extras">

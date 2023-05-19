@@ -26,7 +26,7 @@ drawHeader("Create Ticket");
     ?>
     <main id="create-ticket-page">
         <h1>Create Ticket</h1>
-        <form action="../actions/action_create_ticket.php" class="ticket-form" method="post" enctype="multipart/form-data">
+        <form action="../actions/add/action_add_ticket.php" class="ticket-form" method="post" enctype="multipart/form-data">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" placeholder="Title" required>
             <label for="department">Department</label>

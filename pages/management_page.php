@@ -14,7 +14,7 @@ if (!$session->isLoggedIn()) {
 } 
 
 if (!$session->getUser()->isAdmin()) {
-  header('Location: ../pages/userTicket.php');
+  header('Location: ../pages/userTicket_page.php');
   exit();
 }
 
@@ -98,7 +98,7 @@ drawHeader("Management");
           <tr>
             <td>-</td>
             <td class="add-entry">
-              <form action="../actions/action_add_department.php" method="post">
+              <form action="../actions/add/action_add_department.php" method="post">
                 <input type="text" name="department" placeholder="Add a new department">
                 <button type="submit" class="material-symbols-outlined">add</button>
               </form>
@@ -112,7 +112,7 @@ drawHeader("Management");
               <td><?= $department->id ?></td>
               <td><?= $department->name ?></td>
               <td>
-                <form action="../actions/action_delete_department.php" method="post">
+                <form action="../actions/delete/action_delete_department.php" method="post">
                   <button class="delete" name="department_id" value="<?= $department->id ?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
                 </form>
               </td>
@@ -134,7 +134,7 @@ drawHeader("Management");
           <tr>
             <td>-</td>
             <td class="add-entry">
-              <form action="../actions/action_add_status.php" method="post">
+              <form action="../actions/add/action_add_status.php" method="post">
                 <input type="text" name="status" placeholder="Add a new Status">
                 <button type="submit" class="material-symbols-outlined">add</button>
               </form>
@@ -148,7 +148,7 @@ drawHeader("Management");
               <td><?= $status['id'] ?></td>
               <td><?= $status['name'] ?></td>
               <td>
-                <form action="../actions/action_delete_status.php" method="post">
+                <form action="../actions/delete/action_delete_status.php" method="post">
                   <button class="delete" name="status_id" value="<?= $status['id'] ?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
                 </form>
               </td>

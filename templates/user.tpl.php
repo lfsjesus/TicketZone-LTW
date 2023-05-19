@@ -6,7 +6,7 @@ declare(strict_types=1); ?>
 {
   $error = $_GET['error'];
 ?>
-  <form action="../actions/action_edit_profile.php" method="post" class="profile">
+  <form action="../actions/edit/action_edit_profile.php" method="post" class="profile">
 
     <label for="first_name">First Name:</label>
     <input id="first_name" type="text" name="first_name" value="<?= $user->firstName ?>">

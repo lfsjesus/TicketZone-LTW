@@ -30,7 +30,7 @@ drawHeader("Add FAQ");
     ?>
     <main id="add-faq-page">
         <h1>Add FAQ</h1>
-        <form action="../actions/action_add_faq.php" class="faq-form" method="post">
+        <form action="../actions/add/action_add_faq.php" class="faq-form" method="post">
             <label for="question">Question</label>
             <input type="text" name="question" id="question" placeholder="Question" required>
             <label for="answer">Answer</label>

@@ -28,7 +28,7 @@ drawHeader("FAQ");
       <h1>Frequently Asked Questions - FAQ</h1>
       <?php
       if ($userType === 'admin' || $userType === 'agent') {
-        echo '<a class="create-button" href="/../pages/add_faq.php"><span class="material-symbols-outlined">add_circle</span>Add FAQ</a>';
+        echo '<a class="create-button" href="/../pages/add_faq_page.php"><span class="material-symbols-outlined">add_circle</span>Add FAQ</a>';
       }
       ?>
     </header>

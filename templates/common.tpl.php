@@ -17,15 +17,15 @@ function drawHeader(string $pageName)
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <script src="../javascript/script.js" defer></script>
-    <?php if ($_SERVER['REQUEST_URI'] == '/pages/userTicket.php') { ?>
+    <?php if ($_SERVER['REQUEST_URI'] == '/pages/userTicket_page.php') { ?>
     <script src="../javascript/table_tickets.js" defer></script>
     <?php }
     // if inside ticket page
-    if (strpos($_SERVER['REQUEST_URI'], 'ticket.php') !== false) { ?>
+    if (strpos($_SERVER['REQUEST_URI'], 'ticket_page.php') !== false) { ?>
     <script src="../javascript/ticket_edit.js" defer></script>
     <?php }
 
-    if (strpos($_SERVER['REQUEST_URI'], 'management.php') !== false) { ?>
+    if (strpos($_SERVER['REQUEST_URI'], 'management_page.php') !== false) { ?>
     <script src="../javascript/management.js" defer></script>
     <?php }
     ?>
@@ -41,16 +41,16 @@ function drawNavbar(Session $session)
       <img src="../images/ticketzone_logo.png" alt="logo" class="logo">
       <ul>
         <?php if ($session->getUser()->type == 'admin') { ?>
-          <li><a href="/../pages/management.php"><span class="material-symbols-outlined">people</span>Management</a></li>
+          <li><a href="/../pages/management_page.php"><span class="material-symbols-outlined">people</span>Management</a></li>
         <?php } ?>
-        <li><a href="/../pages/userTicket.php"><span class="material-symbols-outlined">feed</span>My tickets</a></li>
+        <li><a href="/../pages/userTicket_page.php"><span class="material-symbols-outlined">feed</span>Tickets</a></li>
         <li><a href="/../pages/faq_page.php"><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
-        <li><a href="/../pages/about.php"><span class="material-symbols-outlined">info</span>About us</a></li>
+        <li><a href="/../pages/about_page.php"><span class="material-symbols-outlined">info</span>About us</a></li>
       </ul>
       <?php
       if ($session->isLoggedIn()) { ?>
         <footer>
-          <a href="/../pages/edit_profile.php"><span class="material-symbols-outlined">person</span>Profile</a>
+          <a href="/../pages/edit_profile_page.php"><span class="material-symbols-outlined">person</span>Profile</a>
           <form action="/../actions/action_logout.php" method="post">
             <button type="submit" name="logout" class="logout-button">Logout<span class="material-symbols-outlined">logout</span></button>
           </form>
@@ -109,7 +109,7 @@ function drawUserTicketHeader(Session $session)
         <button class="delete"><span class="material-symbols-outlined">delete</span></button>
       </form>
 
-      <a class="create-button" href="/../pages/create_ticket.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a>
+      <a class="create-button" href="/../pages/create_ticket_page.php"><span class="material-symbols-outlined">add_circle</span>Create Ticket</a>
 
     </header>
   <?php }

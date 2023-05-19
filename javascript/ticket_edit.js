@@ -14,7 +14,7 @@ editBtn.addEventListener("click", function () {
     formData.delete("department");
     formData.delete("assignee");
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../actions/action_edit_ticket.php");
+    xhr.open("POST", "../actions/edit/action_edit_ticket.php");
     xhr.onload = function () {
       if (this.status == 200) {
         console.log("Ticket edited");
@@ -42,7 +42,7 @@ selects.forEach((select) => {
   select.addEventListener("change", function () {
     let formData = new FormData(form);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../actions/action_edit_ticket.php");
+    xhr.open("POST", "../actions/edit/action_edit_ticket.php");
     xhr.onload = function () {
       if (this.status == 200) {
         console.log("Ticket edited");
@@ -75,7 +75,7 @@ input.addEventListener("keyup", function (e) {
     let xhr = new XMLHttpRequest();
     xhr.open(
       "GET",
-      `../actions/action_add_hashtag.php?hashtag_name=${hashtag}&ticket_id=${ticket_id}`
+      `../actions/add/action_add_hashtag.php?hashtag_name=${hashtag}&ticket_id=${ticket_id}`
     );
     xhr.onload = function () {
       if (this.status == 200) {
@@ -117,7 +117,7 @@ function handleHashtagRemoval(e) {
   let xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
-    `../actions/action_remove_hashtag.php?hashtag_id=${hashtag_id}&ticket_id=${ticket_id}`
+    `../actions/delete/action_remove_hashtag.php?hashtag_id=${hashtag_id}&ticket_id=${ticket_id}`
   );
   xhr.onload = function () {
     if (this.status == 200) {

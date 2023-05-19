@@ -19,7 +19,7 @@ $db = getDatabaseConnection();
 $user = User::getUser($db, $session->getId());
 
 if ($user->id !== $session->getUser()->id) {
-  header('Location: ../pages/userTicket.php');
+  header('Location: ../pages/userTicket_page.php');
   die();
 }
 

@@ -1,15 +1,15 @@
 <?php
 declare(strict_types = 1);
-require_once(__DIR__ . '/../database/connection.db.php');
-require_once(__DIR__ . '/../utils/session.php');
-require_once(__DIR__ . '/../database/ticket.class.php');
+require_once(__DIR__ . '/../../database/connection.db.php');
+require_once(__DIR__ . '/../../utils/session.php');
+require_once(__DIR__ . '/../../database/ticket.class.php');
 
 $session = new Session();
 $userType = $session->getUser()->type;
 $isAdminOrAgent = ($userType == 'admin' || $userType == 'agent');
 
 if (!$session->isLoggedIn()) {
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../../pages/userTicket_page.php');
     die();
 }
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ticket = Ticket::getTicket(getDatabaseConnection(), (int)$_POST['ticket_id']);
     
     if(!$isAdminOrAgent && ($session->getId() !== $ticket->ticketCreator->id)){
-        header('Location: ../pages/userTicket.php');
+        header('Location: ../../pages/userTicket_page.php');
         die();
     }
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->rowCount() == 1) {
-        header('Location: ../pages/ticket.php?id=' . $ticket_id);
+        header('Location: ../../pages/ticket_page.php?id=' . $ticket_id);
     } else {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

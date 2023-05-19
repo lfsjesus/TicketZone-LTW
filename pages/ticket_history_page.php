@@ -24,11 +24,11 @@ $db = getDatabaseConnection();
 $ticket = Ticket::getTicket($db, (int)$_GET['id']);
 
 if (!$isAdminOrAgent && ($ticket->ticketCreator->id !== $session_user->id)) {
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../pages/userTicket_page.php');
     die();
 }
 if ($ticket == null) {
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../pages/userTicket_page.php');
     die();
 }
 

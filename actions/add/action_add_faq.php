@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/../database/connection.db.php';
-require_once __DIR__ . '/../utils/session.php';
+require_once __DIR__ . '/../../database/connection.db.php';
+require_once __DIR__ . '/../../utils/session.php';
 
 $session = new Session();
 $userType = $session->getUser()->type;
@@ -12,7 +12,7 @@ if (!$session->isLoggedIn()) {
 }
 
 if ($userType !== 'admin' && $userType !== 'agent') {
-    header('Location: ../pages/userTicket.php');
+    header('Location: ../pages/userTicket_page.php');
     die();
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -25,5 +25,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $db->prepare('INSERT INTO FAQ (question, answer) VALUES (?, ?)');
     $stmt->execute(array($question, $answer));
 
-    header('Location: ../pages/faq_page.php');
+    header('Location: ../../pages/faq_page.php');
 }
