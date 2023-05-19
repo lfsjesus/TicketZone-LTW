@@ -7,14 +7,13 @@ require_once(__DIR__ . '/../database/user.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $session = new Session();
-    $userType = $session->getUser()->type;
-
+    
     if (!$session->isLoggedIn()) {
         header('Location: ../pages/login_page.php');
         die();
     }
 
-    if ($userType !== 'admin') {
+    if (!$session->getUser()->isAdmin()) {
         header('Location: ../pages/userTicket.php');
         die();
     }

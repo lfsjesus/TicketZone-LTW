@@ -11,7 +11,6 @@ if (!$session->isLoggedIn()) {
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
     $db = getDatabaseConnection();
 
     $department = $_POST['department'];

@@ -11,11 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $repeat_password = $_POST['repeat_password'];
 
-    // Check if passwords match
     if ($password !== $repeat_password) {
         $error = "Passwords do not match!";
     } else {
-        // Validate input
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = 'Invalid email address';
         } elseif (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
@@ -42,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':firstName', $firstName);
                 $stmt->bindParam(':lastName', $lastName);
-                $stmt->bindValue(':type', 'client'); // default to 'client' type
+                $stmt->bindValue(':type', 'client'); 
 
                 if ($stmt->execute()) {
                     header('Location: ../pages/login_page.php');

@@ -4,14 +4,13 @@ require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
 
 $session = new Session();
-$userType = $session->getUser()->type;
 
 if (!$session->isLoggedIn()) {
     header('Location: ../pages/login_page.php');
     die();
 }
 
-if ($userType !== 'admin') {
+if (!$session->getUser()->isAdmin()) {
     header('Location: ../pages/userTicket.php');
     die();
 }

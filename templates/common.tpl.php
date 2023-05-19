@@ -18,15 +18,15 @@ function drawHeader(string $pageName)
     <link rel="stylesheet" href="../css/responsive.css">
     <script src="../javascript/script.js" defer></script>
     <?php if ($_SERVER['REQUEST_URI'] == '/pages/userTicket.php') { ?>
-      <script src="../javascript/table_tickets.js" defer></script>
+    <script src="../javascript/table_tickets.js" defer></script>
     <?php }
     // if inside ticket page
     if (strpos($_SERVER['REQUEST_URI'], 'ticket.php') !== false) { ?>
-      <script src="../javascript/ticket_edit.js" defer></script>
+    <script src="../javascript/ticket_edit.js" defer></script>
     <?php }
 
     if (strpos($_SERVER['REQUEST_URI'], 'management.php') !== false) { ?>
-      <script src="../javascript/management.js" defer></script>
+    <script src="../javascript/management.js" defer></script>
     <?php }
     ?>
   </head>
@@ -50,10 +50,8 @@ function drawNavbar(Session $session)
       <?php
       if ($session->isLoggedIn()) { ?>
         <footer>
-          <!--button with href-->
           <a href="/../pages/edit_profile.php"><span class="material-symbols-outlined">person</span>Profile</a>
           <form action="/../actions/action_logout.php" method="post">
-            <!-- LOGOUT BUTTON WITH TEXT AND ICON -->
             <button type="submit" name="logout" class="logout-button">Logout<span class="material-symbols-outlined">logout</span></button>
           </form>
         </footer>
@@ -72,7 +70,6 @@ function drawUserTicketHeader(Session $session)
         <button type="submit"><span class="material-symbols-outlined">search</span></button>
       </form>
 
-      <!-- options for tickets when selected like delete, change status, etc-->
       <form class="ticket-options" style="display: none">
         <?php
         $userType = $session->getUser()->type;

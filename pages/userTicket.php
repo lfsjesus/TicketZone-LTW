@@ -26,10 +26,7 @@ drawHeader("My Tickets");
   <main>
     <?php
     drawUserTicketHeader($session);
-    if (!$session->isLoggedIn()) {
-      echo '<h1>Access denied</h1>';
-    } else {
-      $user = $session->getUser();
+    $user = $session->getUser();
     ?>
       <table class="ticket-list">
           <thead>
@@ -102,9 +99,6 @@ drawHeader("My Tickets");
             </tr>
           </thead>
         <tbody>
-        <?php
-      }
-        ?>
         </tbody>
         <tfoot>
           <tr>

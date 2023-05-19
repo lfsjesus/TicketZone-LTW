@@ -18,6 +18,11 @@ if (!$session->isLoggedIn()) {
 $db = getDatabaseConnection();
 $user = User::getUser($db, $session->getId());
 
+if ($user->id !== $session->getUser()->id) {
+  header('Location: ../pages/userTicket.php');
+  die();
+}
+
 drawHeader("Edit Profile");
 ?>
 <div id="main-wrapper">

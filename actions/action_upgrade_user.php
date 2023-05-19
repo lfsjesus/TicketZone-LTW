@@ -14,7 +14,7 @@ if (!$session->isLoggedIn()) {
     die();
 }
   
-if ($userType !== 'admin') {
+if (!$session->getUser()->isAdmin()) {
     header('Location: ../pages/userTicket.php');
     die();
 }

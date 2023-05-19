@@ -2,16 +2,25 @@
 declare(strict_types = 1);
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../utils/session.php');
+require_once(__DIR__ . '/../database/ticket.class.php');
 
 $session = new Session();
+$userType = $session->getUser()->type;
+$isAdminOrAgent = ($userType == 'admin' || $userType == 'agent');
 
 if (!$session->isLoggedIn()) {
     header('Location: ../pages/userTicket.php');
     die();
 }
 
-// Verificar se ticket é do user logged (para poder comentar), ou então é agente ou admin
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $ticket = Ticket::getTicket(getDatabaseConnection(), (int)$_POST['ticket_id']);
+    
+    if(!$isAdminOrAgent && ($session->getId() !== $ticket->ticketCreator->id)){
+        header('Location: ../pages/userTicket.php');
+        die();
+    }
 
     $db = getDatabaseConnection();
 
