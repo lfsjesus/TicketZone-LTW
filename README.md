@@ -59,7 +59,7 @@ Font used for the icons that appear on the various pages throughout the website.
 
 |About Us | Management |
 | --- | --- |
-| ![About Us](./docs/mockups/AboutUs.png) | ![Management](./docs/mockups/Management.png) |
+| ![About Us](./docs/mockups/AbouUs.png) | ![Management](./docs/mockups/Management.png) |
 
 ---
 ### UML
@@ -105,18 +105,14 @@ Admins should be able to(they are also agents):
 #### Extra Features
 
 - [x] Tickets can have documents attached to them.
-- [x] Agents can see a client's history.
+- [x] Agents can see a client's history and clients can see yours.
 
 
 #### Security Features
 
-- [x] Hashed passwords (with SALT from password hash)
-- [x] Session CSRF Tokens
+- [x] Hashed passwords
 - [x] XSS attacks prevented
-- [x] Regex to filter user input
-- [x] Session fixation prevented (24 hours)
-- [x] SQL using prepare/execute
-- [x] Data Validation: regex / php / javascript
+- [x] SQL using prepare/execute (preventing SQL injection)
 
 
 ### Technologies
