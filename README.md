@@ -1,145 +1,131 @@
-# LTW Example
+# LTW Project
 
-Based on a simplified version of the [Chinook Database](https://github.com/lerocha/chinook-database):
+## Project Description
+Develop a website to streamline and manage trouble tickets effectively.
 
-![](docs/database.svg)
+This project was done by:
+- *Eduardo Oliveira*, up202108690
+- *João Padrão*, up202108766
+- *Luís Jesus*, up202108683
 
-You can see previous versions of the example by changing branches.
+---
+## Index
+1. [Credentials](#credentials)
+1. [Mockups](#Mockups)
+1. [UML](#UML)
+1. [Code Practices](#Code-Practices)
+1. [Features](#Features)
 
-# Step 1: Create the Database
+---
+### Accounts for login (email/password (role))
 
-To create the database, we need to run the following command:
+- client@gmail.com / client123 (User)
+- agent@gmail.com / agent123 (Agent)
+- admin@gmail.com / admin123 (Admin)
 
-```bash
-sqlite3 database.db < database.sql
+---
+### Libraries
+
+#### Google Fonts
+```html
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 ```
 
-# Step 2: Draw Mockups
+Font used in text throughout the website.
 
-Draw some initial mockups. Don't lose too much time with these:
+#### Icons
+```html
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+```
 
-![](docs/mockups.svg)
+Font used for the icons that appear on the various pages throughout the website.
 
-# Step 3: HTML in PHP files
+---
+### Mockups
 
-- [index.php](index.php)
-- [artist.php](artist.php)
-- [album.php](album.php)
+| Login | Register |
+| --- | --- |
+| ![Login](./docs/mockups/Login.png) | ![Register](./docs/mockups/Register.png) |
 
-# Step 4: Create template files
+| Profile | FAQ |
+| --- | --- |
+| ![Profile](./docs/mockups/ChangeProfile.png) | ![FAQ](./docs/mockups/FAQ.png) |
 
-[What's New](https://github.com/arestivo/chinook/compare/step3...step4)
 
-Create a [templates](templates) folder that will contain several template files.
+|Tickets | Ticket Information |
+| --- | --- |
+| ![Tickets](./docs/mockups/MyTickets.png) | ![Ticket Information](./docs/mockups/TicketInformation.png) |
 
-Each template file will have functions that will be able to draw parts of the HTML:
 
-- [common.tpl.php](templates/common.tpl.php) drawHeader, drawFooter, drawLoginForm.
-- [artist.tpl.php](templates/artist.tpl.php) drawArtists, drawArtist.
-- [album.tpl.php](templates/album.tpl.php) drawAlbum.
+|About Us | Management |
+| --- | --- |
+| ![About Us](./docs/mockups/AboutUs.png) | ![Management](./docs/mockups/Management.png) |
 
-# Step 5: Style folder
+---
+### UML
 
-Create a [css](css) folder that will contain all files related to style of the web page.
+![Login](./docs/UML.png)
 
-# Step 6: Documents folder
+---
+### Code practices
 
-Create a [docs](docs) folder that will contain all files related to the documentation.
+- All the content should be in english
+- Git Flow followed (dont commit directly on master, use pull requests, ...)
 
-# Step 7: Connect to the database
+---
+### Features
 
-[What's New](https://github.com/arestivo/chinook/compare/step4...step7)
+#### Required Features
+All users should be able to:
+- [x] Register a new account.
+- [x] Login and logout.
+- [x] Edit their profile (at least name, username, password, and e-mail).
 
-Create a [database](database) folder that will contain all database pertinent files:
+Clients should be able to:
+- [x] Submit a new ticket optionally choosing a department (e.g., "Accounting").
+- [x] List and track tickets they have submitted.
+- [x] Reply to inquiries (e.g., the agent asks for more details) about their tickets and add more information to already submitted tickets.
 
-- [database.sql](database/database.sql) the SQL file used to create the database.
-- [database.db](database/database.db) the actual SQLite database file.
-- [connection.php](database/connection.db.php) function to connect to the database.
-- [artist.db.php](database/artist.db.php) queries related to artists.
-- [album.db.php](database/album.db.php) queries related to albums.
+Agents should be able to(they are also clients):
+- [x] List tickets from their departments (e.g., "Accounting"), and filter them in different ways (e.g., by date, by assigned agent, by status, by priority, by hashtag).
+- [x] Change the department of a ticket (e.g., the client chose the wrong department).
+- [x] Assign a ticket to themselves or someone else.
+- [x] Change the status of a ticket. Tickets can have many statuses (e.g., open, assigned, closed); some may change automatically (e.g., ticket changes to "assigned" after being assigned to an agent).
+- [x] Edit ticket hashtags easily (just type hashtag to add (with autocomplete), and click to remove).
+- [x] List all changes done to a ticket (e.g., status changes, assignments, edits).
+- [x] Manage the FAQ and use an answer from the FAQ to answer a ticket.
 
-# Step 8: Use classes
+Admins should be able to(they are also agents):
+- [x] Upgrade a client to an agent or an admin.
+- [x] Add new departments, statuses, and other relevant entities.
+- [x] Assign agents to departments.
+- [x] Control the whole system.
 
-[What's New](https://github.com/arestivo/chinook/compare/step7...step8)
 
-Transform all data access functions into classes:
+#### Extra Features
 
-- [artist.class.php](database/artist.class.php) represents an artist.
-- [album.class.php](database/album.class.php) represents a album from an artis.
-- [track.class.php](database/track.class.php) represent a track in a album.
+- [x] Tickets can have documents attached to them.
+- [x] Agents can see a client's history.
 
-Each class has one or more functions to get data from the database.
 
-# Step 9: Log In / Log out Actions
+#### Security Features
 
-[What's New](https://github.com/arestivo/chinook/compare/step8...step9)
+- [x] Hashed passwords (with SALT from password hash)
+- [x] Session CSRF Tokens
+- [x] XSS attacks prevented
+- [x] Regex to filter user input
+- [x] Session fixation prevented (24 hours)
+- [x] SQL using prepare/execute
+- [x] Data Validation: regex / php / javascript
 
-- Start a session on every page using _session_start()_.
-- Create a class to get customer data: [database/customer.class.php](database/customer.class.php).
-- Create the [action_login.php](action_login.php) page that:
-  - Receives a username and password, verifies if they exist in the database.
-  - If they do, saves the customer data to the session.
-  - Redirects the user back to the previous page.
-- Show a logout form if the user is logged in.
-- Create the [action_login.php](action_login.php) page that destroys the session.
 
-# Step 10: Edit Profile
-
-[What's New](https://github.com/arestivo/chinook/compare/step9...step10)
-
-- Add a new [profile.php](profile.php) page that shows a form to edit the profile of the current user.
-- Make sure it does not show if no user is logged in.
-- Add a link from the logout form to the new page.
-- Add a new [action_edit_profile.php](action_edit_profile.php) action page that receives the first and last name and saves them to the profile of the current user.
-- Make sure nothing happens if no user is logged in.
-- Add a function to save customer data.
-- Create a template to edit a profile.
-
-# Step 11: Responsive
-
-[What's New](https://github.com/arestivo/chinook/compare/step10...step11)
-
-- Add responsive viewport to HTML head.
-- Set maximum width of body.
-- Add a media query for smaller screens.
-
-# Step 12: Ajax Search
-
-[What's New](https://github.com/arestivo/chinook/compare/step11...step12)
-
-- Added an [api_artists.php](api_artists.php) page that returns a list of artists with a name starting with a specific string in JSON format.
-- Added a function to get artists starting with a specific string from the database.
-- Added a search input box to search artists.
-- Added some CSS to format the search input box.
-- Added a new JavaScript file and included it from the header template.
-- Added an event listener to the search input that fires every time the input changes and:
-  - Gets the 'api_artists.php' page using Ajax (with fetch), sending the text in the input.
-  - Uses the returned results to update the list of artists.
-
-# Step 13: Messages
-
-[What's New](https://github.com/arestivo/chinook/compare/step12...step13)
-
-First some organization:
-
-- Added folder for [pages](pages):
-  - [index.php](pages/index.php): main page; list and search artists.
-  - [artist.php](pages/artist.php): view an artist and its albums.
-  - [album.php](pages/album.php): view an album and its tracks.
-  - [edit_album.php](pages/edit_album.php): form to edit an album title.
-  - [profile.php](pages/profile.php): form to edit the current user's profile.
-- Added folder for [actions](actions):
-  - [action_edit_album.php](actions/action_edit_album.php): edit album title.
-  - [action_edit_profile.php](actions/action_edit_profile.php): edit current user's profile.
-  - [action_edit_login.php](actions/action_login.php): verify e-mail and password and login user.
-  - [action_edit_logout.php](actions/action_logout.php): logout current user.
-- Added folder for [api](api):
-  - [api_artists.php](api/api_artists.php): returns all artists starting with a string in JSON format.
-- Changed all imports to accommodate the new folders using \_\_DIR\_\_ when needed.
-
-Adding messages:
-
-- Added a [Session](utils/session.php) class responsible for all things session-related, and replaced all direct calls to session_start, session_destroy and $\_SESSION to calls to this class.
-- Added a way to store messages in the session.
-- Show all session-stored messages on all pages (HTML and CSS).
-- Added some success and error messages.
+### Technologies
+- [x] Correct usage of HTML
+- [x] CSS
+- [x] Responsive CSS
+- [x] Javascript
+- [x] Ajax
+     
+### Usability:
+- [x] Error messages
+- [x] Dark mode
