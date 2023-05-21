@@ -20,7 +20,6 @@ function drawHeader(string $pageName)
     <?php if ($_SERVER['REQUEST_URI'] == '/pages/userTicket_page.php') { ?>
     <script src="../javascript/table_tickets.js" defer></script>
     <?php }
-    // if inside ticket page
     if (strpos($_SERVER['REQUEST_URI'], 'ticket_page.php') !== false) { ?>
     <script src="../javascript/ticket_edit.js" defer></script>
     <?php }
@@ -32,6 +31,7 @@ function drawHeader(string $pageName)
   </head>
 
   <body>
+    <div id="main-wrapper">
   <?php }
 
 
@@ -47,15 +47,12 @@ function drawNavbar(Session $session)
         <li><a href="/../pages/faq_page.php"><span class="material-symbols-outlined">quiz</span>FAQ</a></li>
         <li><a href="/../pages/about_page.php"><span class="material-symbols-outlined">info</span>About us</a></li>
       </ul>
-      <?php
-      if ($session->isLoggedIn()) { ?>
         <footer>
           <a href="/../pages/edit_profile_page.php"><span class="material-symbols-outlined">person</span>Profile</a>
           <form action="/../actions/action_logout.php" method="post">
             <button type="submit" name="logout" class="logout-button">Logout<span class="material-symbols-outlined">logout</span></button>
           </form>
         </footer>
-      <?php } ?>
     </nav>
   <?php }
 
@@ -92,7 +89,7 @@ function drawUserTicketHeader(Session $session)
             <?php
             $departments = Department::getDepartments($db);
             foreach ($departments as $department) { ?>
-              <option value="<?= $department->id ?>"><?= $department->name ?></option>
+              <option value="<?= $department->id ?>"><?= htmlspecialchars($department->name) ?></option>
             <?php }
             ?>
           </select>
@@ -101,7 +98,7 @@ function drawUserTicketHeader(Session $session)
             <?php
             $assignes = User::getAgents($db);
             foreach ($assignes as $assignee) { ?>
-              <option value="<?= $assignee->id ?>"><?= $assignee->name() ?></option>
+              <option value="<?= $assignee->id ?>"><?= htmlspecialchars($assignee->name()) ?></option>
             <?php }
             ?>
           </select>
@@ -116,7 +113,7 @@ function drawUserTicketHeader(Session $session)
 
 function drawFooter()
 { ?>
-
+  </div>
   </body>
 
   </html>

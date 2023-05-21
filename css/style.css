@@ -101,6 +101,7 @@ main > h1:first-child {
 
 #main-wrapper main > header:first-child {
   display: flex;
+  flex-wrap: wrap;
   width: 95%;
   align-items: center;
   justify-content: space-between;
@@ -115,7 +116,7 @@ main > h1:first-child {
   color: white;
   border-radius: 25px;
   padding: 5px 10px;
-  width: 25em;
+  width: 20em;
 }
 
 .search-form input[type="text"] {
@@ -299,8 +300,8 @@ table option {
 
 .ticket-options {
   display: flex;
+  flex-wrap: wrap;
   width: 40%;
-  padding: 0 2.5em;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -526,13 +527,12 @@ button.delete:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto auto;
   border: 4px solid #ccc;
   border-radius: 20px;
   font-family: "Montserrat", sans-serif;
   padding: 5em;
-  width: 25em;
-  margin-top: 5em;
+  width: 70%;
+  margin: auto auto;
 }
 
 #profile label {
@@ -649,7 +649,6 @@ button.delete:hover {
   font-weight: bold;
 }
 
-/* customize dropdown department */
 .ticket-form select {
   padding: 10px;
   margin-bottom: 15px;
@@ -661,7 +660,6 @@ button.delete:hover {
   background-color: white;
 }
 
-/* customize description box, wide box */
 .ticket-form textarea,
 .faq-form textarea {
   font-family: "Montserrat", sans-serif;
@@ -704,8 +702,6 @@ button.delete:hover {
 }
 
 /* TICKET PAGE */
-
-/* ticket styles */
 .ticket-body {
   list-style-type: none;
   border-bottom: 1px solid #46464b;
@@ -950,8 +946,6 @@ button.delete:hover {
   margin-left: 0;
 }
 
-/* three tab <a> to switch between content */
-
 .tabs {
   display: flex;
   flex-direction: row;
@@ -975,7 +969,6 @@ button.delete:hover {
   margin-right: 0.5em;
 }
 
-/*show horizontal line on hover appearing left to right */
 .tabs a:after {
   display: block;
   content: "";

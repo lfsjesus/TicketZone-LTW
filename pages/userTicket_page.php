@@ -20,7 +20,6 @@ if (!$session->isLoggedIn()) {
 $db = getDatabaseConnection();
 drawHeader("Tickets");
 ?>
-<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
@@ -40,7 +39,7 @@ drawHeader("Tickets");
                   <?php
                   $users = User::getUsers($db);
                   foreach ($users as $user) {
-                    echo '<option value="' . $user->id . '">' . $user->name() . '</option>';
+                    echo '<option value="' . $user->id . '">' . htmlspecialchars($user->name()) . '</option>';
                   }
                   ?>
                 </select>
@@ -53,7 +52,7 @@ drawHeader("Tickets");
                   <?php
                   $agents = User::getAgents($db);
                   foreach ($agents as $agent) {
-                    echo '<option value="' . $agent->id . '">' . $agent->name() . '</option>';
+                    echo '<option value="' . $agent->id . '">' . htmlspecialchars($agent->name()) . '</option>';
                   }
                   ?>
                 </select>
@@ -65,7 +64,7 @@ drawHeader("Tickets");
                   <?php
                   $statuses = getStatus($db);
                   foreach ($statuses as $status) {
-                    echo '<option>' . $status['name'] . '</option>';
+                    echo '<option>' . htmlspecialchars($status['name']). '</option>';
                   }
                   ?>
                 </select>
@@ -86,7 +85,7 @@ drawHeader("Tickets");
                   <?php
                   $departments = Department::getDepartments($db);
                   foreach ($departments as $department) {
-                    echo '<option value="' . $department->id . '">' . $department->name . '</option>';
+                    echo '<option value="' . $department->id . '">' . htmlspecialchars($department->name) . '</option>';
                   }
                   ?>
                 </select>
@@ -112,7 +111,6 @@ drawHeader("Tickets");
       </table>
 
   </main>
-    </div>
 <?php
 drawFooter();
 ?>

@@ -14,7 +14,6 @@ if (!$session->isLoggedIn()) {
 
 drawHeader("About Us");
 ?>
-<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
@@ -46,7 +45,6 @@ drawHeader("About Us");
       </li>
     </ul>
   </main>
-</div>
 <?php
 drawFooter();
 ?>

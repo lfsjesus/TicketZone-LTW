@@ -34,7 +34,6 @@ if ($ticket == null) {
 
 drawHeader($ticket->title);
 ?>
-<div id="main-wrapper">
     <?php
     drawNavbar($session);
     ?>
@@ -51,7 +50,6 @@ drawHeader($ticket->title);
             ?>
         </ul>
     </main>
-</div>
 <?php
 drawFooter();
 ?>

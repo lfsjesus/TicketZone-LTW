@@ -36,26 +36,26 @@ VALUES
 -- Populate Tickets table
 INSERT INTO Tickets (id, user_id, agent_id, department_id, title, description, status, priority, date)
 VALUES 
-    (1, 1, 3, 2, 'Website Login Issue', 'I am unable to login to my account on the website.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (2, 2, 7, 1, 'Product Order Delay', 'I placed an order two weeks ago and it has not arrived yet.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (3, 3, 12, 3, 'Marketing Campaign Feedback', 'I have some suggestions for improving the current marketing campaign.', 'assigned', 'Low', CURRENT_TIMESTAMP),
-    (4, 4, 15, 2, 'Payment Error', 'I made a payment but it was not reflected in my account.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (5, 5, 12, 1, 'Product Return Request', 'I would like to return a product that I recently purchased.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (6, 6, 15, 4, 'Expense Reimbursement', 'I need to submit a reimbursement request for my recent business trip.', 'assigned', 'Low', CURRENT_TIMESTAMP),
-    (7, 7, 7, 3, 'Social Media Strategy', 'I have ideas for improving our social media presence and engagement.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (8, 8, 18, 2, 'Website Navigation Issue', 'I am having difficulty navigating through certain pages on the website.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (9, 9, 9, 1, 'Product Compatibility Issue', 'The product I purchased is not compatible with my device.', 'assigned', 'Low', CURRENT_TIMESTAMP),
-    (10, 10, 7, 3, 'Advertising Campaign Inquiry', 'I would like more information about your current advertising campaigns.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (11, 11, 12, 2, 'Checkout Process Error', 'There is an error during the checkout process on your website.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (12, 12, 12, 4, 'Tax Filing Assistance', 'I need help with filing my taxes for the current fiscal year.', 'assigned', 'Low', CURRENT_TIMESTAMP),
+    (1, 1, 3, 2, 'Website Login Issue', 'I am unable to login to my account on the website.', 'assigned', 'high', CURRENT_TIMESTAMP),
+    (2, 2, 7, 1, 'Product Order Delay', 'I placed an order two weeks ago and it has not arrived yet.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (3, 3, 12, 3, 'Marketing Campaign Feedback', 'I have some suggestions for improving the current marketing campaign.', 'assigned', 'low', CURRENT_TIMESTAMP),
+    (4, 4, 15, 2, 'Payment Error', 'I made a payment but it was not reflected in my account.', 'assigned', 'high', CURRENT_TIMESTAMP),
+    (5, 5, 12, 1, 'Product Return Request', 'I would like to return a product that I recently purchased.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (6, 6, 15, 4, 'Expense Reimbursement', 'I need to submit a reimbursement request for my recent business trip.', 'assigned', 'low', CURRENT_TIMESTAMP),
+    (7, 7, 7, 3, 'Social Media Strategy', 'I have ideas for improving our social media presence and engagement.', 'assigned', 'high', CURRENT_TIMESTAMP),
+    (8, 8, 18, 2, 'Website Navigation Issue', 'I am having difficulty navigating through certain pages on the website.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (9, 9, 9, 1, 'Product Compatibility Issue', 'The product I purchased is not compatible with my device.', 'assigned', 'low', CURRENT_TIMESTAMP),
+    (10, 10, 7, 3, 'Advertising Campaign Inquiry', 'I would like more information about your current advertising campaigns.', 'assigned', 'high', CURRENT_TIMESTAMP),
+    (11, 11, 12, 2, 'Checkout Process Error', 'There is an error during the checkout process on your website.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (12, 12, 12, 4, 'Tax Filing Assistance', 'I need help with filing my taxes for the current fiscal year.', 'assigned', 'low', CURRENT_TIMESTAMP),
     (13, 13, 15, 1, 'Product Warranty Claim', 'I want to submit a warranty claim for my faulty product.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (14, 14, 18, 3, 'Social Media Advertising Proposal', 'I have a proposal for an advertising campaign on social media platforms.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (15, 15, 9, 2, 'Website Content Update', 'I noticed outdated information on your website that needs to be updated.', 'assigned', 'Low', CURRENT_TIMESTAMP),
-    (16, 16, 7, 1, 'Product Recommendation', 'I need recommendations for a suitable product based on my requirements.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (17, 17, 3, 4, 'Expense Report Submission', 'I would like to submit my expense report for reimbursement.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (18, 18, 7, 3, 'Marketing Collateral Request', 'I need marketing collateral materials for an upcoming event.', 'assigned', 'High', CURRENT_TIMESTAMP),
-    (19, 19, 12, 2, 'Account Access Issue', 'I am unable to access my account. Please assist.', 'assigned', 'Medium', CURRENT_TIMESTAMP),
-    (20, 20, 3, 1, 'Product Inquiry', 'I have some questions regarding your product features.', 'assigned', 'Low', CURRENT_TIMESTAMP);
+    (14, 14, 18, 3, 'Social Media Advertising Proposal', 'I have a proposal for an advertising campaign on social media platforms.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (15, 15, 9, 2, 'Website Content Update', 'I noticed outdated information on your website that needs to be updated.', 'assigned', 'low', CURRENT_TIMESTAMP),
+    (16, 16, 7, 1, 'Product Recommendation', 'I need recommendations for a suitable product based on my requirements.', 'assigned', 'high', CURRENT_TIMESTAMP),
+    (17, 17, 3, 4, 'Expense Report Submission', 'I would like to submit my expense report for reimbursement.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (18, 18, 7, 3, 'Marketing Collateral Request', 'I need marketing collateral materials for an upcoming event.', 'assigned', 'high', CURRENT_TIMESTAMP),
+    (19, 19, 12, 2, 'Account Access Issue', 'I am unable to access my account. Please assist.', 'assigned', 'medium', CURRENT_TIMESTAMP),
+    (20, 20, 3, 1, 'Product Inquiry', 'I have some questions regarding your product features.', 'assigned', 'low', CURRENT_TIMESTAMP);
 
 -- Populate TicketHashtags table
 INSERT INTO TicketHashtags (id, hashtag)

@@ -32,7 +32,6 @@ if (!$isAdminOrAgent && ($user->id !== $session_user->id)) {
 }
 drawHeader($user->firstName . ' ' . $user->lastName);
 ?>
-<div id="main-wrapper">
     <?php
     drawNavbar($session);
     ?>
@@ -48,7 +47,6 @@ drawHeader($user->firstName . ' ' . $user->lastName);
             ?>
         </ul>
     </main>
-</div>
 <?php
 drawFooter();
 ?>

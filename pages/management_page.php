@@ -22,14 +22,12 @@ $db = getDatabaseConnection();
 
 drawHeader("Management");
 ?>
-<div id="main-wrapper">
   <?php
   drawNavbar($session);
   ?>
   <main id="management-page">
     <header>
       <h1>Management</h1>
-      <!-- tabs to switch between people, departments and statuses. icon and text -->
       <div class="tabs">
         <a class="active"><span class="material-symbols-outlined">people</span>People</a>
         <a><span class="material-symbols-outlined">apartment</span>Departments</a>
@@ -55,7 +53,7 @@ drawHeader("Management");
                   <?php
                   $departments = Department::getDepartments($db);
                   foreach ($departments as $department) {
-                    echo '<option value="' . $department->id . '">' . $department->name . '</option>';
+                    echo '<option value="' . $department->id . '">' . htmlspecialchars($department->name) . '</option>';
                   }
                   ?>
                 </select>
@@ -110,7 +108,7 @@ drawHeader("Management");
           foreach ($departments as $department) { ?>
             <tr>
               <td><?= $department->id ?></td>
-              <td><?= $department->name ?></td>
+              <td><?= htmlspecialchars($department->name) ?></td>
               <td>
                 <form action="../actions/delete/action_delete_department.php" method="post">
                   <button class="delete" name="department_id" value="<?= $department->id ?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
@@ -146,7 +144,7 @@ drawHeader("Management");
           foreach ($statuses as $status) { ?>
             <tr>
               <td><?= $status['id'] ?></td>
-              <td><?= $status['name'] ?></td>
+              <td><?= htmlspecialchars($status['name']) ?></td>
               <td>
                 <form action="../actions/delete/action_delete_status.php" method="post">
                   <button class="delete" name="status_id" value="<?= $status['id'] ?>" type="submit"><span class="material-symbols-outlined">delete</span></button>
@@ -158,7 +156,6 @@ drawHeader("Management");
       </table>
     </section>
   </main>
-</div>
 <?php
 drawFooter();
 ?>

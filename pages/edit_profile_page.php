@@ -25,8 +25,6 @@ if ($user->id !== $session->getUser()->id) {
 
 drawHeader("Edit Profile");
 ?>
-<div id="main-wrapper">
-
   <?php
   drawNavbar($session);
   ?>
@@ -35,7 +33,6 @@ drawHeader("Edit Profile");
     drawProfileForm($user);
     ?>
   </main>
-</div>
 <?php
 drawFooter();
 ?>

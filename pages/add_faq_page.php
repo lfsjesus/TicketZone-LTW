@@ -24,7 +24,6 @@ $db = getDatabaseConnection();
 
 drawHeader("Add FAQ");
 ?>
-<div id="main-wrapper">
     <?php
     drawNavbar($session);
     ?>
@@ -38,7 +37,6 @@ drawHeader("Add FAQ");
             <input type="submit" value="Create FAQ">
         </form>
     </main>
-</div>
 <?php
 drawFooter();
 ?>
