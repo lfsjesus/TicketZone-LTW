@@ -8,6 +8,17 @@ function draw_login()
 {
     $error = $_GET['error'];
 ?>
+<!DOCTYPE html>
+  <html lang="en-US">
+
+  <head>
+    <title>Login - TicketZone</title>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+  </head>
     <main class="authentication">
         <section id="credentials-form">
             <h1>Nice to see you again...</h1>
@@ -21,15 +32,15 @@ function draw_login()
             </form>
         </section>
     </main>
+</body>
+</html>
 <?php
 }
 $session = new Session();
 if ($session->isLoggedIn()) {
     header('Location: ../pages/userTicket_page.php');
 } else {
-    drawHeader("Login");
     draw_login();
-    drawFooter();
 }
 
 ?>
