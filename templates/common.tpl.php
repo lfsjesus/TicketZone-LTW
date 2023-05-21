@@ -3,6 +3,7 @@
 declare(strict_types=1);
 require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../utils/utils.php');
 
 function drawHeader(string $pageName)
 { ?>
@@ -74,9 +75,12 @@ function drawUserTicketHeader(Session $session)
         ?>
           <select name="status">
             <option value="" disabled selected hidden>Status</option>
-            <option value="open">Open</option>
-            <option value="assigned">Assigned</option>
-            <option value="resolved">Resolved</option>
+            <?php
+            $statuses = getStatus($db);
+            foreach ($statuses as $status) { ?>
+              <option value="<?= $status['name'] ?>"><?= htmlspecialchars($status['name']) ?></option>
+            <?php }
+            ?>
           </select>
           <select name="priority">
             <option value="" disabled selected hidden>Priority</option>

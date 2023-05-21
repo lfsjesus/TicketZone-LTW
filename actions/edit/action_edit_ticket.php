@@ -5,6 +5,7 @@ require_once(__DIR__ . '/../../utils/session.php');
 require_once(__DIR__ . '/../../database/connection.db.php');
 require_once(__DIR__ . '/../../database/user.class.php');
 require_once(__DIR__ . '/../../database/department.class.php');
+require_once(__DIR__ . '/../../utils/utils.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -30,6 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['status'])) {
       $previousStatus = $ticket->status;
+
+      $allowedStatuses = array_map(function ($status) {
+        return $status['name'];
+      }, getStatus($db));
+
+      if (!in_array($_POST['status'], $allowedStatuses)) {
+        header('Location: ../../pages/userTicket_page.php');
+        die();
+      }
       $ticket->status = $_POST['status'];
 
       if ($previousStatus != $ticket->status) {
@@ -41,6 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['priority'])) {
       $previousPriority = $ticket->priority;
+
+      $allowedPriorities = ['high', 'medium', 'low'];
+
+      if (!in_array($_POST['priority'], $allowedPriorities)) {
+        header('Location: ../../pages/userTicket_page.php');
+        die();
+      }
+
       $ticket->priority = $_POST['priority'];
 
       if ($previousPriority != $ticket->priority) {
