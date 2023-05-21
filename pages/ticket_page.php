@@ -61,7 +61,9 @@ drawHeader($ticket->title);
                 <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
                 <textarea name="message" id="comment" cols="30" rows="5" placeholder="Comment" required></textarea>
                 <div id="comment-extras">
-                    <span id="faq-answer" class="material-symbols-outlined">quiz</span>
+                    <?php if ($isAdminOrAgent){
+                     echo '<span id="faq-answer" class="material-symbols-outlined">quiz</span>';
+                    }?>
                     <a href="#" id="file-upload" class="material-symbols-outlined">attach_file</a>
                     <input type="file" name="file_name[]" id="file" multiple>
                     <span id="file-name"></span>

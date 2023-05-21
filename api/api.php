@@ -31,7 +31,7 @@ $sortFilter = ($sortFilter == 'newest' ? 'DESC' : 'ASC');
 
 $db = getDatabaseConnection();
 
-$query = 'SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE ';
+$query = 'SELECT id, user_id, agent_id, department_id, title, description, status, priority, date FROM Tickets WHERE ';
 $countQuery = 'SELECT COUNT(*) FROM Tickets WHERE ';
 $params = array();
 

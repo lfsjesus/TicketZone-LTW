@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $assigneeAction = "Changed assignee to {$newUser->firstName} {$newUser->lastName}";
           $action_stmt = $db->prepare("INSERT INTO actions (user_id, ticket_id, action, date) VALUES (?, ?, ?, ?)");
           $action_stmt->execute([$session->getUser()->id, $ticket->id, $assigneeAction, date("Y-m-d H:i:s")]);
+          $ticket->status = 'assigned';
         }
       }
       else {
@@ -89,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $assigneeAction = "Set assignee to {$newUser->firstName} {$newUser->lastName}";
         $action_stmt = $db->prepare("INSERT INTO actions (user_id, ticket_id, action, date) VALUES (?, ?, ?, ?)");
         $action_stmt->execute([$session->getUser()->id, $ticket->id, $assigneeAction, date("Y-m-d H:i:s")]);
+        $ticket->status = 'assigned';
       }
     }
 

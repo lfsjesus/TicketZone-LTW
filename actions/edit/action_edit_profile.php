@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($error) {
-        header('Location: ../pages/edit_profile_page.php?error=' . urlencode($error));
+        header('Location: ../../pages/edit_profile_page.php?error=' . urlencode($error));
         exit();
     }
 
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $user->save($db);
 
-        header('Location: ../pages/userTicket_page.php');
+        header('Location: ../../pages/userTicket_page.php');
         exit();
     }
 }

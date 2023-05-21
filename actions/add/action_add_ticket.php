@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $date = date('Y-m-d H:i:s');   
     $faq = false;
 
-    $stmt = $db->prepare("INSERT INTO tickets (user_id, department_id, title, description, status, date, faq) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$user_id, $department_id, $title, $description, $status, $date, $faq]);
+    $stmt = $db->prepare("INSERT INTO tickets (user_id, department_id, title, description, status, date) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$user_id, $department_id, $title, $description, $status, $date]);
 
     $filename = array_filter($_FILES['file_name']['name']);
 

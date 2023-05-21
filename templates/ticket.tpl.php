@@ -32,7 +32,7 @@ function drawTicket(Ticket $ticket, string $userType)
                         $agents = User::getAgents($db);
                         foreach ($agents as $agent) {
                             echo '<option value="' . $agent->id . '" ' . ($agent->id === $ticket->ticketAssignee->id ? 'selected' : '') . '>' . $agent->name() . '</option>';
-                        }
+                        }   
                         ?>
                     </select>
                 </li>

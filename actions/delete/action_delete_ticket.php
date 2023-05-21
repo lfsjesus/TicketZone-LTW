@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $db = getDatabaseConnection();
 
-    $ticket_id = $_POST['id'];
+    $ticket_id = (int)$_POST['id'];
 
     $ticket = Ticket::getTicket($db, $ticket_id);
 

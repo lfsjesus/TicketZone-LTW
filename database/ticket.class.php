@@ -30,7 +30,7 @@ class Ticket {
     } 
 
     static function getTicket(PDO $db, int $id) : ?Ticket {
-        $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date, faq FROM Tickets WHERE id = ?');
+        $stmt = $db->prepare('SELECT id, user_id, agent_id, department_id, title, description, status, priority, date FROM Tickets WHERE id = ?');
         $stmt->execute(array($id));
         $ticket = $stmt->fetch();
 
