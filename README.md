@@ -62,6 +62,11 @@ Font used for the icons that appear on the various pages throughout the website.
 | ![About Us](./docs/mockups/AbouUs.png) | ![Management](./docs/mockups/Management.png) |
 
 ---
+
+### Final Aspect
+
+![Homepage](./docs/website.png)
+
 ### UML
 
 ![Login](./docs/UML.png)
